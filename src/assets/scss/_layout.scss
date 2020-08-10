@@ -1,0 +1,141 @@
+* {
+  font-family: 'Nunito', sans-serif !important; //override PureCSS
+  padding: 0;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+  color: $color-main;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+}
+
+h5 {
+  font-size: 1.25rem;
+}
+
+h6 {
+  font-size: 1rem;
+}
+
+p {
+  line-height: 1.5;
+  font-size: 0.9rem;
+  color:$color-neutral-light;
+}
+
+a {
+  color: $color-main;
+  text-decoration: none;
+}
+
+
+.grey-border {
+  border: 1px solid $color-neutral-light;
+  border-radius: 5px;
+}
+
+body {
+  background-color: #e6e6e6;
+}
+
+//container layout
+#container {
+
+  width: 100%;
+  @include tablet{
+    width:85%;
+  }
+  max-width: 1080px;
+  background-color: white;
+  margin: 0 auto;
+  box-shadow: #aaa 0 0 5px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  header {
+    background: #f2f2f2;
+    border-bottom: 6px solid $color-main;
+    display: flex;
+    flex-direction: column;
+    @include tablet{
+      flex-direction:row;
+    }
+    a {
+      color: $color-main;
+      text-decoration: none;
+      opacity: 0.9;
+      transition: 0.2s;
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px $padding-sides-mobile;
+    @include tablet{
+      padding: 5px $padding-sides-tablet;
+    }
+    .header-left{
+      a{
+        display:flex;
+        flex-direction: column;
+        @include tablet{
+          flex-direction:row;
+        }
+        align-items: center;
+        .logo-bug{
+          height:65px;
+          transition:0.2s;
+        }
+        .logo-text{
+          height:50px;
+          margin-left:10px;
+        }
+        &:hover .logo-bug{
+          transform:translateY(20px);
+        }
+      }
+    }
+    nav {
+      display:flex;
+      flex-direction:row;
+      a {
+        margin: 0 10px;
+        @include tablet{
+          margin-left: 30px;
+        }
+        font-weight: 800;
+      }
+    }
+  }
+
+
+  footer {
+    margin-top: auto;
+    background: #333;
+    color: white;
+    padding: 5px;
+    font-size: 0.7rem;
+    text-align: center;
+  }
+}
