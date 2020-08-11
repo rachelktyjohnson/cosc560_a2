@@ -465,6 +465,9 @@ main.main-admin-stats{
   border-radius: $border-radius;
   padding:10px;
 
+  .basketIsEmpty{
+    padding: 10px 0;
+  }
   .cart-contents{
     text-align:left;
     margin:10px 0;

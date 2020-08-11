@@ -129,13 +129,23 @@ export default new Vuex.Store({
             0: [0]
         }
     },
+    actions: {
+
+    },
     mutations: {
-        removeFromCart(state,restaurantID,menuItemID) {
+        removeFromCart(state,{restaurantID,menuItemID}) {
             //find first occurrence of menuItemID
+            localStorage.setItem('restaurantID',restaurantID);
+            localStorage.setItem('menuItemID',menuItemID);
             let idx = state.cart[restaurantID].indexOf(menuItemID)
 
             //splice it out
             state.cart[restaurantID].splice(idx,1);
+
+            console.log(state.cart[restaurantID]);
+            if(state.cart[restaurantID].length===0){
+                Vue.delete(state.cart,restaurantID)
+            }
         }
     }
 })
