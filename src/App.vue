@@ -14,7 +14,9 @@
         </nav>
       </div>
     </header>
-    <restaurant-component></restaurant-component>
+
+    <landing-component></landing-component>
+
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>
@@ -22,11 +24,12 @@
 </template>
 
 <script>
-
+import LandingComponent from "./components/LandingComponent.vue";
 import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
 export default {
   components: {
+    LandingComponent,
     RestaurantsListingComponent,
     RestaurantComponent
   }
