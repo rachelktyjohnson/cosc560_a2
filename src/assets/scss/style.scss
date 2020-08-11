@@ -118,10 +118,6 @@ main.main-listing {
     @include tablet{
       grid-template-columns: 1fr 1fr;
     }
-    @include desktop {
-      grid-template-columns: 1fr 1fr 1fr;
-      grid-gap: 30px;
-    }
 
     section.restaurant {
       padding: 0;
@@ -180,6 +176,7 @@ main.main-single{
         border-radius: $border-radius;
         padding:5px;
         display:flex;
+        justify-content: space-between;
         align-items:center;
         img{
           border-radius: $border-radius;
@@ -488,6 +485,7 @@ main.main-admin-stats{
       }
       a{
         color:$color-neutral-light;
+        cursor:pointer;
       }
     }
   }

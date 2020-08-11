@@ -34,8 +34,7 @@ export default {
   },
   methods: {
     triggerRemoveCart: function(restaurantID, menuItemID){
-      console.log(restaurantID,menuItemID);
-      this.$store.commit('removeFromCart',{restaurantID,menuItemID})
+      this.$store.commit('removeFromCart',{restaurantID,menuItemID});
     },
     cartIsEmpty: function () {
       for(let key in this.$store.state.cart) {

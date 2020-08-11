@@ -14,7 +14,7 @@
         </nav>
       </div>
     </header>
-    <restaurants-listing-component></restaurants-listing-component>
+    <restaurant-component></restaurant-component>
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>
@@ -24,9 +24,11 @@
 <script>
 
 import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
+import RestaurantComponent from "./components/RestaurantComponent.vue";
 export default {
   components: {
-    RestaurantsListingComponent
+    RestaurantsListingComponent,
+    RestaurantComponent
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <main class="main-listing">
-    <h3>Restaurants in {{ suburb }}</h3>
+    <h3>Restaurants in {{ $store.state.suburb }}</h3>
     <h6>Change Location?</h6>
     <div class="pure-g">
       <div class="pure-u-3-4">
@@ -34,7 +34,6 @@ export default {
   },
   data() {
     return {
-      suburb: "Riverview",
     }
   },
   methods: {

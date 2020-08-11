@@ -7,9 +7,10 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
+        suburb: "Riverwood",
         restaurants: [
             {
-                restaurantName: "Big B's Chicken and Burgers",
+                restaurantName: "Big B's",
                 restaurantTagline: "Chicken, burgers, chips, American",
                 restaurantRating: 4.9,
                 numberOfRatings: 203,
@@ -41,12 +42,13 @@ export default new Vuex.Store({
                     }
                 ]
             },
+
             {
-                restaurantName: "Crust Pizza",
-                restaurantTagline: "Chicken, Lebanese",
-                restaurantRating: 3.8,
-                numberOfRatings: 46,
-                imgSrc: '/img/listing-crustpizza.jpg',
+                restaurantName: "Rene's Pizza Place",
+                restaurantTagline: "Pizza, Pasta, Italian",
+                restaurantRating: 4.8,
+                numberOfRatings: 155,
+                imgSrc: '/img/listing-renes.jpg',
                 menu: [
                     {
                         menuItemName: "The Grand Pepperoni",
@@ -75,13 +77,6 @@ export default new Vuex.Store({
                 ]
             },
             {
-                restaurantName: "El Jannah",
-                restaurantTagline: "Chicken, Middle Eastern",
-                restaurantRating: 3.8,
-                numberOfRatings: 263,
-                imgSrc: '/img/listing-eljannah.jpg'
-            },
-            {
                 restaurantName: "Golden Ma Lun",
                 restaurantTagline: "Chinese, Asian",
                 restaurantRating: 3.7,
@@ -94,13 +89,6 @@ export default new Vuex.Store({
                 restaurantRating: 4.2,
                 numberOfRatings: 24,
                 imgSrc: '/img/listing-kebabs.jpg'
-            },
-            {
-                restaurantName: "Rene's Pizza Place",
-                restaurantTagline: "Pizza, Pasta, Italian",
-                restaurantRating: 4.8,
-                numberOfRatings: 155,
-                imgSrc: '/img/listing-renes.jpg'
             },
             {
                 restaurantName: "The Grounds Keeper Cafe",
@@ -116,36 +104,36 @@ export default new Vuex.Store({
                 numberOfRatings: 3,
                 imgSrc: '/img/listing-westpoint.jpg'
             },
-            {
-                restaurantName: "Chaska Indian Street Food",
-                restaurantTagline: "Indian, Street Food",
-                restaurantRating: 3.8,
-                numberOfRatings: 5,
-                imgSrc: '/img/listing-chaska.jpg'
-            },
         ],
         cart: {
-            1: [0, 2, 2],
-            0: [0]
+            "1": [0, 2, 2]
         }
     },
-    actions: {
+    getters: {
 
     },
     mutations: {
         removeFromCart(state,{restaurantID,menuItemID}) {
             //find first occurrence of menuItemID
-            localStorage.setItem('restaurantID',restaurantID);
-            localStorage.setItem('menuItemID',menuItemID);
             let idx = state.cart[restaurantID].indexOf(menuItemID)
+            console.log(`removing ${menuItemID} from ${restaurantID}`);
 
             //splice it out
-            state.cart[restaurantID].splice(idx,1);
+            state.cart[restaurantID].splice(menuItemID,1);
 
-            console.log(state.cart[restaurantID]);
             if(state.cart[restaurantID].length===0){
                 Vue.delete(state.cart,restaurantID)
             }
+        },
+        addToCart(state,{restaurantID,menuItemID}){
+            //if it doesn't exist
+            if (!state.cart.hasOwnProperty(restaurantID)){
+                console.log("Cart doesn't have this restaurant");
+                Vue.set(state.cart,restaurantID,[]);
+            }
+
+            console.log(`Adding ${menuItemID} to ${restaurantID}`);
+            state.cart[restaurantID].push(menuItemID);
         }
     }
 })
