@@ -4,7 +4,8 @@
       <div class="header-left">
         <a href="index.html">
           <img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
-          <img class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
+          <img v-if="userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
+          <img v-else-if="userType==='admin'" class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
         </a>
       </div>
       <div class="header-right">
@@ -32,6 +33,11 @@ export default {
     LandingComponent,
     RestaurantsListingComponent,
     RestaurantComponent
+  },
+  data() {
+    return {
+      userType: "user"
+    }
   }
 }
 </script>

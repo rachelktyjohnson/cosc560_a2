@@ -11,10 +11,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/LandingComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,8 @@
       <workItem from="1597038357795" duration="8475000" />
       <workItem from="1597046984441" duration="1387000" />
       <workItem from="1597055192940" duration="5625000" />
-      <workItem from="1597130484155" duration="9838000" />
+      <workItem from="1597130484155" duration="9864000" />
+      <workItem from="1597192256376" duration="506000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -90,7 +89,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597139619608</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary=":hammer: Add landing">
+      <created>1597140344223</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597140344223</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -113,7 +119,8 @@
     <MESSAGE value=":hammer: Restaurant Data and Cart Data into VueX and mapped" />
     <MESSAGE value=":hammer: Delete from Basket feature" />
     <MESSAGE value=":hammer: Add to and remove from basket feature" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Add to and remove from basket feature" />
+    <MESSAGE value=":hammer: Add landing" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Add landing" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
