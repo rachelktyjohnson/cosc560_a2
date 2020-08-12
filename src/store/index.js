@@ -314,10 +314,12 @@ export default new Vuex.Store({
         },
         getOrder: (state) => (orderID) => {
             return state.orders.find(o => o.orderId===orderID);
-
         },
         getUser: (state) => (userID) => {
             return state.users.find(u => u.userId===userID);
+        },
+        getOrdersByUser: (state) => (userID) => {
+            return state.orders.filter(o => o.userId===userID);
         }
     },
     mutations: {

@@ -2,7 +2,7 @@
   <div id="container">
     <header>
       <div class="header-left">
-        <a href="index.html">
+        <a>
           <img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
           <img v-if="userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
           <img v-else-if="userType==='admin'" class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
@@ -16,8 +16,6 @@
       </div>
     </header>
 
-    <status-component></status-component>
-
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>
@@ -25,18 +23,23 @@
 </template>
 
 <script>
+
 import LandingComponent from "./components/LandingComponent.vue";
 import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
 import CheckoutComponent from "./components/CheckoutComponent.vue";
 import StatusComponent from "./components/StatusComponent.vue";
+import AccountComponent from "./components/AccountComponent.vue";
+
+
 export default {
   components: {
     LandingComponent,
     RestaurantsListingComponent,
     RestaurantComponent,
     CheckoutComponent,
-    StatusComponent
+    StatusComponent,
+    AccountComponent
   },
   data() {
     return {
