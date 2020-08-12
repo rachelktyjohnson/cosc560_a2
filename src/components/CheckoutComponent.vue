@@ -1,10 +1,9 @@
 <template>
   <main class="main-checkout">
     <h2>Checkout</h2>
-    <h5>Ordering from Big B's Chicken and Burgers</h5>
     <div class="checkout-content pure-g">
       <div class="pure-u-3-4">
-        <p>Already have an account? <a href="#">Make your life easier and log in</a></p>
+        <!--<p>Already have an account? <a href="#">Make your life easier and log in</a></p>-->
         <form action="payment.html">
           <h4>Who is our DropBear delivering to?</h4>
           <div class="form-customer">
