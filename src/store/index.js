@@ -210,8 +210,8 @@ export default new Vuex.Store({
             },
         ],
         cart: {
-            1:[3,2],
-            0:[3,0],
+            0:[0,3],
+            1:[2,3],
             3:[0,1]
         }
     },
@@ -221,8 +221,10 @@ export default new Vuex.Store({
         },
         cartSubtotal: state => {
             let total = 0;
-            for (let [key, value] of Object.entries(state.cart)) {
-                console.log(`${key}: ${value}`);
+            for (let [key, values] of Object.entries(state.cart)) {
+                values.forEach (item => {
+                    total += state.restaurants[key].menu[item].menuItemPrice;
+                })
             }
             return "$" + total.toFixed(2);
         }

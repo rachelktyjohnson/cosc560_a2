@@ -25,7 +25,7 @@
       I hear your stomach rumbling... get adding!
     </p>
     <a>
-      <div class="checkout-button">Checkout</div>
+      <div v-if="!cartIsEmpty()" class="checkout-button">Checkout</div>
     </a>
   </div>
 </template>
