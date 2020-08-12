@@ -11,8 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/components/CheckoutComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BasketComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BasketComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,11 +26,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ftX6fi7k8S8TopDig8ab53Dh8K" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -42,6 +49,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\rache\BananaSync\Uni\2020T2\COSC560\A2\cosc560_a2\public" />
       <recent name="C:\Users\rache\BananaSync\Uni\2020T2\COSC560\A2\cosc560_a2\src\assets" />
       <recent name="C:\Users\rache\BananaSync\Uni\2020T2\COSC560\A2\cosc560_a2\src" />
     </key>
@@ -59,7 +67,8 @@
       <workItem from="1597046984441" duration="1387000" />
       <workItem from="1597055192940" duration="5625000" />
       <workItem from="1597130484155" duration="9864000" />
-      <workItem from="1597192256376" duration="506000" />
+      <workItem from="1597192256376" duration="1506000" />
+      <workItem from="1597193807864" duration="2269000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -96,7 +105,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597140344223</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary=":hammer: Logo changes depending on userType">
+      <created>1597192814935</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1597192814935</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -115,12 +131,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value=":hammer: Stores listing page Vue-ified" />
     <MESSAGE value=":hammer: Restaurant Data and Cart Data into VueX and mapped" />
     <MESSAGE value=":hammer: Delete from Basket feature" />
     <MESSAGE value=":hammer: Add to and remove from basket feature" />
     <MESSAGE value=":hammer: Add landing" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Add landing" />
+    <MESSAGE value=":hammer: Logo changes depending on userType" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Logo changes depending on userType" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">

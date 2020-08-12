@@ -16,7 +16,7 @@
       </div>
     </header>
 
-    <landing-component></landing-component>
+    <checkout-component></checkout-component>
 
     <footer>
       Developed for COSC560 by Rachel Johnson
@@ -28,11 +28,13 @@
 import LandingComponent from "./components/LandingComponent.vue";
 import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
+import CheckoutComponent from "./components/CheckoutComponent.vue";
 export default {
   components: {
     LandingComponent,
     RestaurantsListingComponent,
-    RestaurantComponent
+    RestaurantComponent,
+    CheckoutComponent
   },
   data() {
     return {

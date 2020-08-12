@@ -81,36 +81,151 @@ export default new Vuex.Store({
                 restaurantTagline: "Chinese, Asian",
                 restaurantRating: 3.7,
                 numberOfRatings: 149,
-                imgSrc: '/img/listing-goldenmalun.jpg'
+                imgSrc: '/img/listing-goldenmalun.jpg',
+                menu: [
+                    {
+                        menuItemName: "Golden Ma Lun Special Rice",
+                        menuItemTagline: "Golden Ma Lun Special Rice",
+                        menuItemPrice: 15.00,
+                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                    },
+                    {
+                        menuItemName: "Minced Beef Fried Rice with Lettuce",
+                        menuItemTagline: "Minced Beef Fried Rice with Lettuce",
+                        menuItemPrice: 11.00,
+                        menuItemSrc: '/img/bigb_burger1.jpg'
+                    },
+                    {
+                        menuItemName: "Combination Rice Noodles",
+                        menuItemTagline: "Combination Rice Noodles",
+                        menuItemPrice: 15.00,
+                        menuItemSrc: '/img/bigb_burger2.jpg'
+                    },
+                    {
+                        menuItemName: "Thai Green Curry Chicken",
+                        menuItemTagline: "Thai Green Curry Chicken",
+                        menuItemPrice: 14.50,
+                        menuItemSrc: '/img/bigb_burger3.jpg'
+                    }
+                ]
             },
             {
                 restaurantName: "Main Street Kebabs",
                 restaurantTagline: "Pizza, Chicken, Casual",
                 restaurantRating: 4.2,
                 numberOfRatings: 24,
-                imgSrc: '/img/listing-kebabs.jpg'
+                imgSrc: '/img/listing-kebabs.jpg',
+                menu: [
+                    {
+                        menuItemName: "Mexicana Pizza",
+                        menuItemTagline: "tomato base, salami, onion, capsicum, jalapeno & double cheese",
+                        menuItemPrice: 17.00,
+                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                    },
+                    {
+                        menuItemName: "Chicken Pide",
+                        menuItemTagline: "chicken, mushroom, onion, capsicum, fetta & mozzarella cheese",
+                        menuItemPrice: 12.00,
+                        menuItemSrc: '/img/bigb_burger1.jpg'
+                    },
+                    {
+                        menuItemName: "Turkey Sausage Pide",
+                        menuItemTagline: "Turkish salami, egg, fetta & mozzarella cheese",
+                        menuItemPrice: 13.00,
+                        menuItemSrc: '/img/bigb_burger2.jpg'
+                    },
+                    {
+                        menuItemName: "Mix Plate",
+                        menuItemTagline: "Chicken Shish, Lamb Shish and Adana Served with Rice, Turkish Bread and Salad",
+                        menuItemPrice: 25.00,
+                        menuItemSrc: '/img/bigb_burger3.jpg'
+                    }
+                ]
             },
             {
                 restaurantName: "The Grounds Keeper Cafe",
                 restaurantTagline: "Modern Australian, Cafe",
                 restaurantRating: 3,
                 numberOfRatings: 21,
-                imgSrc: '/img/listing-groundskeeper.jpg'
+                imgSrc: '/img/listing-groundskeeper.jpg',
+                menu: [
+                    {
+                        menuItemName: "Chili Eggs",
+                        menuItemTagline: "Spicy avocado and tomato salsa on toasted sourdough, free range poached eggs topped with Dukkah and drizzled with balsamic glaze",
+                        menuItemPrice: 19.00,
+                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                    },
+                    {
+                        menuItemName: "Garden Pot",
+                        menuItemTagline: "Zaatar free range fried eggs in a clay pot, served with tomatoes, cucumber, olives, labna, mint and pita bread",
+                        menuItemPrice: 23.00,
+                        menuItemSrc: '/img/bigb_burger1.jpg'
+                    },
+                    {
+                        menuItemName: "Yogurt and Granola",
+                        menuItemTagline: "Roasted granola topped with natural yogurt, mixed berries, crushed pistachio and honey",
+                        menuItemPrice: 14.00,
+                        menuItemSrc: '/img/bigb_burger2.jpg'
+                    },
+                    {
+                        menuItemName: "Shakshouka",
+                        menuItemTagline: "Clay pot cooked free range eggs with tomatoes, capsicum and organic merguez sausages ragu served with pita bread",
+                        menuItemPrice: 21.00,
+                        menuItemSrc: '/img/bigb_burger3.jpg'
+                    }
+                ]
             },
             {
                 restaurantName: "Westpoint Noodle and Dumpling Bar",
                 restaurantTagline: "Chinese, Thai, Asian",
                 restaurantRating: 4.2,
                 numberOfRatings: 3,
-                imgSrc: '/img/listing-westpoint.jpg'
+                imgSrc: '/img/listing-westpoint.jpg',
+                menu: [
+                    {
+                        menuItemName: "Nasi Goreng",
+                        menuItemTagline: "Indonesian fried rice with chicken, prawn, egg, bean sprouts, chilli paste and curry powder.",
+                        menuItemPrice: 14.30,
+                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                    },
+                    {
+                        menuItemName: "Combination Pad Thai",
+                        menuItemTagline: "Rice noodle with chicken, egg and prawn.",
+                        menuItemPrice: 16.80,
+                        menuItemSrc: '/img/bigb_burger1.jpg'
+                    },
+                    {
+                        menuItemName: "Pad See Ew",
+                        menuItemTagline: "Flat rice noodle with chicken and egg in a sweet soy sauce.",
+                        menuItemPrice: 17.80,
+                        menuItemSrc: '/img/bigb_burger2.jpg'
+                    },
+                    {
+                        menuItemName: "Mie Goreng",
+                        menuItemTagline: "Indonesian fried Hokkien noodles with chicken, prawn, egg, chilli paste and curry powder.",
+                        menuItemPrice: 21.00,
+                        menuItemSrc: '/img/bigb_burger3.jpg'
+                    }
+                ]
             },
         ],
         cart: {
-
+            1:[3,2],
+            0:[3,0],
+            3:[0,1]
         }
     },
     getters: {
-
+        restaurantsInCart: state =>{
+            return Object.keys(state.cart).length;
+        },
+        cartSubtotal: state => {
+            let total = 0;
+            for (let [key, value] of Object.entries(state.cart)) {
+                console.log(`${key}: ${value}`);
+            }
+            return "$" + total.toFixed(2);
+        }
     },
     mutations: {
         removeFromCart(state,{restaurantID,menuItemID}) {

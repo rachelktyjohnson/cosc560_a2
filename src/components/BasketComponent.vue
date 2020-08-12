@@ -15,6 +15,12 @@
         </div>
       </div>
     </div>
+    <div v-if="!cartIsEmpty()" class="totals">
+      <div class="subtotal">
+        <h6>Subtotal</h6>
+        <h6>{{$store.getters.cartSubtotal}}</h6>
+      </div>
+    </div>
     <p class="basketIsEmpty" v-if="cartIsEmpty()">
       I hear your stomach rumbling... get adding!
     </p>
