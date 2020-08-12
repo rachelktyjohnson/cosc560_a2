@@ -229,9 +229,6 @@ main.main-payment{
       cursor:pointer;
     }
   }
-}
-
-main.main-payment{
   .form-payment{
     display:grid;
     grid-template-columns: 1fr;
@@ -245,6 +242,7 @@ main.main-payment{
     }
   }
 }
+
 
 main.main-status{
   padding: $padding-sides-tablet;

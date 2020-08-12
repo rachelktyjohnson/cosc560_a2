@@ -210,9 +210,7 @@ export default new Vuex.Store({
             },
         ],
         cart: {
-            0:[0,3],
-            1:[2,3],
-            3:[0,1]
+            0:[0]
         }
     },
     getters: {
