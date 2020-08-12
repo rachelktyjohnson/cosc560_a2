@@ -54,25 +54,25 @@ export default new Vuex.Store({
                         menuItemName: "The Grand Pepperoni",
                         menuItemTagline: "Pepperoni, chives, cheese",
                         menuItemPrice: 13.50,
-                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                        menuItemSrc: '/img/rene_1.jpg'
                     },
                     {
                         menuItemName: "Classic Cheeseburger",
                         menuItemTagline: "Mince, cheese, burger sauce",
                         menuItemPrice: 14.50,
-                        menuItemSrc: '/img/bigb_burger1.jpg'
+                        menuItemSrc: '/img/rene_2.jpg'
                     },
                     {
                         menuItemName: "The Riverwood",
                         menuItemTagline: "Questionable meat, surprise cheese",
                         menuItemPrice: 14.50,
-                        menuItemSrc: '/img/bigb_burger2.jpg'
+                        menuItemSrc: '/img/rene_3.jpg'
                     },
                     {
                         menuItemName: "Garlic Bread (Side)",
                         menuItemTagline: "Exactly what it says",
                         menuItemPrice: 4.50,
-                        menuItemSrc: '/img/bigb_burger3.jpg'
+                        menuItemSrc: '/img/rene_4.jpg'
                     }
                 ]
             },
@@ -87,25 +87,25 @@ export default new Vuex.Store({
                         menuItemName: "Golden Ma Lun Special Rice",
                         menuItemTagline: "Golden Ma Lun Special Rice",
                         menuItemPrice: 15.00,
-                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                        menuItemSrc: '/img/golden_1.jpg'
                     },
                     {
                         menuItemName: "Minced Beef Fried Rice with Lettuce",
                         menuItemTagline: "Minced Beef Fried Rice with Lettuce",
                         menuItemPrice: 11.00,
-                        menuItemSrc: '/img/bigb_burger1.jpg'
+                        menuItemSrc: '/img/golden_2.jpg'
                     },
                     {
                         menuItemName: "Combination Rice Noodles",
                         menuItemTagline: "Combination Rice Noodles",
                         menuItemPrice: 15.00,
-                        menuItemSrc: '/img/bigb_burger2.jpg'
+                        menuItemSrc: '/img/golden_3.jpg'
                     },
                     {
                         menuItemName: "Thai Green Curry Chicken",
                         menuItemTagline: "Thai Green Curry Chicken",
                         menuItemPrice: 14.50,
-                        menuItemSrc: '/img/bigb_burger3.jpg'
+                        menuItemSrc: '/img/golden_4.jpg'
                     }
                 ]
             },
@@ -120,25 +120,25 @@ export default new Vuex.Store({
                         menuItemName: "Mexicana Pizza",
                         menuItemTagline: "tomato base, salami, onion, capsicum, jalapeno & double cheese",
                         menuItemPrice: 17.00,
-                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                        menuItemSrc: '/img/kebabs_1.jpg'
                     },
                     {
                         menuItemName: "Chicken Pide",
                         menuItemTagline: "chicken, mushroom, onion, capsicum, fetta & mozzarella cheese",
                         menuItemPrice: 12.00,
-                        menuItemSrc: '/img/bigb_burger1.jpg'
+                        menuItemSrc: '/img/kebabs_2.jpg'
                     },
                     {
                         menuItemName: "Turkey Sausage Pide",
                         menuItemTagline: "Turkish salami, egg, fetta & mozzarella cheese",
                         menuItemPrice: 13.00,
-                        menuItemSrc: '/img/bigb_burger2.jpg'
+                        menuItemSrc: '/img/kebabs_3.jpg'
                     },
                     {
                         menuItemName: "Mix Plate",
                         menuItemTagline: "Chicken Shish, Lamb Shish and Adana Served with Rice, Turkish Bread and Salad",
                         menuItemPrice: 25.00,
-                        menuItemSrc: '/img/bigb_burger3.jpg'
+                        menuItemSrc: '/img/kebabs_4.jpg'
                     }
                 ]
             },
@@ -153,25 +153,25 @@ export default new Vuex.Store({
                         menuItemName: "Chili Eggs",
                         menuItemTagline: "Spicy avocado and tomato salsa on toasted sourdough, free range poached eggs topped with Dukkah and drizzled with balsamic glaze",
                         menuItemPrice: 19.00,
-                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                        menuItemSrc: '/img/grounds_1.jpg'
                     },
                     {
                         menuItemName: "Garden Pot",
                         menuItemTagline: "Zaatar free range fried eggs in a clay pot, served with tomatoes, cucumber, olives, labna, mint and pita bread",
                         menuItemPrice: 23.00,
-                        menuItemSrc: '/img/bigb_burger1.jpg'
+                        menuItemSrc: '/img/grounds_2.jpg'
                     },
                     {
                         menuItemName: "Yogurt and Granola",
                         menuItemTagline: "Roasted granola topped with natural yogurt, mixed berries, crushed pistachio and honey",
                         menuItemPrice: 14.00,
-                        menuItemSrc: '/img/bigb_burger2.jpg'
+                        menuItemSrc: '/img/grounds_3.jpg'
                     },
                     {
                         menuItemName: "Shakshouka",
                         menuItemTagline: "Clay pot cooked free range eggs with tomatoes, capsicum and organic merguez sausages ragu served with pita bread",
                         menuItemPrice: 21.00,
-                        menuItemSrc: '/img/bigb_burger3.jpg'
+                        menuItemSrc: '/img/grounds_4.jpg'
                     }
                 ]
             },
@@ -186,38 +186,114 @@ export default new Vuex.Store({
                         menuItemName: "Nasi Goreng",
                         menuItemTagline: "Indonesian fried rice with chicken, prawn, egg, bean sprouts, chilli paste and curry powder.",
                         menuItemPrice: 14.30,
-                        menuItemSrc: '/img/bigb_hungertamer.jpg'
+                        menuItemSrc: '/img/noodles_1.jpg'
                     },
                     {
                         menuItemName: "Combination Pad Thai",
                         menuItemTagline: "Rice noodle with chicken, egg and prawn.",
                         menuItemPrice: 16.80,
-                        menuItemSrc: '/img/bigb_burger1.jpg'
+                        menuItemSrc: '/img/noodles_2.jpg'
                     },
                     {
                         menuItemName: "Pad See Ew",
                         menuItemTagline: "Flat rice noodle with chicken and egg in a sweet soy sauce.",
                         menuItemPrice: 17.80,
-                        menuItemSrc: '/img/bigb_burger2.jpg'
+                        menuItemSrc: '/img/noodles_3.jpg'
                     },
                     {
                         menuItemName: "Mie Goreng",
                         menuItemTagline: "Indonesian fried Hokkien noodles with chicken, prawn, egg, chilli paste and curry powder.",
                         menuItemPrice: 21.00,
-                        menuItemSrc: '/img/bigb_burger3.jpg'
+                        menuItemSrc: '/img/noodles_4.jpg'
                     }
                 ]
             },
         ],
         cart: {
             0:[0]
-        }
+        },
+        users: [
+            {
+                firstName: "George",
+                lastName: "McGregor",
+                email: "george@mcgregor.com",
+                phone: "0411 111 111",
+                address1: "Suite 207",
+                address2: "30 Campbell Street",
+                suburb: "Riverwood",
+                postcode: "2147",
+                state: "NSW"
+            },
+            {
+                firstName: "Ewan",
+                lastName: "McEugene",
+                email: "ewan@mceugene.com",
+                phone: "0422 222 222",
+                address1: "Suite 208",
+                address2: "31 Campbell Street",
+                suburb: "Riverwood",
+                postcode: "2147",
+                state: "NSW"
+            },
+            {
+                firstName: "Geralt",
+                lastName: "Rivia",
+                email: "geralt@rivia.com",
+                phone: "0422 222 222",
+                address1: "Suite 208",
+                address2: "31 Campbell Street",
+                suburb: "Riverwood",
+                postcode: "2147",
+                state: "NSW"
+            }
+        ],
+        orders: [
+            {
+                orderId: 15060,
+                userId: 3,
+                status: "Delivered",
+                date: "10/08/2020",
+                time: "19:32:11",
+                orderContents: {
+                    0: [0]
+                }
+            },
+            {
+                orderId: 15061,
+                userId: 2,
+                status: "Delivered",
+                date: "10/08/2020",
+                time: "19:34:11",
+                orderContents: {
+                    4: [0,3]
+                }
+            },
+            {
+                orderId: 15062,
+                userId: 3,
+                status: "Delivered",
+                date: "11/08/2020",
+                time: "17:56:01",
+                orderContents: {
+                    0: [0,0,1]
+                }
+            }
+            ,
+            {
+                orderId: 15063,
+                userId: 1,
+                status: "Delivered",
+                date: "11/08/2020",
+                time: "18:04:44",
+                orderContents: {
+                    2: [0,0,1],
+                    3: [3,2]
+                }
+            }
+        ]
     },
     getters: {
-        restaurantsInCart: state =>{
-            return Object.keys(state.cart).length;
-        },
-        cartSubtotal: state => {
+        cartSubtotal: function(state){
             let subtotal = 0;
             for (let [key, values] of Object.entries(state.cart)) {
                 values.forEach (item => {
@@ -226,13 +302,17 @@ export default new Vuex.Store({
             }
             return subtotal;
         },
-        cartDelivery: state => {
+        cartDelivery: function(state){
             let basePricePerRestaurant = 5;
             let numberOfRestaurants = Object.keys(state.cart).length;
             return basePricePerRestaurant * numberOfRestaurants;
         },
-        cartTotal: (state, getters) => {
+        cartTotal: function(state, getters){
             return getters.cartSubtotal + getters.cartDelivery;
+        },
+        specificOrder: (state) => (orderID) => {
+            console.log(orderID);
+            return state.orders.find(o => o.orderId===orderID);
         }
     },
     mutations: {

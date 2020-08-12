@@ -11,9 +11,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/golden_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/golden_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/golden_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/golden_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/grounds_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/grounds_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/grounds_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/grounds_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/kebabs_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/kebabs_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/kebabs_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/kebabs_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/noodles_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/noodles_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/noodles_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/noodles_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/rene_1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/rene_2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/rene_3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/rene_4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/StatusComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CheckoutComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CheckoutComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RestaurantComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RestaurantComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -67,7 +89,7 @@
       <workItem from="1597055192940" duration="5625000" />
       <workItem from="1597130484155" duration="9864000" />
       <workItem from="1597192256376" duration="1506000" />
-      <workItem from="1597193807864" duration="5582000" />
+      <workItem from="1597193807864" duration="15270000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -132,7 +154,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597198304704</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary=":hammer: Dynamic Payment Type">
+      <created>1597199512995</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1597199512995</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,7 +190,8 @@
     <MESSAGE value=":hammer: Add all menu items" />
     <MESSAGE value=":hammer: Basket shows subtotal" />
     <MESSAGE value=":hammer: Basket shows shipping and total" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Basket shows shipping and total" />
+    <MESSAGE value=":hammer: Dynamic Payment Type" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Dynamic Payment Type" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">

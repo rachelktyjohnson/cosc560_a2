@@ -10,13 +10,13 @@
       </div>
       <div class="header-right">
         <nav>
-          <a href="account.html">My Account</a>
+          <a href="account.html">{{ $store.state.users[userID].firstName }}'s Account</a>
           <a href="admin-orders.html">(Admin Dashboard)</a>
         </nav>
       </div>
     </header>
 
-    <checkout-component></checkout-component>
+    <restaurant-component></restaurant-component>
 
     <footer>
       Developed for COSC560 by Rachel Johnson
@@ -29,16 +29,19 @@ import LandingComponent from "./components/LandingComponent.vue";
 import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
 import CheckoutComponent from "./components/CheckoutComponent.vue";
+import StatusComponent from "./components/StatusComponent.vue";
 export default {
   components: {
     LandingComponent,
     RestaurantsListingComponent,
     RestaurantComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    StatusComponent
   },
   data() {
     return {
-      userType: "user"
+      userType: "user",
+      userID: 2
     }
   }
 }

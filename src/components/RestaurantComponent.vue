@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      restaurantID: 0
+      restaurantID: 2
     }
   },
   methods: {
