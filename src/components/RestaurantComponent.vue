@@ -39,9 +39,15 @@ export default {
   components: {
     BasketComponent
   },
-  props: ['restaurantId'],
+  props: {
+    restaurantId: {
+      required:true,
+      default:0
+    }
+  },
   data() {
     return {
+
     }
   },
   methods: {
@@ -49,6 +55,9 @@ export default {
       console.log(`Adding ${menuItemID} to ${restaurantID}`);
       this.$store.commit('addToCart',{restaurantID,menuItemID});
     }
+  },
+  computed: {
+
   }
 }
 </script>

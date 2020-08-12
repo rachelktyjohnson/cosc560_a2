@@ -11,7 +11,7 @@ export default {
   },
   data() {
     return {
-      restaurantId: null
+      restaurantId: 0
     }
   },
   mounted: function() {
