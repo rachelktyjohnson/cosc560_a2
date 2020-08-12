@@ -337,9 +337,6 @@ export default new Vuex.Store({
     },
     mutations: {
         removeFromCart(state,{restaurantID,menuItemID}) {
-            //find first occurrence of menuItemID
-            let idx = state.cart[restaurantID].indexOf(menuItemID)
-            console.log(`removing ${menuItemID} from ${restaurantID}`);
 
             //splice it out
             state.cart[restaurantID].splice(menuItemID,1);
@@ -351,11 +348,9 @@ export default new Vuex.Store({
         addToCart(state,{restaurantID,menuItemID}){
             //if it doesn't exist
             if (!state.cart.hasOwnProperty(restaurantID)){
-                console.log("Cart doesn't have this restaurant");
                 Vue.set(state.cart,restaurantID,[]);
             }
 
-            console.log(`Adding ${menuItemID} to ${restaurantID}`);
             state.cart[restaurantID].push(menuItemID);
         },
         changeSuburb(state,newSuburb){

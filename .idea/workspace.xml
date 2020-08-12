@@ -12,8 +12,13 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/_layout.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/_layout.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/RestaurantComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RestaurantComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Restaurant.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Restaurant.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RestaurantsListingComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListingComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Listing.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Listing.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +81,7 @@
       <workItem from="1597218958611" duration="640000" />
       <workItem from="1597221557431" duration="877000" />
       <workItem from="1597223355390" duration="10030000" />
-      <workItem from="1597270440292" duration="328000" />
+      <workItem from="1597270440292" duration="1611000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -183,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597234547579</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary=":wrench: Fix RestaurantId loading error on Restaurant view/component">
+      <created>1597270807315</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1597270807315</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -218,7 +230,8 @@
     <MESSAGE value=":hammer: PreRoutes" />
     <MESSAGE value=":hammer: Routes from landing to account and landing to listing" />
     <MESSAGE value=":hammer: Routes from listing to individual restaurants using a query" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Routes from listing to individual restaurants using a query" />
+    <MESSAGE value=":wrench: Fix RestaurantId loading error on Restaurant view/component" />
+    <option name="LAST_COMMIT_MESSAGE" value=":wrench: Fix RestaurantId loading error on Restaurant view/component" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">

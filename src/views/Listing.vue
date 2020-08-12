@@ -2,7 +2,7 @@
   <listing-component></listing-component>
 </template>
 <script>
-import ListingComponent from '../components/RestaurantsListingComponent.vue';
+import ListingComponent from '../components/ListingComponent.vue';
 
 export default {
   name: 'Listing',

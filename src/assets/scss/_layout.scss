@@ -44,8 +44,12 @@ p {
 a {
   color: $color-main;
   text-decoration: none;
+  cursor:pointer;
 }
 
+.breadcrumbs{
+  text-align:left;
+}
 
 .grey-border {
   border: 1px solid $color-neutral-light;

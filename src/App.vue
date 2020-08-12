@@ -31,7 +31,7 @@
 <script>
 
 import LandingComponent from "./components/LandingComponent.vue";
-import RestaurantsListingComponent from "./components/RestaurantsListingComponent.vue";
+import RestaurantsListingComponent from "./components/ListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
 import CheckoutComponent from "./components/CheckoutComponent.vue";
 import StatusComponent from "./components/StatusComponent.vue";

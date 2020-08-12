@@ -1,6 +1,6 @@
 <template>
 <main class="main-single">
-<h5>Restaurant in {{ $store.state.suburb }}</h5>
+  <h6 class="breadcrumbs"><router-link to="listing">< Back to Restaurants</router-link></h6>
 <h2>{{ $store.state.restaurants[restaurantId].restaurantName}}</h2>
 <p>{{ $store.state.restaurants[restaurantId].restaurantTagline}}</p>
 <div class="restaurant-content pure-g">
@@ -52,7 +52,6 @@ export default {
   },
   methods: {
     triggerAddToCart: function(restaurantID,menuItemID){
-      console.log(`Adding ${menuItemID} to ${restaurantID}`);
       this.$store.commit('addToCart',{restaurantID,menuItemID});
     }
   },
