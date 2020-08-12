@@ -3,19 +3,25 @@
     <header>
       <div class="header-left">
         <a>
-          <img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
-          <img v-if="userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
-          <img v-else-if="userType==='admin'" class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
+          <router-link to="/"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo"></router-link>
+          <router-link to="/"><img v-if="userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo"></router-link>
+          <img v-if="userType==='admin'" class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
         </a>
       </div>
       <div class="header-right">
         <nav>
-          <a href="account.html">{{ $store.state.users[userID].firstName }}'s Account</a>
+          <router-link to="/account">{{ $store.state.users[userID].firstName }}'s Account</router-link>
           <a href="admin-orders.html">(Admin Dashboard)</a>
         </nav>
+        <!--<nav class="nav flex-column">
+          <router-link to="/" class="nav-link">Expenses</router-link>
+          <router-link to="/report" class="nav-link">Report</router-link>
+          <a class="nav-link" href="notification.html">Notification</a>
+        </nav>-->
+
       </div>
     </header>
-
+    <router-view/>
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>

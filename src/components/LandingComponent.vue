@@ -2,8 +2,8 @@
   <main class="main-home">
     <div class="breakout">
       <h3>Find your local hunger tamers</h3>
-      <form action="listing.html" method="post">
-        <input type="text" placeholder="Your suburb or postcode"/>
+      <form v-on:submit.stop.prevent="goToListing()" method="post">
+        <input type="text" placeholder="Your suburb or postcode" v-model="suburb"/>
         <input type="submit" value="Go"/>
       </form>
     </div>
@@ -27,8 +27,8 @@
     </div>
     <div class="breakout">
       <h3>Drop that hunger level now</h3>
-      <form action="listing.html" method="post">
-        <input type="text" placeholder="Your suburb or postcode"/>
+      <form v-on:submit.stop.prevent="goToListing()" method="post">
+        <input type="text" placeholder="Your suburb or postcode" v-model="suburb"/>
         <input type="submit" value="Go"/>
       </form>
     </div>
@@ -39,13 +39,17 @@
 
 export default {
   name: 'LandingComponent',
-  components: {
-  },
+
   data() {
     return {
+      suburb: null
     }
   },
   methods: {
+    goToListing: function(){
+      this.$store.commit('changeSuburb',this.suburb);
+      this.$router.push('listing');
+    }
   }
 }
 </script>

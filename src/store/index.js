@@ -7,7 +7,7 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        suburb: "Riverwood",
+        suburb: null,
         restaurants: [
             {
                 restaurantName: "Big B's",
@@ -210,7 +210,7 @@ export default new Vuex.Store({
             },
         ],
         cart: {
-            0:[0]
+
         },
         users: [
             {
@@ -320,6 +320,13 @@ export default new Vuex.Store({
         },
         getOrdersByUser: (state) => (userID) => {
             return state.orders.filter(o => o.userId===userID);
+        },
+        getSuburb: function(state){
+            if (state.suburb===null){
+                return "Restaurants near you";
+            } else {
+                return `Restaurants near ${state.suburb}`
+            }
         }
     },
     mutations: {
@@ -344,6 +351,9 @@ export default new Vuex.Store({
 
             console.log(`Adding ${menuItemID} to ${restaurantID}`);
             state.cart[restaurantID].push(menuItemID);
+        },
+        changeSuburb(state,newSuburb){
+            state.suburb = newSuburb;
         }
     }
 })

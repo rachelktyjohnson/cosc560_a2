@@ -1,6 +1,6 @@
 <template>
   <main class="main-listing">
-    <h3>Restaurants in {{ $store.state.suburb }}</h3>
+    <h3>{{ $store.getters.getSuburb }}</h3>
     <h6>Change Location?</h6>
     <div class="pure-g">
       <div class="pure-u-3-4">
