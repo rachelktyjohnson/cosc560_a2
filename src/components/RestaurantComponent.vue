@@ -1,15 +1,15 @@
 <template>
 <main class="main-single">
 <h5>Restaurant in {{ $store.state.suburb }}</h5>
-<h2>{{ $store.state.restaurants[restaurantID].restaurantName}}</h2>
-<p>{{ $store.state.restaurants[restaurantID].restaurantTagline}}</p>
+<h2>{{ $store.state.restaurants[restaurantId].restaurantName}}</h2>
+<p>{{ $store.state.restaurants[restaurantId].restaurantTagline}}</p>
 <div class="restaurant-content pure-g">
   <div class="pure-u-3-4">
     <div class="menu-section">
       <h4>Popular</h4>
       <div class="menu">
-        <a v-for="(menuItem,index) in $store.state.restaurants[restaurantID].menu"
-           v-on:click="triggerAddToCart(restaurantID,index)"
+        <a v-for="(menuItem,index) in $store.state.restaurants[restaurantId].menu"
+           v-on:click="triggerAddToCart(restaurantId,index)"
            href="#">
           <div class="menu-item">
             <div class="item-content">
@@ -39,9 +39,9 @@ export default {
   components: {
     BasketComponent
   },
+  props: ['restaurantId'],
   data() {
     return {
-      restaurantID: 2
     }
   },
   methods: {

@@ -6,8 +6,8 @@
       <div class="pure-u-3-4">
         <div class="restaurants">
           <a v-for="restaurant in $store.state.restaurants">
-            <section class="restaurant">
-              <img :src="restaurant.imgSrc" :alt="restaurant.storeName"/>
+            <section v-on:click="goToRestaurant(restaurant.restaurantId)" class="restaurant">
+              <img :src="restaurant.imgSrc" :alt="restaurant.restaurantName"/>
               <div class="content">
                 <h4>{{ restaurant.restaurantName }}</h4>
                 <p>{{ restaurant.restaurantTagline }}</p>
@@ -37,7 +37,9 @@ export default {
     }
   },
   methods: {
-
+    goToRestaurant: function(restaurantId){
+      this.$router.push({ path: 'restaurant', query: { r: restaurantId } });
+    }
   }
 }
 </script>

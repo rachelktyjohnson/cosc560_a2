@@ -10,6 +10,7 @@ export default new Vuex.Store({
         suburb: null,
         restaurants: [
             {
+                restaurantId: 0,
                 restaurantName: "Big B's",
                 restaurantTagline: "Chicken, burgers, chips, American",
                 restaurantRating: 4.9,
@@ -44,6 +45,7 @@ export default new Vuex.Store({
             },
 
             {
+                restaurantId: 1,
                 restaurantName: "Rene's Pizza Place",
                 restaurantTagline: "Pizza, Pasta, Italian",
                 restaurantRating: 4.8,
@@ -77,6 +79,7 @@ export default new Vuex.Store({
                 ]
             },
             {
+                restaurantId: 2,
                 restaurantName: "Golden Ma Lun",
                 restaurantTagline: "Chinese, Asian",
                 restaurantRating: 3.7,
@@ -110,6 +113,7 @@ export default new Vuex.Store({
                 ]
             },
             {
+                restaurantId: 3,
                 restaurantName: "Main Street Kebabs",
                 restaurantTagline: "Pizza, Chicken, Casual",
                 restaurantRating: 4.2,
@@ -143,6 +147,7 @@ export default new Vuex.Store({
                 ]
             },
             {
+                restaurantId: 4,
                 restaurantName: "The Grounds Keeper Cafe",
                 restaurantTagline: "Modern Australian, Cafe",
                 restaurantRating: 3,
@@ -176,6 +181,7 @@ export default new Vuex.Store({
                 ]
             },
             {
+                restaurantId: 5,
                 restaurantName: "Westpoint Noodle and Dumpling Bar",
                 restaurantTagline: "Chinese, Thai, Asian",
                 restaurantRating: 4.2,
