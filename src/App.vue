@@ -16,7 +16,7 @@
       </div>
     </header>
 
-    <restaurant-component></restaurant-component>
+    <status-component></status-component>
 
     <footer>
       Developed for COSC560 by Rachel Johnson

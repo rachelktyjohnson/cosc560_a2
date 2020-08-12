@@ -214,6 +214,7 @@ export default new Vuex.Store({
         },
         users: [
             {
+                userId: 0,
                 firstName: "George",
                 lastName: "McGregor",
                 email: "george@mcgregor.com",
@@ -225,6 +226,7 @@ export default new Vuex.Store({
                 state: "NSW"
             },
             {
+                userId:1,
                 firstName: "Ewan",
                 lastName: "McEugene",
                 email: "ewan@mceugene.com",
@@ -236,6 +238,7 @@ export default new Vuex.Store({
                 state: "NSW"
             },
             {
+                userId:2,
                 firstName: "Geralt",
                 lastName: "Rivia",
                 email: "geralt@rivia.com",
@@ -250,7 +253,7 @@ export default new Vuex.Store({
         orders: [
             {
                 orderId: 15060,
-                userId: 3,
+                userId: 2,
                 status: "Delivered",
                 date: "10/08/2020",
                 time: "19:32:11",
@@ -260,7 +263,7 @@ export default new Vuex.Store({
             },
             {
                 orderId: 15061,
-                userId: 2,
+                userId: 1,
                 status: "Delivered",
                 date: "10/08/2020",
                 time: "19:34:11",
@@ -270,7 +273,7 @@ export default new Vuex.Store({
             },
             {
                 orderId: 15062,
-                userId: 3,
+                userId: 2,
                 status: "Delivered",
                 date: "11/08/2020",
                 time: "17:56:01",
@@ -281,7 +284,7 @@ export default new Vuex.Store({
             ,
             {
                 orderId: 15063,
-                userId: 1,
+                userId: 0,
                 status: "Delivered",
                 date: "11/08/2020",
                 time: "18:04:44",
@@ -303,16 +306,18 @@ export default new Vuex.Store({
             return subtotal;
         },
         cartDelivery: function(state){
-            let basePricePerRestaurant = 5;
             let numberOfRestaurants = Object.keys(state.cart).length;
-            return basePricePerRestaurant * numberOfRestaurants;
+            return 5 * numberOfRestaurants;
         },
         cartTotal: function(state, getters){
             return getters.cartSubtotal + getters.cartDelivery;
         },
-        specificOrder: (state) => (orderID) => {
-            console.log(orderID);
+        getOrder: (state) => (orderID) => {
             return state.orders.find(o => o.orderId===orderID);
+
+        },
+        getUser: (state) => (userID) => {
+            return state.users.find(u => u.userId===userID);
         }
     },
     mutations: {

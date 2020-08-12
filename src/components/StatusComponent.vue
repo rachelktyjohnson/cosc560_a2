@@ -14,25 +14,25 @@
       <div class="totals">
         <div class="row">
           <p>Delivery</p>
-          <p>$8.00</p>
+          <p>${{orderDelivery.toFixed(2)}}</p>
         </div>
         <div class="row">
           <p>Total</p>
-          <p>$24.30</p>
+          <p>${{orderTotal.toFixed(2)}}</p>
         </div>
       </div>
       <h4>Your Details</h4>
       <div class="order-details">
         <div class="customer-details">
-          <p>Rachel Johnson</p>
-          <p>rachelktyjohnson@gmail.com</p>
-          <p>+61 432 633 453</p>
+          <p>{{user.firstName}} {{user.lastName}}</p>
+          <p>{{user.email}}</p>
+          <p>{{user.phone}}</p>
         </div>
         <div class="delivery-details">
-          <p>Suite 209</p>
-          <p>30 Campbell Street</p>
-          <p>Blacktown</p>
-          <p>NSW 2148</p>
+          <p>{{user.address1}}</p>
+          <p>{{user.address2}}</p>
+          <p>{{user.suburb}}</p>
+          <p>{{user.state}} {{user.postcode}}</p>
         </div>
       </div>
     </div>
@@ -45,7 +45,30 @@ export default {
   name: 'StatusComponent',
   data() {
     return {
-      order: this.$store.getters.specificOrder(15063)
+      orderId: 15062
+    }
+  },
+  computed:{
+    order (){
+      return this.$store.getters.getOrder(this.orderId);
+    },
+    user() {
+      return this.$store.getters.getUser(this.order.userId)
+    },
+    orderDelivery() {
+      let numOfRestaurants = Object.keys(this.order.orderContents).length;
+      return 5 * numOfRestaurants;
+    },
+    orderTotal() {
+      let subtotal = 0;
+
+      for (let [key, values] of Object.entries(this.order.orderContents)) {
+        values.forEach (item => {
+          subtotal += this.$store.state.restaurants[key].menu[item].menuItemPrice;
+        })
+      }
+
+      return subtotal + this.orderDelivery;
     }
   }
 }
