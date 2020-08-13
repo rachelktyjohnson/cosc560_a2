@@ -40,15 +40,15 @@ export default {
       } else if (this.username==='adam' && this.password==='adam'){
         //change logged in userID and go to landing
         this.$store.commit('changeUser',1);
-        this.$router.push('/');
+        this.$router.push('listing');
       } else if (this.username==='ben' && this.password==='ben'){
         //change logged in userID and go to landing
         this.$store.commit('changeUser',2);
-        this.$router.push('/');
+        this.$router.push('listing');
       }  else if (this.username==='charlie' && this.password==='charlie'){
         //change logged in userID and go to landing
         this.$store.commit('changeUser',3);
-        this.$router.push('/');
+        this.$router.push('listing');
       }
     }
   }
