@@ -218,9 +218,13 @@ export default new Vuex.Store({
         cart: {
 
         },
+        loggedIn: {
+          userID: 0
+        },
         users: [
             {
                 userId: 0,
+                userType: 'user',
                 firstName: "George",
                 lastName: "McGregor",
                 email: "george@mcgregor.com",
@@ -233,6 +237,7 @@ export default new Vuex.Store({
             },
             {
                 userId:1,
+                userType: 'user',
                 firstName: "Ewan",
                 lastName: "McEugene",
                 email: "ewan@mceugene.com",
@@ -245,6 +250,7 @@ export default new Vuex.Store({
             },
             {
                 userId:2,
+                userType: 'user',
                 firstName: "Geralt",
                 lastName: "Rivia",
                 email: "geralt@rivia.com",
@@ -320,6 +326,18 @@ export default new Vuex.Store({
         },
         getOrder: (state) => (orderID) => {
             return state.orders.find(o => o.orderId===orderID);
+        },
+        getCurrentUser: function(state) {
+            let currentUserId = state.loggedIn.userID;
+            if (currentUserId === null) {
+                return {
+                    userId: null,
+                    userType: 'user',
+                }
+            }
+             else {
+                return state.users.find(u => u.userId===currentUserId);
+            }
         },
         getUser: (state) => (userID) => {
             return state.users.find(u => u.userId===userID);

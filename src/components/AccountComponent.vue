@@ -5,7 +5,7 @@
       <div class="past-orders">
         <h4>Past Orders</h4>
         <div class="past-orders-group">
-          <a v-for="order in userOrders" href="status.html">
+          <a v-for="order in userOrders">
             <div class="past-order">
               <p>Order #{{ order.orderId }}</p>
               <p>{{ order.date }}</p>
@@ -16,17 +16,17 @@
       <div class="account-details">
         <h4>My Details</h4>
         <div class="customer-details">
-          <p>{{user.firstName}} {{user.lastName}}</p>
-          <p>{{user.phone}}</p>
-          <p>{{user.email}}</p>
+          <p>{{userInfo.firstName}} {{userInfo.lastName}}</p>
+          <p>{{userInfo.phone}}</p>
+          <p>{{userInfo.email}}</p>
         </div>
 
         <h4>My Delivery Details</h4>
         <div class="delivery-details">
-          <p>{{user.address1}}</p>
-          <p>{{user.address2}}</p>
-          <p>{{user.suburb}}</p>
-          <p>{{user.state}} {{user.postcode}}</p>
+          <p>{{userInfo.address1}}</p>
+          <p>{{userInfo.address2}}</p>
+          <p>{{userInfo.suburb}}</p>
+          <p>{{userInfo.state}} {{userInfo.postcode}}</p>
         </div>
 
       </div>
@@ -40,15 +40,15 @@ export default {
   name: 'AccountComponent',
   data() {
     return {
-      userId: 2
+
     }
   },
   computed: {
-    user() {
-      return this.$store.getters.getUser(this.userId)
+    userInfo() {
+      return this.$store.getters.getCurrentUser;
     },
     userOrders() {
-      return this.$store.getters.getOrdersByUser(this.userId)
+      return this.$store.getters.getOrdersByUser(this.userInfo.userId)
     }
   }
 }

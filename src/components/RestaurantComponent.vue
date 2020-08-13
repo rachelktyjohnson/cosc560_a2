@@ -52,11 +52,18 @@ export default {
   },
   methods: {
     triggerAddToCart: function(restaurantID,menuItemID){
-      this.$store.commit('addToCart',{restaurantID,menuItemID});
+      if (this.isLoggedIn){
+        this.$store.commit('addToCart',{restaurantID,menuItemID});
+      }
     }
   },
   computed: {
-
+    userInfo: function() {
+      return this.$store.getters.getCurrentUser;
+    },
+    isLoggedIn: function() {
+      return this.userInfo.userId !== null;
+    }
   }
 }
 </script>

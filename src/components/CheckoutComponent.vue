@@ -3,55 +3,55 @@
     <h2>Checkout</h2>
     <div class="checkout-content pure-g">
       <div class="pure-u-3-4">
-        <!--<p>Already have an account? <a href="#">Make your life easier and log in</a></p>-->
-        <form>
-          <h4>Who is our DropBear delivering to?</h4>
+        <p>Need to change your details? <router-link to="/account">Do it in Your Account</router-link></p>
+        <!--<p>Placing this order will create a DropBearEats account for you using these details.</p>-->
+        <form v-if="$store.state.cart !== {}">
+          <h4>Our Dropbear is delivering to...</h4>
           <div class="form-customer">
             <div class="form-field">
               <label>First Name</label>
-              <input type="text"/>
+              <input disabled type="text" :value="userInfo.firstName"/>
             </div>
             <div class="form-field">
               <label>Last Name</label>
-              <input type="text"/>
+              <input disabled type="text" :value="userInfo.lastName"/>
             </div>
             <div class="form-field">
               <label>Mobile Number</label>
-              <input type="tel"/>
+              <input type="tel" disabled :value="userInfo.phone"/>
             </div>
             <div class="form-field">
               <label>Email</label>
-              <input type="email"/>
+              <input type="email"disabled :value="userInfo.email"/>
             </div>
           </div>
-          <h4>Where is our DropBear delivering to?</h4>
           <div class="form-address">
             <div class="form-field">
               <label>Address Line 1</label>
-              <input type="text"/>
+              <input type="text"disabled :value="userInfo.address1"/>
             </div>
             <div class="form-field">
               <label>Address Line 2</label>
-              <input type="text"/>
+              <input type="text"disabled :value="userInfo.address2"/>
             </div>
             <div class="form-field">
               <label>Suburb</label>
-              <input type="tel"/>
+              <input type="text"disabled :value="userInfo.suburb"/>
             </div>
             <div class="form-field">
               <label>Postcode</label>
-              <input type="email"/>
+              <input type="number"disabled :value="userInfo.postcode"/>
             </div>
             <div class="form-field">
               <label>State</label>
-              <select>
-                <option>New South Wales</option>
-                <option>Queensland</option>
+              <select disabled>
+                <option>{{ userInfo.state }}</option>
+                <!--<option>Queensland</option>
                 <option>Victoria</option>
                 <option>South Australia</option>
                 <option>Australian Capital Territory</option>
                 <option>Western Australia</option>
-                <option>Northern Territory</option>
+                <option>Northern Territory</option>-->
               </select>
             </div>
           </div>
@@ -96,7 +96,7 @@
               </div>
             </div>
           </div>
-          <p>Placing this order will create a DropBearEats account for you using these details.</p>
+
           <input type="submit" class="dbe-button" value="Place Order">
         </form>
       </div>
@@ -122,6 +122,11 @@ export default {
   },
   methods: {
 
+  },
+  computed:{
+    userInfo: function() {
+      return this.$store.getters.getCurrentUser;
+    }
   }
 }
 </script>

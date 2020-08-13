@@ -4,20 +4,15 @@
       <div class="header-left">
         <a>
           <router-link to="/"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo"></router-link>
-          <router-link to="/"><img v-if="userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo"></router-link>
-          <img v-if="userType==='admin'" class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
+          <router-link to="/"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
+          <img v-else class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo"></router-link>
         </a>
       </div>
       <div class="header-right">
         <nav>
-          <router-link to="/account">{{ $store.state.users[userID].firstName }}'s Account</router-link>
-          <a href="admin-orders.html">(Admin Dashboard)</a>
+          <router-link v-if="!isLoggedIn" to="/login">Log in</router-link>
+          <router-link v-else to="/account">My Account</router-link>
         </nav>
-        <!--<nav class="nav flex-column">
-          <router-link to="/" class="nav-link">Expenses</router-link>
-          <router-link to="/report" class="nav-link">Report</router-link>
-          <a class="nav-link" href="notification.html">Notification</a>
-        </nav>-->
 
       </div>
     </header>
@@ -49,8 +44,14 @@ export default {
   },
   data() {
     return {
-      userType: "user",
-      userID: 2
+    }
+  },
+  computed: {
+    userInfo: function() {
+      return this.$store.getters.getCurrentUser;
+    },
+    isLoggedIn: function() {
+      return this.userInfo.userId !== null;
     }
   }
 }
