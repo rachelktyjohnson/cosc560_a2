@@ -238,8 +238,8 @@ export default new Vuex.Store({
             {
                 userId:1,
                 userType: 'user',
-                firstName: "Ewan",
-                lastName: "McEugene",
+                firstName: "Adam",
+                lastName: "Driver",
                 email: "ewan@mceugene.com",
                 phone: "0422 222 222",
                 address1: "Suite 208",
@@ -251,8 +251,8 @@ export default new Vuex.Store({
             {
                 userId:2,
                 userType: 'user',
-                firstName: "Geralt",
-                lastName: "Rivia",
+                firstName: "Ben",
+                lastName: "Jamming",
                 email: "geralt@rivia.com",
                 phone: "0422 222 222",
                 address1: "Suite 208",
@@ -386,6 +386,9 @@ export default new Vuex.Store({
         },
         changeSuburb(state,newSuburb){
             state.suburb = newSuburb;
+        },
+        changeUser(state,userId){
+            state.loggedIn.userID = userId;
         }
     }
 })

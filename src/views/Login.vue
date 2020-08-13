@@ -1,0 +1,56 @@
+<template>
+  <main class="main-login">
+    <h3>Hey, hungry bear!</h3>
+    <h4>Log in so you can get some nosh</h4>
+    <form v-on:submit.stop.prevent="checkLogin()" class="login-form">
+      <div class="form-group">
+        <label>Username</label>
+        <input type="text" v-model:value="username" required/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <input type="password" v-model:value="password" required/>
+      </div>
+      <div class="form-group">
+        <input class="login-button" type="submit" value="Login">
+      </div>
+
+    </form>
+  </main>
+</template>
+<script>
+
+export default {
+  name: 'Login',
+  components: {
+
+  },
+  data() {
+    return {
+      username: "",
+      password: ""
+    }
+  },
+  methods:{
+    checkLogin: function(){
+      if (this.username==='admin' && this.password==='admin'){
+        //change logged in userID and go to dashboard
+        this.$store.commit('changeUser',0);
+        this.$router.push('orders');
+      } else if (this.username==='adam' && this.password==='adam'){
+        //change logged in userID and go to landing
+        this.$store.commit('changeUser',1);
+        this.$router.push('/');
+      } else if (this.username==='ben' && this.password==='ben'){
+        //change logged in userID and go to landing
+        this.$store.commit('changeUser',2);
+        this.$router.push('/');
+      }  else if (this.username==='charlie' && this.password==='charlie'){
+        //change logged in userID and go to landing
+        this.$store.commit('changeUser',3);
+        this.$router.push('/');
+      }
+    }
+  }
+}
+</script>

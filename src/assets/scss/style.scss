@@ -95,6 +95,36 @@ main.main-home {
   }
 }
 
+main.main-login {
+  text-align:center;
+  padding:$padding-sides-tablet;
+  .login-form{
+    margin:30px auto;
+    border:$color-neutral-light 3px solid;
+    border-radius:$border-radius;
+    max-width:400px;
+    padding:10px;
+    .form-group{
+      display:flex;
+      flex-direction: column;
+      padding:10px 0;
+      input{
+        border-radius: $border-radius;
+        border: 1px solid $color-neutral-light;
+        padding:10px 15px;
+      }
+
+    }
+    .login-button{
+      background:$color-main;
+      color:white;
+      border:0;
+      cursor:pointer;
+      font-weight:900;
+    }
+  }
+}
+
 main.main-listing {
   text-align: center;
   padding: $padding-sides-mobile;

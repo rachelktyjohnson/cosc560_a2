@@ -5,6 +5,7 @@ import Account from '../views/Account.vue';
 import Listing from '../views/Listing.vue';
 import Restaurant from "../views/Restaurant.vue";
 import Checkout from "../views/Checkout.vue";
+import Login from "../views/Login.vue";
 
 Vue.use(Router)
 
@@ -33,6 +34,11 @@ const routes = [
         path:'/checkout',
         name: 'checkout',
         component: Checkout
+    },
+    {
+        path:'/login',
+        name: 'login',
+        component: Login
     }
 ]
 
