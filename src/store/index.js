@@ -219,20 +219,20 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: 0
+          userID: null
         },
         users: [
             {
                 userId: 0,
-                userType: 'user',
-                firstName: "George",
-                lastName: "McGregor",
-                email: "george@mcgregor.com",
+                userType: 'admin',
+                firstName: "Rachel",
+                lastName: "McJohnson",
+                email: "rachel@,mcjohnson.com",
                 phone: "0411 111 111",
-                address1: "Suite 207",
-                address2: "30 Campbell Street",
-                suburb: "Riverwood",
-                postcode: "2147",
+                address1: "27",
+                address2: "Turtledove Lane",
+                suburb: "Marlen Park",
+                postcode: "2765",
                 state: "NSW"
             },
             {
@@ -260,6 +260,19 @@ export default new Vuex.Store({
                 suburb: "Riverwood",
                 postcode: "2147",
                 state: "NSW"
+            },
+            {
+                userId:3,
+                userType:'user',
+                firstName: 'Charlie',
+                lastName: 'Bucket',
+                email: 'charlie@bucket.com',
+                phone: '0433 333 333',
+                address1: 'Suite 209',
+                address2: '32 Campbell Street',
+                suburb: 'Riverwood',
+                postcode: '2148',
+                state: 'NSW'
             }
         ],
         orders: [

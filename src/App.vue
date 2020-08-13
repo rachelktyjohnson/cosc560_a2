@@ -10,8 +10,10 @@
       </div>
       <div class="header-right">
         <nav>
-          <router-link v-if="!isLoggedIn" to="/login">Log in</router-link>
-          <router-link v-else to="/account">My Account</router-link>
+          <router-link v-if="userInfo.userType==='user' && !isLoggedIn " to="/login">Log in</router-link>
+          <router-link v-if="userInfo.userType==='user' && isLoggedIn" to="/account">My Account</router-link>
+          <router-link v-if="userInfo.userType==='admin'" to="/admin-orders">Orders</router-link>
+          <router-link v-if="userInfo.userType==='admin'" to="/admin-stats">Stats</router-link>
         </nav>
 
       </div>
