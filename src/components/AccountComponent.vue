@@ -5,7 +5,7 @@
       <div class="past-orders">
         <h4>Past Orders</h4>
         <div class="past-orders-group">
-          <a v-for="order in userOrders">
+          <a v-for="order in userOrders" v-on:click="goToOrderStatus(order.orderId)">
             <div class="past-order">
               <p>Order #{{ order.orderId }}</p>
               <p>{{ order.date }}</p>
@@ -49,6 +49,11 @@ export default {
     },
     userOrders() {
       return this.$store.getters.getOrdersByUser(this.userInfo.userId)
+    }
+  },
+  methods:{
+    goToOrderStatus: function(orderID){
+      this.$router.push({ path: 'status', query: { id:orderID } });
     }
   }
 }

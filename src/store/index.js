@@ -389,6 +389,7 @@ export default new Vuex.Store({
         },
         changeUser(state,userId){
             state.loggedIn.userID = userId;
+            state.cart = {};
         }
     }
 })

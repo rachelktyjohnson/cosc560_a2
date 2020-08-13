@@ -32,7 +32,6 @@ import LandingComponent from "./components/LandingComponent.vue";
 import RestaurantsListingComponent from "./components/ListingComponent.vue";
 import RestaurantComponent from "./components/RestaurantComponent.vue";
 import CheckoutComponent from "./components/CheckoutComponent.vue";
-import StatusComponent from "./components/StatusComponent.vue";
 import AccountComponent from "./components/AccountComponent.vue";
 
 
@@ -42,7 +41,6 @@ export default {
     RestaurantsListingComponent,
     RestaurantComponent,
     CheckoutComponent,
-    StatusComponent,
     AccountComponent
   },
   data() {

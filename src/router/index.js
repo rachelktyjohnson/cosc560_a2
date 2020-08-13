@@ -6,6 +6,7 @@ import Listing from '../views/Listing.vue';
 import Restaurant from "../views/Restaurant.vue";
 import Checkout from "../views/Checkout.vue";
 import Login from "../views/Login.vue";
+import Status from "../views/Status.vue";
 
 Vue.use(Router)
 
@@ -39,6 +40,11 @@ const routes = [
         path:'/login',
         name: 'login',
         component: Login
+    },
+    {
+        path:'/status',
+        name: 'status',
+        component: Status
     }
 ]
 
