@@ -26,7 +26,7 @@
           </ul>
         </td>
         <td>{{ order.status }}</td>
-        <td>$24.30</td>
+        <td>${{ orderTotal(order).toFixed(2) }}</td>
       </tr>
 
       </tbody>
@@ -50,7 +50,22 @@ export default {
       return datetime.getDate() + "-" + (datetime.getMonth()) + "-" + datetime.getFullYear()
     },
     formatTime(datetime){
-      return  datetime.getHours() + ":" + this.addZeroes(datetime.getMinutes()) + ":" + this.addZeroes(datetime.getSeconds())
+      return datetime.getHours() + ":" + this.addZeroes(datetime.getMinutes()) + ":" + this.addZeroes(datetime.getSeconds())
+    },
+    orderDelivery(order) {
+      let numOfRestaurants = Object.keys(order.orderContents).length;
+      return 5 * numOfRestaurants;
+    },
+    orderTotal(order) {
+      let subtotal = 0;
+
+      for (let [key, values] of Object.entries(order.orderContents)) {
+        values.forEach (item => {
+          subtotal += this.$store.state.restaurants[key].menu[item].menuItemPrice;
+        })
+      }
+
+      return subtotal + this.orderDelivery(order);
     },
     addZeroes(i){
       if (i < 10) {
