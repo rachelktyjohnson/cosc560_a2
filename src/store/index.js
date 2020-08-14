@@ -220,7 +220,7 @@ export default new Vuex.Store({
         },
 
         loggedIn: {
-          userID: null
+          userID: 0
         },
         users: [
             {
@@ -333,7 +333,7 @@ export default new Vuex.Store({
             ,
             {
                 orderId: 15063,
-                userId: 0,
+                userId: 3,
                 status: "Delivered",
                 datetime: new Date(2020,8,11,18,4,44),
                 orderContents: {
@@ -352,6 +352,9 @@ export default new Vuex.Store({
                 })
             }
             return subtotal;
+        },
+        getAllOrders: function(state){
+            return state.orders.reverse();
         },
         cartDelivery: function(state){
             let numberOfRestaurants = Object.keys(state.cart).length;

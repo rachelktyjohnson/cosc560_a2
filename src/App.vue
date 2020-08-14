@@ -4,9 +4,9 @@
     <header>
       <div class="header-left">
         <a>
-          <router-link to="/"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
+          <router-link :to="logoUrl"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
           </router-link>
-          <router-link to="/"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg"
+          <router-link :to="logoUrl"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg"
                                    alt="DropBearEats Text Logo">
             <img v-else class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
           </router-link>
@@ -63,6 +63,13 @@ export default {
     },
     notifications: function(){
       return this.userInfo.notifications;
+    },
+    logoUrl: function(){
+      if (this.userInfo.userType==='admin'){
+        return 'adminstatistics';
+      } else {
+        return '/';
+      }
     }
   },
   methods: {
