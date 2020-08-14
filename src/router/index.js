@@ -8,6 +8,7 @@ import Checkout from "../views/Checkout.vue";
 import Login from "../views/Login.vue";
 import Status from "../views/Status.vue";
 import AdminOrders from "../views/AdminOrders.vue";
+import AdminOrder from "../views/AdminOrder.vue";
 import AdminStatistics from "../views/AdminStatistics.vue";
 
 Vue.use(Router)
@@ -52,6 +53,11 @@ const routes = [
         path:'/adminorders',
         name: 'adminorders',
         component: AdminOrders
+    },
+    {
+        path:'/adminorder',
+        name: 'adminorder',
+        component: AdminOrder
     },
     {
         path:'/adminstatistics',

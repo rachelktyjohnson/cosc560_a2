@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr v-for="order in allOrders">
-        <td><a >{{order.orderId}}</a></td>
+        <td><router-link to="/adminorder" >{{order.orderId}}</router-link></td>
         <td>{{ formatTime(order.datetime) }}</td>
         <td>{{formatDate(order.datetime)}}</td>
         <td>{{ $store.state.users[order.userId].firstName }} {{ $store.state.users[order.userId].lastName }}</td>
