@@ -340,6 +340,11 @@ export default new Vuex.Store({
         getOrder: (state) => (orderID) => {
             return state.orders.find(o => o.orderId===orderID);
         },
+        getOrderIndex: (state) => (orderID) => {
+           return state.orders.map(function(e) {
+               return e.orderId;
+           }).indexOf(orderID);
+        },
         getCurrentUser: function(state) {
             let currentUserId = state.loggedIn.userID;
             if (currentUserId === null) {
@@ -415,7 +420,18 @@ export default new Vuex.Store({
                 time: "19:32:11",
                 orderContents: state.cart
             });
+
             state.cart = [];
+
+
+        },
+        changeOrderStatus(state,{orderID, newStatus}){
+            localStorage.setItem('orderID', orderID);
+            localStorage.setItem('newStatus', newStatus);
+            let orderIDX = this.getters.getOrderIndex(orderID);
+
+            console.log(orderIDX);
+            state.orders[orderIDX].status = newStatus;
         }
     }
 })

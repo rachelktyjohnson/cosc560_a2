@@ -177,14 +177,22 @@ export default {
         return valid;
       }
     },
+    changeOrderStatus: function(){
+      let orderID = this.$store.state.orders[this.$store.state.orders.length-1].orderId;
+      let newStatus = "Processing";
+      this.$store.commit('changeOrderStatus',{orderID,newStatus});
+    },
     placeOrder: function(){
       if (this.isPaymentValid()===true){
-        //stuff to do if the payment is valid\
+        //stuff to do if the payment is valid
         this.$store.commit('pushOrder');
 
         //last Order Placed
         let goTo = this.$store.state.orders[this.$store.state.orders.length - 1].orderId;
         this.$router.push({ path: 'status', query: { id:goTo } });
+
+        //start 5 second timer
+        setTimeout(this.changeOrderStatus,5000);
       }
     }
   },
