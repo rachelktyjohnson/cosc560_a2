@@ -416,7 +416,7 @@ export default new Vuex.Store({
                 orderContents: state.cart
             });
 
-            state.cart = [];
+            state.cart = {};
 
 
         },
