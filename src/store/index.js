@@ -218,6 +218,7 @@ export default new Vuex.Store({
         cart: {
 
         },
+
         loggedIn: {
           userID: 1
         },
@@ -233,7 +234,8 @@ export default new Vuex.Store({
                 address2: "Turtledove Lane",
                 suburb: "Marlen Park",
                 postcode: "2765",
-                state: "NSW"
+                state: "NSW",
+
             },
             {
                 userId:1,
@@ -246,7 +248,25 @@ export default new Vuex.Store({
                 address2: "31 Campbell Street",
                 suburb: "Riverwood",
                 postcode: "2147",
-                state: "NSW"
+                state: "NSW",
+                notifications: [
+                    {
+                        read: false,
+                        contents: "Your Order #15061 has been Delivered!",
+                        datetime: new Date(2020,8,10,20,5,23)
+                    },
+                    {
+                        read: true,
+                        contents: "Your Order #15061 has been Processed!",
+                        datetime: new Date(2020,8,10,20,0,1)
+                    },
+                    {
+                        read: true,
+                        contents: "Welcome to DropBearEats!",
+                        datetime: new Date(2020,7,15,16,53,33)
+                    }
+
+                ],
             },
             {
                 userId:2,
@@ -259,7 +279,8 @@ export default new Vuex.Store({
                 address2: "31 Campbell Street",
                 suburb: "Riverwood",
                 postcode: "2147",
-                state: "NSW"
+                state: "NSW",
+                notifications: []
             },
             {
                 userId:3,
@@ -272,7 +293,8 @@ export default new Vuex.Store({
                 address2: '32 Campbell Street',
                 suburb: 'Riverwood',
                 postcode: '2148',
-                state: 'NSW'
+                state: 'NSW',
+                notifications: []
             }
         ],
         orders: [
@@ -297,10 +319,10 @@ export default new Vuex.Store({
             {
                 orderId: 15062,
                 userId: 2,
-                status: "Delivered",
+                status: "Cancelled",
                 datetime: new Date(2020,8,11,17,56,23),
                 orderContents: {
-                    0: [0,0,1]
+                    0: [0,0,0,0,0,0,0,0,1]
                 }
             }
             ,
@@ -347,6 +369,7 @@ export default new Vuex.Store({
                 return {
                     userId: null,
                     userType: 'user',
+                    notifications: []
                 }
             }
              else {
@@ -415,8 +438,13 @@ export default new Vuex.Store({
                 datetime: new Date(),
                 orderContents: state.cart
             });
-
             state.cart = {};
+
+            state.users[state.loggedIn.userID].notifications.unshift({
+                read: false,
+                contents: `Your Order #${newOrderID} has been Received!`,
+                datetime: new Date()
+            })
 
 
         },
@@ -425,8 +453,22 @@ export default new Vuex.Store({
             localStorage.setItem('newStatus', newStatus);
             let orderIDX = this.getters.getOrderIndex(orderID);
 
-            console.log(orderIDX);
             state.orders[orderIDX].status = newStatus;
+
+            state.users[state.loggedIn.userID].notifications.unshift({
+                read: false,
+                contents: `Your Order #${orderID} is being Processed!`,
+                datetime: new Date()
+            })
+        },
+        readAllNotifications(state){
+            state.users[state.loggedIn.userID].notifications.some(function(item){
+                if(!item.read){
+                    item.read = true;
+                } else {
+                    return true;
+                }
+            })
         }
     }
 })

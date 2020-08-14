@@ -1,16 +1,28 @@
 <template>
-  <div id="container">
+  <div>
+    <div id="container">
     <header>
       <div class="header-left">
         <a>
-          <router-link to="/"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo"></router-link>
-          <router-link to="/"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
-          <img v-else class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo"></router-link>
+          <router-link to="/"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
+          </router-link>
+          <router-link to="/"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg"
+                                   alt="DropBearEats Text Logo">
+            <img v-else class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
+          </router-link>
         </a>
       </div>
       <div class="header-right">
         <nav>
           <router-link v-if="userInfo.userType==='user' && !isLoggedIn " to="/login">Log in</router-link>
+          <svg v-if="userInfo.userType==='user' && isLoggedIn" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+            <g id="Layer_2">
+              <circle class="cls-1" cx="49.75" cy="50" r="48"/>
+              <path class="cls-2"
+                    d="M49.77,73.42c-8.08,0-16.17-.07-24.25,0-2.08,0-2.66-.65-2.7-2.71-.09-4.18,1.06-7.63,4.44-10.3,1.66-1.32,2.11-3.29,2.09-5.37q0-5.74,0-11.51c.06-9.8,5.61-17.33,15-20.24A2.11,2.11,0,0,0,46,21.4,4.18,4.18,0,0,1,50.3,18a4.1,4.1,0,0,1,4.22,3.47,2.48,2.48,0,0,0,2,2.17A20.31,20.31,0,0,1,70.3,43.29c0,4,0,7.94,0,11.92A6.84,6.84,0,0,0,72.93,61c3.62,2.91,4.11,6.9,3.81,11.16-.1,1.45-1.17,1.29-2.1,1.29q-9.45,0-18.91,0Z"/>
+              <path class="cls-2" d="M43.36,76.45H56.11a6,6,0,0,1-5.55,6.32C46.54,83.09,43.78,80.76,43.36,76.45Z"/>
+            </g>
+          </svg>
           <router-link v-if="userInfo.userType==='user' && isLoggedIn" to="/account">My Account</router-link>
           <router-link v-if="userInfo.userType==='admin'" to="/orders">Orders</router-link>
           <router-link v-if="userInfo.userType==='admin'" to="/stats">Stats</router-link>
@@ -23,42 +35,58 @@
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>
+    <notifications-component v-show="showNotifications"></notifications-component>
+    </div>
   </div>
 </template>
 
 <script>
 
-import LandingComponent from "./components/LandingComponent.vue";
-import RestaurantsListingComponent from "./components/ListingComponent.vue";
-import RestaurantComponent from "./components/RestaurantComponent.vue";
-import CheckoutComponent from "./components/CheckoutComponent.vue";
-import AccountComponent from "./components/AccountComponent.vue";
+import NotificationsComponent from "./components/NotificationsComponent.vue";
 
 
 export default {
   components: {
-    LandingComponent,
-    RestaurantsListingComponent,
-    RestaurantComponent,
-    CheckoutComponent,
-    AccountComponent
+    NotificationsComponent
   },
   data() {
     return {
+      showNotifications:false
     }
   },
   computed: {
-    userInfo: function() {
+    userInfo: function () {
       return this.$store.getters.getCurrentUser;
     },
-    isLoggedIn: function() {
+    isLoggedIn: function () {
       return this.userInfo.userId !== null;
+    },
+    notifications: function(){
+      return this.userInfo.notifications;
     }
   },
   methods: {
-    logOut: function(){
-      this.$store.commit('changeUser',null);
+    logOut: function () {
+      this.$store.commit('changeUser', null);
       this.$router.push('login');
+    },
+    hasNewNotifications: function(){
+      if (this.notifications.length > 0) {
+        let found = false;
+        //some used so it can break out of the loop at the first FALSE
+        this.notifications.some(function (item) {
+          console.log(item.read);
+          if (item.read === false) {
+            found = true;
+            return true;
+          }
+        })
+        return found;
+      }
+    },
+    toggleNotifications(){
+      this.showNotifications = !this.showNotifications;
+      this.$store.commit('readAllNotifications');
     }
   }
 }

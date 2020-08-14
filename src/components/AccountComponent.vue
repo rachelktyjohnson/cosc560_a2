@@ -108,7 +108,7 @@ export default {
       this.inEditMode = !this.inEditMode;
     },
     formatDate(datetime){
-      return datetime.getDate() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getFullYear()
+      return datetime.getDate() + "-" + (datetime.getMonth()) + "-" + datetime.getFullYear()
     }
   }
 }
