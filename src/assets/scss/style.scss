@@ -569,23 +569,19 @@ main.main-admin-stats{
   }
 }
 
-.warning{
-  display:none;
-  background:$color-warning;
-  border-radius: $border-radius;
-  padding:15px 10px;
-  p{
-    color:white;
-  }
+.disabled{
+  background:$color-neutral-light !important;
 }
+
 
 .errors{
   margin:10px 0;
   border:$color-warning 3px solid;
   background:lighten($color-warning, 10%);
   padding:10px 15px;
-  p{
+  p, li{
     color:white;
+    font-size:1rem;
   }
 }
 
@@ -605,6 +601,7 @@ main.main-admin-stats{
       color:$color-neutral;
     }
   }
+
   .notification-icon{
     margin-top:15px;
     width:65px;

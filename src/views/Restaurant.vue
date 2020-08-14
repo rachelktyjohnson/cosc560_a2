@@ -15,8 +15,6 @@ export default {
     }
   },
   mounted: function() {
-    let restaurantId = this.$route.query.r
-    console.log(restaurantId)
     this.restaurantId = this.$route.query.r;
   },
 }

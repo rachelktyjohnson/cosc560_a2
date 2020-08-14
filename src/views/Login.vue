@@ -19,7 +19,6 @@
         <p v-for="error in errors">{{error}}</p>
       </div>
     </form>
-
   </main>
 </template>
 <script>

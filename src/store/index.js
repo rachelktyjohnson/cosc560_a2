@@ -404,6 +404,18 @@ export default new Vuex.Store({
             state.users[userID].suburb = newUserInfo.suburb;
             state.users[userID].state = newUserInfo.state;
             state.users[userID].postcode = newUserInfo.postcode;
+        },
+        pushOrder(state){
+            let newOrderID = state.orders[state.orders.length-1].orderId +1;
+            state.orders.push({
+                orderId: newOrderID,
+                userId: state.loggedIn.userID,
+                status: "Received",
+                date: "10/08/2020",
+                time: "19:32:11",
+                orderContents: state.cart
+            });
+            state.cart = [];
         }
     }
 })
