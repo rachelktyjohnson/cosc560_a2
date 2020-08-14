@@ -12,7 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,7 @@
       <workItem from="1597278409672" duration="2136000" />
       <workItem from="1597297854540" duration="5869000" />
       <workItem from="1597314583753" duration="5715000" />
-      <workItem from="1597365984820" duration="5490000" />
+      <workItem from="1597365984820" duration="6797000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -242,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597371543607</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary=":wrench: Change user data to make more sense">
+      <created>1597371609689</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1597371609689</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -285,7 +293,8 @@
     <MESSAGE value=":hammer: Add readme with login details" />
     <MESSAGE value=":hammer: See previous orders" />
     <MESSAGE value=":hammer: Add feature to edit user details" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Add feature to edit user details" />
+    <MESSAGE value=":wrench: Change user data to make more sense" />
+    <option name="LAST_COMMIT_MESSAGE" value=":wrench: Change user data to make more sense" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
