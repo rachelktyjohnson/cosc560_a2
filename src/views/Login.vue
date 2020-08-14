@@ -49,7 +49,7 @@ export default {
         if (this.username==='admin' && this.password==='admin'){
           //change logged in userID and go to dashboard
           this.$store.commit('changeUser',0);
-          this.$router.push('orders');
+          this.$router.push('adminstatistics');
         } else if (this.username==='adam' && this.password==='adam'){
           //change logged in userID and go to landing
           this.$store.commit('changeUser',1);

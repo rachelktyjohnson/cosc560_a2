@@ -24,8 +24,8 @@
             </g>
           </svg>
           <router-link v-if="userInfo.userType==='user' && isLoggedIn" to="/account">My Account</router-link>
-          <router-link v-if="userInfo.userType==='admin'" to="/orders">Orders</router-link>
-          <router-link v-if="userInfo.userType==='admin'" to="/stats">Stats</router-link>
+          <router-link v-if="userInfo.userType==='admin'" to="/adminorders">Orders</router-link>
+          <router-link v-if="userInfo.userType==='admin'" to="/adminstatistics">Stats</router-link>
           <a v-if="isLoggedIn" v-on:click="logOut()">Log out</a>
         </nav>
 
