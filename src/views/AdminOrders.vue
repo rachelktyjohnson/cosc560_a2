@@ -16,7 +16,7 @@
       </thead>
       <tbody>
       <tr v-for="order in allOrders">
-        <td><router-link to="/adminorder" >{{order.orderId}}</router-link></td>
+        <td><a v-on:click="goToOrder(order.orderId)">{{order.orderId}}</a></td>
         <td>{{ formatTime(order.datetime) }}</td>
         <td>{{formatDate(order.datetime)}}</td>
         <td>{{ $store.state.users[order.userId].firstName }} {{ $store.state.users[order.userId].lastName }}</td>
@@ -72,7 +72,10 @@ export default {
         i = "0" + i;
       }
       return i;
-    }
+    },
+    goToOrder: function(orderID){
+      this.$router.push({ path: 'adminorder', query: { id:orderID } });
+    },
   }
 }
 </script>

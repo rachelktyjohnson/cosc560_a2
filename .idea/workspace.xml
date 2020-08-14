@@ -11,11 +11,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/AdminOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/StatusComponent.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AdminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrder.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/AdminOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrders.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AdminStatistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminStatistics.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -322,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597406504139</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary=":hammer: Route to single Admin order view">
+      <created>1597407957496</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1597407957496</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -342,7 +348,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=":hammer: Dynamic Payment Type" />
     <MESSAGE value=":hammer: Add all images" />
     <MESSAGE value=":hammer: Status Component displays depending on orderID in data" />
     <MESSAGE value=":hammer: PreRoutes" />
@@ -367,7 +372,8 @@
     <MESSAGE value=":hammer: Set up Admin views" />
     <MESSAGE value=":hammer: Admin Orders view shows all orders" />
     <MESSAGE value=":hammer: Admin Orders view shows all orders WITH TOTAL PRICE" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Admin Orders view shows all orders WITH TOTAL PRICE" />
+    <MESSAGE value=":hammer: Route to single Admin order view" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Route to single Admin order view" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
@@ -407,10 +413,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="422" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597373367476" />
-    <state x="451" y="-913" key="Vcs.Push.Dialog.v2" timestamp="1597406505682">
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2" timestamp="1597407961415">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597406505682" />
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597407961415" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597047355794" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597382346770">
       <screen x="0" y="0" width="1536" height="824" />
