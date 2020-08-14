@@ -15,7 +15,7 @@
       <div class="form-group">
         <input class="login-button" type="submit" value="Login">
       </div>
-      <div v-if="this.errors.length > 0" class="error">
+      <div v-if="this.errors.length > 0" class="errors">
         <p v-for="error in errors">{{error}}</p>
       </div>
     </form>
