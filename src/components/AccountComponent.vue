@@ -7,8 +7,8 @@
         <div class="past-orders-group">
           <a v-for="order in userOrders" v-on:click="goToOrderStatus(order.orderId)">
             <div class="past-order">
-              <p>Order #{{ order.orderId }}</p>
-              <p>{{ order.date }}</p>
+              <p>Order #{{ order.orderId }} ({{order.status}})</p>
+              <p>{{ formatDate(order.datetime) }}</p>
             </div>
           </a>
         </div>
@@ -94,7 +94,7 @@ export default {
   computed: {
     userOrders() {
       return this.$store.getters.getOrdersByUser(this.userInfo.userId)
-    }
+    },
   },
   methods:{
     goToOrderStatus: function(orderID){
@@ -106,6 +106,9 @@ export default {
     },
     triggerEdit: function(){
       this.inEditMode = !this.inEditMode;
+    },
+    formatDate(datetime){
+      return datetime.getDate() + "-" + (datetime.getMonth() + 1) + "-" + datetime.getFullYear()
     }
   }
 }

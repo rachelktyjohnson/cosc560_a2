@@ -280,8 +280,7 @@ export default new Vuex.Store({
                 orderId: 15060,
                 userId: 2,
                 status: "Delivered",
-                date: "10/08/2020",
-                time: "19:32:11",
+                datetime: new Date(2020,8,10,19,32,11),
                 orderContents: {
                     0: [0]
                 }
@@ -290,8 +289,7 @@ export default new Vuex.Store({
                 orderId: 15061,
                 userId: 1,
                 status: "Delivered",
-                date: "10/08/2020",
-                time: "19:34:11",
+                datetime: new Date(2020,8,10,19,34,56),
                 orderContents: {
                     4: [0,3]
                 }
@@ -300,8 +298,7 @@ export default new Vuex.Store({
                 orderId: 15062,
                 userId: 2,
                 status: "Delivered",
-                date: "11/08/2020",
-                time: "17:56:01",
+                datetime: new Date(2020,8,11,17,56,23),
                 orderContents: {
                     0: [0,0,1]
                 }
@@ -311,8 +308,7 @@ export default new Vuex.Store({
                 orderId: 15063,
                 userId: 0,
                 status: "Delivered",
-                date: "11/08/2020",
-                time: "18:04:44",
+                datetime: new Date(2020,8,11,18,4,44),
                 orderContents: {
                     2: [0,0,1],
                     3: [3,2]
@@ -361,7 +357,7 @@ export default new Vuex.Store({
             return state.users.find(u => u.userId===userID);
         },
         getOrdersByUser: (state) => (userID) => {
-            return state.orders.filter(o => o.userId===userID);
+            return state.orders.filter(o => o.userId===userID).reverse();
         },
         getSuburb: function(state){
             if (state.suburb===null){
@@ -416,8 +412,7 @@ export default new Vuex.Store({
                 orderId: newOrderID,
                 userId: state.loggedIn.userID,
                 status: "Received",
-                date: "10/08/2020",
-                time: "19:32:11",
+                datetime: new Date(),
                 orderContents: state.cart
             });
 
