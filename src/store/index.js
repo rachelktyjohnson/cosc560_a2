@@ -219,7 +219,7 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: null
+          userID: 1
         },
         users: [
             {
@@ -390,6 +390,20 @@ export default new Vuex.Store({
         changeUser(state,userId){
             state.loggedIn.userID = userId;
             state.cart = {};
+        },
+        editUserInfo(state,newUserInfo){
+            let userID = newUserInfo.userId;
+
+            //change details in store
+            state.users[userID].firstName = newUserInfo.firstName;
+            state.users[userID].lastName = newUserInfo.lastName;
+            state.users[userID].phone = newUserInfo.phone;
+            state.users[userID].email = newUserInfo.email;
+            state.users[userID].address1 = newUserInfo.address1;
+            state.users[userID].address2 = newUserInfo.address2;
+            state.users[userID].suburb = newUserInfo.suburb;
+            state.users[userID].state = newUserInfo.state;
+            state.users[userID].postcode = newUserInfo.postcode;
         }
     }
 })
