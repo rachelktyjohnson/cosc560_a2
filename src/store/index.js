@@ -220,7 +220,7 @@ export default new Vuex.Store({
         },
 
         loggedIn: {
-          userID: 1
+          userID: null
         },
         users: [
             {
@@ -235,7 +235,7 @@ export default new Vuex.Store({
                 suburb: "Marlen Park",
                 postcode: "2765",
                 state: "NSW",
-
+                notifications: []
             },
             {
                 userId:1,
@@ -251,8 +251,13 @@ export default new Vuex.Store({
                 state: "NSW",
                 notifications: [
                     {
-                        read: false,
+                        read: true,
                         contents: "Your Order #15061 has been Delivered!",
+                        datetime: new Date(2020,8,10,20,27,21)
+                    },
+                    {
+                        read: true,
+                        contents: "Your Order #15061 has been Received!",
                         datetime: new Date(2020,8,10,20,5,23)
                     },
                     {
