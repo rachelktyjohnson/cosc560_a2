@@ -10,9 +10,7 @@ export default {
     AccountComponent
   },
   data() {
-    return {
-
-    }
+    return {}
   }
 }
 </script>

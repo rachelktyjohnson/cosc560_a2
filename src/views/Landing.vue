@@ -10,9 +10,7 @@ export default {
     LandingComponent
   },
   data() {
-    return {
-
-    }
+    return {}
   }
 }
 </script>

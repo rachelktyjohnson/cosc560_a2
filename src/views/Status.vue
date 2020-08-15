@@ -25,15 +25,15 @@
       <h4>Your Details</h4>
       <div class="order-details">
         <div class="customer-details">
-          <p>{{user.firstName}} {{user.lastName}}</p>
-          <p>{{user.email}}</p>
-          <p>{{user.phone}}</p>
+          <p>{{userInfo.firstName}} {{userInfo.lastName}}</p>
+          <p>{{userInfo.email}}</p>
+          <p>{{userInfo.phone}}</p>
         </div>
         <div class="delivery-details">
-          <p>{{user.address1}}</p>
-          <p>{{user.address2}}</p>
-          <p>{{user.suburb}}</p>
-          <p>{{user.state}} {{user.postcode}}</p>
+          <p>{{userInfo.address1}}</p>
+          <p>{{userInfo.address2}}</p>
+          <p>{{userInfo.suburb}}</p>
+          <p>{{userInfo.state}} {{userInfo.postcode}}</p>
         </div>
       </div>
     </div>
@@ -41,9 +41,10 @@
 </template>
 <script>
 import { dateMixin } from '../mixins/dateMixin.js';
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'Status',
-  mixins: [dateMixin],
+  mixins: [dateMixin,dataMixin],
   components: {
   },
   data() {
@@ -54,9 +55,6 @@ export default {
   computed:{
     order() {
       return this.$store.getters.getOrder(this.orderId);
-    },
-    user() {
-      return this.$store.getters.getUser(this.order.userId)
     },
     orderDelivery() {
       let numOfRestaurants = Object.keys(this.order.orderContents).length;

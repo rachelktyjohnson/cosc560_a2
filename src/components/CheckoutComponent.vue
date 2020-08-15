@@ -110,9 +110,10 @@
 <script>
 
 import BasketComponent from "./BasketComponent.vue";
-
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'CheckoutComponent',
+  mixins:[dataMixin],
   components: {
     BasketComponent
   },
@@ -194,11 +195,6 @@ export default {
         //start 5 second timer
         setTimeout(this.changeOrderStatus,5000);
       }
-    }
-  },
-  computed:{
-    userInfo: function() {
-      return this.$store.getters.getCurrentUser;
     }
   }
 }

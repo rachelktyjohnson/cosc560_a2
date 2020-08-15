@@ -21,5 +21,5 @@ export const dateMixin = {
 }
 
 //to import into a component
-//import { dateMixin } from '../mixins/dataMixin';
+//import { dateMixin } from '../mixins/dateMixin';
 //mixins:[dateMixin]

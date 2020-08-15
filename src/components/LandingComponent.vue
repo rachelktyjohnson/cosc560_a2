@@ -39,7 +39,6 @@
 
 export default {
   name: 'LandingComponent',
-
   data() {
     return {
       suburb: null

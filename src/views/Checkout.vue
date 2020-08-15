@@ -10,9 +10,7 @@ export default {
     CheckoutComponent
   },
   data() {
-    return {
-
-    }
+    return {}
   }
 }
 </script>

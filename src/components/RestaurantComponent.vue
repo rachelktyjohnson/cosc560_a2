@@ -32,10 +32,11 @@
 </template>
 
 <script>
-
+import { dataMixin } from '../mixins/dataMixin';
 import BasketComponent from "./BasketComponent.vue";
 export default {
   name: 'RestaurantComponent',
+  mixins: [dataMixin],
   components: {
     BasketComponent
   },
@@ -46,23 +47,13 @@ export default {
     }
   },
   data() {
-    return {
-
-    }
+    return {}
   },
   methods: {
     triggerAddToCart: function(restaurantID,menuItemID){
       if (this.isLoggedIn){
         this.$store.commit('addToCart',{restaurantID,menuItemID});
       }
-    }
-  },
-  computed: {
-    userInfo: function() {
-      return this.$store.getters.getCurrentUser;
-    },
-    isLoggedIn: function() {
-      return this.userInfo.userId !== null;
     }
   }
 }

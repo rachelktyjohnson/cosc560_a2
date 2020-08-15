@@ -10,9 +10,7 @@ export default {
     ListingComponent
   },
   data() {
-    return {
-
-    }
+    return {}
   }
 }
 </script>

@@ -33,8 +33,7 @@ export default {
     BasketComponent
   },
   data() {
-    return {
-    }
+    return {}
   },
   methods: {
     goToRestaurant: function(restaurantId){

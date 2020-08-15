@@ -46,25 +46,17 @@
   </div>
 </template>
 <script>
-
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'BasketComponent',
+  mixins: [dataMixin],
   data() {
-    return {
-
-    }
+    return {}
   },
   computed: {
     ifCheckoutPage() {
       return this.$route.name === 'checkout';
-    },
-    userInfo: function() {
-      return this.$store.getters.getCurrentUser;
-    },
-    isLoggedIn: function() {
-      return this.userInfo.userId !== null;
     }
-
   },
   methods: {
     triggerRemoveCart: function(restaurantID, menuItemID){
