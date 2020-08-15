@@ -84,10 +84,6 @@ export default {
     },
   },
   methods: {
-    // changeStatus: function(orderID){
-    //   let newStatus = this.selectedStatus;
-    //   this.$store.commit('changeOrderStatus',{orderID,newStatus});
-    // },
     removeItem: function(restaurantID,key){
       this.orderInfo.orderContents[restaurantID].splice(key,1);
       if (this.orderInfo.orderContents[restaurantID].length===0){

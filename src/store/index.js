@@ -217,14 +217,7 @@ export default new Vuex.Store({
         ],
         cart: {},
         editSpace: {
-            orderId: 15063,
-            userId: 3,
-            status: "Delivered",
-            datetime: new Date(2020,7,11,18,4,44),
-            orderContents: {
-                2: [0,0,1],
-                3: [3,2]
-            }
+
         },
         loggedIn: {
           userID: 0
@@ -462,7 +455,11 @@ export default new Vuex.Store({
             })
         },
         prepareForEditing(state,orderInfo){
-            state.editSpace = Object.assign({}, orderInfo);
+            let objForEdit = JSON.parse(JSON.stringify(orderInfo))
+            console.log(objForEdit);
+            objForEdit.datetime = new Date(objForEdit.datetime);
+            state.editSpace = objForEdit;
+            console.log(objForEdit);
         },
         saveEdits(state,orderInfo){
             let orderIDX = this.getters.getOrderIndex(orderInfo.orderId);
