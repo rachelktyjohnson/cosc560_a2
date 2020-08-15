@@ -510,6 +510,9 @@ main.main-admin {
           align-items:center;
           justify-content: space-between;
           padding-bottom: 10px;
+          .item-contents p{
+            padding-right:30px;
+          }
         }
         .item-price{
           display:flex;
