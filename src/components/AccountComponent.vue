@@ -5,7 +5,7 @@
       <div class="past-orders">
         <h4>Past Orders</h4>
         <div class="past-orders-group">
-          <a v-for="order in userOrders" v-on:click="goToOrderStatus(order.orderId)">
+          <a v-for="order in getUserOrders" v-on:click="goToOrderStatus(order.orderId)">
             <div class="past-order">
               <p>Order #{{ order.orderId }} ({{order.status}})</p>
               <p>{{ formatDateTime(order.datetime,'date') }}</p>
@@ -84,19 +84,14 @@
 
 <script>
 import { dateMixin } from '../mixins/dateMixin.js';
+import { dataMixin } from '../mixins/dataMixin.js';
 export default {
   name: 'AccountComponent',
-  mixins:[dateMixin],
+  mixins:[dateMixin,dataMixin],
   data() {
     return {
-      userInfo: this.$store.getters.getCurrentUser,
       inEditMode: false
     }
-  },
-  computed: {
-    userOrders() {
-      return this.$store.getters.getOrdersByUser(this.userInfo.userId)
-    },
   },
   methods:{
     goToOrderStatus: function(orderID){

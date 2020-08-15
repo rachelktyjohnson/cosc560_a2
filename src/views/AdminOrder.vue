@@ -13,9 +13,9 @@
           </select>
           <div class="edit">Edit Order</div>
         </div>
-        <h4>{{ formatDateTime(order.datetime) }}</h4>
+        <h4>{{ formatDateTime(orderInfo.datetime) }}</h4>
 
-        <div class="order-listing" v-for="(orderContents, restaurantID) in order.orderContents">
+        <div class="order-listing" v-for="(orderContents, restaurantID) in orderInfo.orderContents">
           <h4>{{$store.state.restaurants[restaurantID].restaurantName}}</h4>
           <div class="order-item-listing" v-for="item in orderContents">
             <div class="item-contents">
@@ -44,21 +44,21 @@
 
       <div class="customer-details">
         <div class="dbe-order-statuses">
-          <h6>{{ order.status }}</h6>
+          <h6>{{ orderInfo.status }}</h6>
         </div>
         <h5>Customer Details</h5>
         <div class="customer-details">
-          <p>{{ user.firstName }} {{ user.lastName }}</p>
-          <p>{{ user.phone }}</p>
-          <p>{{ user.email }}</p>
+          <p>{{ userInfo.firstName }} {{ userInfo.lastName }}</p>
+          <p>{{ userInfo.phone }}</p>
+          <p>{{ userInfo.email }}</p>
         </div>
 
         <h5>Delivery Details</h5>
         <div class="delivery-details">
-          <p>{{ user.address1 }}</p>
-          <p>{{ user.address2 }}</p>
-          <p>{{ user.suburb }}</p>
-          <p>{{ user.state }} {{ user.postcode }}</p>
+          <p>{{ userInfo.address1 }}</p>
+          <p>{{ userInfo.address2 }}</p>
+          <p>{{ userInfo.suburb }}</p>
+          <p>{{ userInfo.state }} {{ userInfo.postcode }}</p>
         </div>
       </div>
     </div>
@@ -68,37 +68,15 @@
 </template>
 <script>
 import { dateMixin } from '../mixins/dateMixin';
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'AdminOrder',
-  mixins: [dateMixin],
+  mixins: [dateMixin,dataMixin],
   components: {
   },
   data() {
     return {
       orderId:15060
-    }
-  },
-  computed:{
-    order() {
-      return this.$store.getters.getOrder(this.orderId);
-    },
-    user() {
-      return this.$store.getters.getUser(this.order.userId)
-    },
-    orderDelivery() {
-      let numOfRestaurants = Object.keys(this.order.orderContents).length;
-      return 5 * numOfRestaurants;
-    },
-    orderTotal() {
-      let subtotal = 0;
-
-      for (let [key, values] of Object.entries(this.order.orderContents)) {
-        values.forEach (item => {
-          subtotal += this.$store.state.restaurants[key].menu[item].menuItemPrice;
-        })
-      }
-
-      return subtotal + this.orderDelivery;
     }
   },
   mounted: function() {

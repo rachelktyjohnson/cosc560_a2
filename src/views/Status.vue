@@ -1,11 +1,11 @@
 <template>
   <main class="main-status">
     <h2>Order #{{orderId}}</h2>
-    <h1>{{ order.status}}</h1>
+    <h1>{{ orderInfo.status}}</h1>
     <div class="order">
       <h4>Your Order</h4>
-      <p>{{ formatDateTime(order.datetime) }}</p>
-      <div v-for="[restaurant,contents] in Object.entries(order.orderContents)" class="order-contents">
+      <p>{{ formatDateTime(orderInfo.datetime) }}</p>
+      <div v-for="[restaurant,contents] in Object.entries(orderInfo.orderContents)" class="order-contents">
         <h6>{{$store.state.restaurants[restaurant].restaurantName}}</h6>
         <div v-for="item in contents" class="row">
           <p>{{ $store.state.restaurants[restaurant].menu[item].menuItemName }}</p>
@@ -50,26 +50,6 @@ export default {
   data() {
     return {
       orderId:15060
-    }
-  },
-  computed:{
-    order() {
-      return this.$store.getters.getOrder(this.orderId);
-    },
-    orderDelivery() {
-      let numOfRestaurants = Object.keys(this.order.orderContents).length;
-      return 5 * numOfRestaurants;
-    },
-    orderTotal() {
-      let subtotal = 0;
-
-      for (let [key, values] of Object.entries(this.order.orderContents)) {
-        values.forEach (item => {
-          subtotal += this.$store.state.restaurants[key].menu[item].menuItemPrice;
-        })
-      }
-
-      return subtotal + this.orderDelivery;
     }
   },
   mounted: function() {
