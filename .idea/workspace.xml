@@ -12,11 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AccountComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CheckoutComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CheckoutComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/mixins/dataMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/dataMixin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AdminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrder.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Status.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Status.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

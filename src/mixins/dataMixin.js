@@ -6,7 +6,7 @@ export const dataMixin = {
         isLoggedIn() {
             return this.userInfo.userId !== null;
         },
-        getUserOrders(){
+        getUserOrders() {
             return this.$store.getters.getOrdersByUser(this.userInfo.userId);
         },
         orderInfo() {
@@ -20,19 +20,12 @@ export const dataMixin = {
             let subtotal = 0;
 
             for (let [key, values] of Object.entries(this.orderInfo.orderContents)) {
-                values.forEach (item => {
+                values.forEach(item => {
                     subtotal += this.$store.state.restaurants[key].menu[item].menuItemPrice;
                 })
             }
 
             return subtotal + this.orderDelivery;
-        },
-    },
-    methods: {
-        changeOrderStatus: function(){
-            let orderID = this.$store.state.orders[this.$store.state.orders.length-1].orderId;
-            let newStatus = "Processing";
-            this.$store.commit('changeOrderStatus',{orderID,newStatus});
         },
     }
 }
