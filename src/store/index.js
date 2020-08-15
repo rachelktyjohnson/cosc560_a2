@@ -220,7 +220,7 @@ export default new Vuex.Store({
         },
 
         loggedIn: {
-          userID: 1
+          userID: 0
         },
         users: [
             {
@@ -450,7 +450,7 @@ export default new Vuex.Store({
 
             state.users[state.loggedIn.userID].notifications.unshift({
                 read: false,
-                contents: `Your Order #${newOrderID} has been Received!`,
+                contents: `Order #${newOrderID} update: Received`,
                 datetime: new Date()
             })
 
@@ -462,10 +462,11 @@ export default new Vuex.Store({
             let orderIDX = this.getters.getOrderIndex(orderID);
 
             state.orders[orderIDX].status = newStatus;
+            let orderUser = state.orders[orderIDX].userId;
 
-            state.users[state.loggedIn.userID].notifications.unshift({
+            state.users[orderUser].notifications.unshift({
                 read: false,
-                contents: `Your Order #${orderID} is being Processed!`,
+                contents: `Order #${orderID} update: ${newStatus}`,
                 datetime: new Date()
             })
         },

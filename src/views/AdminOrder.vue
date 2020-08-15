@@ -4,12 +4,12 @@
       <div class="order-details">
         <div class="header">
           <h3>Order #{{ orderId }}</h3>
-          <select>
-            <option hidden selected disabled>Change Status</option>
-            <option>Processing</option>
-            <option>Received</option>
-            <option>Delivered</option>
-            <option>Cancelled</option>
+          <select v-model="selectedStatus" v-on:change="changeStatus(orderId)">
+            <option value="none"hidden selected disabled>Change Status</option>
+            <option value="Processing">Processing</option>
+            <option value="Received">Received</option>
+            <option value="Delivered">Delivered</option>
+            <option value="Cancelled">Cancelled</option>
           </select>
           <div class="edit">Edit Order</div>
         </div>
@@ -76,11 +76,26 @@ export default {
   },
   data() {
     return {
-      orderId:15060
+      orderId:15060,
+      selectedStatus:'none'
     }
+  },
+  computed: {
+    userInfo(){
+      return this.$store.state.users[this.orderInfo.userId];
+    },
+    orderInfo() {
+      return this.$store.getters.getOrder(this.orderId);
+    },
   },
   mounted: function() {
     this.orderId = this.$route.query.id;
   },
+  methods: {
+    changeStatus: function(orderID){
+      let newStatus = this.selectedStatus;
+      this.$store.commit('changeOrderStatus',{orderID,newStatus});
+    }
+  }
 }
 </script>
