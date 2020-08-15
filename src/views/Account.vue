@@ -4,7 +4,6 @@
 </template>
 <script>
 import AccountComponent from '../components/AccountComponent.vue';
-
 export default {
   name: 'Account',
   components: {

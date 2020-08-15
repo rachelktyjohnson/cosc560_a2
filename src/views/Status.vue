@@ -4,6 +4,7 @@
     <h1>{{ order.status}}</h1>
     <div class="order">
       <h4>Your Order</h4>
+      <p>{{ formatDateTime(order.datetime) }}</p>
       <div v-for="[restaurant,contents] in Object.entries(order.orderContents)" class="order-contents">
         <h6>{{$store.state.restaurants[restaurant].restaurantName}}</h6>
         <div v-for="item in contents" class="row">
@@ -39,9 +40,10 @@
   </main>
 </template>
 <script>
-
+import { dataMixin } from '../mixins/dataMixin.js';
 export default {
   name: 'Status',
+  mixins: [dataMixin],
   components: {
   },
   data() {

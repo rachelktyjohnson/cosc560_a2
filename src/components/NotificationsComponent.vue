@@ -9,29 +9,17 @@
 </div>
 </template>
 <script>
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'NotificationsComponent',
+  mixins: [dataMixin],
   data() {
-    return {
-
-    }
+    return {}
   },
   computed: {
     notifications() {
       let currentUser = this.$store.getters.getCurrentUser;
       return currentUser.notifications
-    }
-  },
-  methods: {
-    formatDateTime(datetime){
-      return datetime.getDate() + "-" + (datetime.getMonth()) + "-" + datetime.getFullYear() + " "
-          + datetime.getHours() + ":" + this.addZeroes(datetime.getMinutes()) + ":" + this.addZeroes(datetime.getSeconds())
-    },
-    addZeroes(i){
-      if (i < 10) {
-        i = "0" + i;
-      }
-      return i;
     }
   }
 }

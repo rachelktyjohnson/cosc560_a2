@@ -8,7 +8,7 @@
           <a v-for="order in userOrders" v-on:click="goToOrderStatus(order.orderId)">
             <div class="past-order">
               <p>Order #{{ order.orderId }} ({{order.status}})</p>
-              <p>{{ formatDate(order.datetime) }}</p>
+              <p>{{ formatDateTime(order.datetime,'date') }}</p>
             </div>
           </a>
         </div>
@@ -83,8 +83,10 @@
 </template>
 
 <script>
+import { dataMixin } from '../mixins/dataMixin.js';
 export default {
   name: 'AccountComponent',
+  mixins:[dataMixin],
   data() {
     return {
       userInfo: this.$store.getters.getCurrentUser,
@@ -107,9 +109,6 @@ export default {
     triggerEdit: function(){
       this.inEditMode = !this.inEditMode;
     },
-    formatDate(datetime){
-      return datetime.getDate() + "-" + (datetime.getMonth()) + "-" + datetime.getFullYear()
-    }
   }
 }
 </script>

@@ -12,21 +12,18 @@
             <option>Cancelled</option>
           </select>
           <div class="edit">Edit Order</div>
-          <div class="cancel">Cancel Order</div>
         </div>
-        <h4>{{ order.datetime }}</h4>
-        <div class="dbe-order-statuses">
-          <h6>{{ order.status }}</h6>
-        </div>
+        <h4>{{ formatDateTime(order.datetime) }}</h4>
+
         <div class="order-listing" v-for="(orderContents, restaurantID) in order.orderContents">
-          <h4>{{restaurantID}}</h4>
+          <h4>{{$store.state.restaurants[restaurantID].restaurantName}}</h4>
           <div class="order-item-listing" v-for="item in orderContents">
             <div class="item-contents">
-              <h6>{{item}}</h6>
-              <p>{{item}} description</p>
+              <h6>{{$store.state.restaurants[restaurantID].menu[item].menuItemName}}</h6>
+              <p>{{$store.state.restaurants[restaurantID].menu[item].menuItemTagline}}</p>
             </div>
             <div class="item-price">
-              <p>{{ item }} price</p>
+              <p>${{$store.state.restaurants[restaurantID].menu[item].menuItemPrice.toFixed(2)}}</p>
             </div>
           </div>
         </div>
@@ -46,6 +43,9 @@
 
 
       <div class="customer-details">
+        <div class="dbe-order-statuses">
+          <h6>{{ order.status }}</h6>
+        </div>
         <h5>Customer Details</h5>
         <div class="customer-details">
           <p>{{ user.firstName }} {{ user.lastName }}</p>
@@ -67,9 +67,10 @@
   </main>
 </template>
 <script>
-
+import { dataMixin } from '../mixins/dataMixin';
 export default {
   name: 'AdminOrder',
+  mixins: [dataMixin],
   components: {
   },
   data() {

@@ -444,8 +444,23 @@ main.main-admin {
 
   .single-order {
     display: grid;
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: 7fr 2fr;
     grid-gap: 50px;
+
+    .dbe-order-statuses {
+      margin-bottom: 20px;
+      display: flex;
+
+      h6 {
+        display: inline-block;
+        color: $color-main;
+        border: $color-main 2px solid;
+        padding: 15px 20px;
+        border-radius: $border-radius;
+        margin-right: 5px;
+        font-size: 1.3rem;
+      }
+    }
 
     .order-details {
       .header {
@@ -485,20 +500,7 @@ main.main-admin {
         margin: 5px 0;
       }
 
-      .dbe-order-statuses {
-        margin-top: 20px;
-        display: flex;
 
-        h6 {
-          display: inline-block;
-          color: white;
-          background: $color-main;
-          padding: 15px 20px;
-          border-radius: $border-radius;
-          margin-right: 5px;
-          font-size: 1.3rem;
-        }
-      }
 
       .order-listing {
         margin-top: 30px;

@@ -220,7 +220,7 @@ export default new Vuex.Store({
         },
 
         loggedIn: {
-          userID: 0
+          userID: 1
         },
         users: [
             {
@@ -253,22 +253,22 @@ export default new Vuex.Store({
                     {
                         read: true,
                         contents: "Your Order #15061 has been Delivered!",
-                        datetime: new Date(2020,8,10,20,27,21)
+                        datetime: new Date(2020,7,10,20,27,21)
                     },
                     {
                         read: true,
                         contents: "Your Order #15061 has been Received!",
-                        datetime: new Date(2020,8,10,20,5,23)
+                        datetime: new Date(2020,7,10,20,5,23)
                     },
                     {
                         read: true,
                         contents: "Your Order #15061 has been Processed!",
-                        datetime: new Date(2020,8,10,20,0,1)
+                        datetime: new Date(2020,7,10,20,0,1)
                     },
                     {
                         read: true,
                         contents: "Welcome to DropBearEats!",
-                        datetime: new Date(2020,7,15,16,53,33)
+                        datetime: new Date(2020,6,15,16,53,33)
                     }
 
                 ],
@@ -307,7 +307,7 @@ export default new Vuex.Store({
                 orderId: 15060,
                 userId: 2,
                 status: "Delivered",
-                datetime: new Date(2020,8,10,19,32,11),
+                datetime: new Date(2020,7,10,19,32,11),
                 orderContents: {
                     0: [0]
                 }
@@ -316,7 +316,7 @@ export default new Vuex.Store({
                 orderId: 15061,
                 userId: 1,
                 status: "Delivered",
-                datetime: new Date(2020,8,10,19,34,56),
+                datetime: new Date(2020,7,10,19,34,56),
                 orderContents: {
                     4: [0,3]
                 }
@@ -325,7 +325,7 @@ export default new Vuex.Store({
                 orderId: 15062,
                 userId: 2,
                 status: "Cancelled",
-                datetime: new Date(2020,8,11,17,56,23),
+                datetime: new Date(2020,7,11,17,56,23),
                 orderContents: {
                     0: [0,0,0,0,0,0,0,0,1]
                 }
@@ -335,7 +335,7 @@ export default new Vuex.Store({
                 orderId: 15063,
                 userId: 3,
                 status: "Delivered",
-                datetime: new Date(2020,8,11,18,4,44),
+                datetime: new Date(2020,7,11,18,4,44),
                 orderContents: {
                     2: [0,0,1],
                     3: [3,2]
