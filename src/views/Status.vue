@@ -40,10 +40,10 @@
   </main>
 </template>
 <script>
-import { dataMixin } from '../mixins/dataMixin.js';
+import { dateMixin } from '../mixins/dateMixin.js';
 export default {
   name: 'Status',
-  mixins: [dataMixin],
+  mixins: [dateMixin],
   components: {
   },
   data() {

@@ -9,10 +9,10 @@
 </div>
 </template>
 <script>
-import { dataMixin } from '../mixins/dataMixin';
+import { dateMixin } from '../mixins/dateMixin';
 export default {
   name: 'NotificationsComponent',
-  mixins: [dataMixin],
+  mixins: [dateMixin],
   data() {
     return {}
   },

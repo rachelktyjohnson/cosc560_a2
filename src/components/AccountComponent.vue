@@ -83,10 +83,10 @@
 </template>
 
 <script>
-import { dataMixin } from '../mixins/dataMixin.js';
+import { dateMixin } from '../mixins/dateMixin.js';
 export default {
   name: 'AccountComponent',
-  mixins:[dataMixin],
+  mixins:[dateMixin],
   data() {
     return {
       userInfo: this.$store.getters.getCurrentUser,

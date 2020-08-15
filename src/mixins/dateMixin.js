@@ -1,4 +1,4 @@
-export const dataMixin = {
+export const dateMixin = {
     methods: {
         formatDateTime(datetime, option = 'datetime') {
             let dateSep = '/';
@@ -21,5 +21,5 @@ export const dataMixin = {
 }
 
 //to import into a component
-//import { dataMixin } from '../mixins/dataMixin';
-//mixins:[dataMixin]
+//import { dateMixin } from '../mixins/dataMixin';
+//mixins:[dateMixin]

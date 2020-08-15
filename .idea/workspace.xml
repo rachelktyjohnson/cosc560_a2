@@ -12,7 +12,12 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/readme.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/AccountComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/AccountComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NotificationsComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NotificationsComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mixins/dataMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/dateMixin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AdminOrder.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrder.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AdminOrders.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrders.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Status.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Status.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +85,7 @@
       <workItem from="1597297854540" duration="5869000" />
       <workItem from="1597314583753" duration="5715000" />
       <workItem from="1597365984820" duration="17876000" />
-      <workItem from="1597449208600" duration="4877000" />
+      <workItem from="1597449208600" duration="5105000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -341,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597454384614</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="Update readme">
+      <created>1597454578096</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1597454578096</updated>
+    </task>
+    <option name="localTasksCounter" value="39" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -361,7 +373,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=":hammer: PreRoutes" />
     <MESSAGE value=":hammer: Routes from landing to account and landing to listing" />
     <MESSAGE value=":hammer: Routes from listing to individual restaurants using a query" />
     <MESSAGE value=":wrench: Fix RestaurantId loading error on Restaurant view/component" />
@@ -386,7 +397,8 @@
     <MESSAGE value=":hammer: Route to single Admin order view" />
     <MESSAGE value=":hammer: Raw unfiltered content into single admin order views. Passed by query string" />
     <MESSAGE value=":nut_and_bolt: Date functions into Mixin" />
-    <option name="LAST_COMMIT_MESSAGE" value=":nut_and_bolt: Date functions into Mixin" />
+    <MESSAGE value="Update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update readme" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
@@ -426,10 +438,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="422" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597373367476" />
-    <state x="451" y="-913" key="Vcs.Push.Dialog.v2" timestamp="1597454387670">
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2" timestamp="1597454579590">
       <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597454387670" />
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597454579590" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597047355794" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597382346770">
       <screen x="0" y="0" width="1536" height="824" />

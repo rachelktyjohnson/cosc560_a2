@@ -67,10 +67,10 @@
   </main>
 </template>
 <script>
-import { dataMixin } from '../mixins/dataMixin';
+import { dateMixin } from '../mixins/dateMixin';
 export default {
   name: 'AdminOrder',
-  mixins: [dataMixin],
+  mixins: [dateMixin],
   components: {
   },
   data() {
