@@ -12,18 +12,13 @@
       </form>-->
     </div>
     <div class="statistics-container">
+
       <div class="stat">
         <h6>Sales($) per Transaction</h6>
-        <svg class="per-transaction">
-        </svg>
-        <p>Graphs will go here in the next assignment</p>
       </div>
+
       <div class="stat">
         <h6>Sales($) per Store</h6>
-        <svg class="per-store">
-
-        </svg>
-        <p>Graphs will go here in the next assignment</p>
       </div>
 
     </div>
@@ -31,7 +26,7 @@
   </main>
 </template>
 <script>
-
+import * as d3 from 'd3';
 export default {
   name: 'AdminStatistics',
   components: {
