@@ -1,6 +1,6 @@
 <template>
   <main class="main-listing">
-    <h3>{{ $store.getters.getSuburb }}</h3>
+    <h3 id="suburb-title">{{ $store.getters.getSuburb }}</h3>
     <h6><router-link to="/">Change Location?</router-link></h6>
     <div class="pure-g">
       <div class="pure-u-3-4">

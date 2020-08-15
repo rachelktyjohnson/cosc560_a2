@@ -6,11 +6,11 @@
     <form v-on:submit.stop.prevent="checkLogin()" class="login-form">
       <div class="form-group">
         <label>Username</label>
-        <input type="text" v-model:value="username"/>
+        <input id="usernameInput" type="text" v-model:value="username"/>
       </div>
       <div class="form-group">
         <label>Password</label>
-        <input type="password" v-model:value="password"/>
+        <input id="passwordInput" type="password" v-model:value="password"/>
       </div>
       <div class="form-group">
         <input class="login-button" type="submit" value="Login">

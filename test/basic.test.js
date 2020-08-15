@@ -26,7 +26,7 @@ const myURL = 'http://localhost:8080/';
 // Do nothing for unhandled rejection
 process.on('unhandledRejection', () => {});
 
-describe('UI test', function() {
+describe('Guest UI tests', function() {
     let driver;
 
     before(() => {
@@ -43,59 +43,170 @@ describe('UI test', function() {
         driver.close();
     });
 
+    it('Logging in with invalid credentials should show error message', async() =>{
+        //click on Login
+        await driver.findElement(By.css('#container nav a')).click();
 
-    it('Click edit button, filling it in', async() => {
-        // click the Edit button
-        await driver.findElement(By.css('#expense_1 .edit_expense')).click();
+        const invalidUser = 'wrong';
+        const invalidPassword = 'wrong';
+        // Fill in the form and submit
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(invalidUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(invalidPassword);
+        await driver.findElement(By.css(".login-button")).click();
 
-        // Maximise the browser window
-        await driver.manage().window().maximize();
-
-        // We will find the element by css, then fill in the value
-        // Define elements here, so we can use a for loop
-        let elements = [{
-            css: '#expense_1 input[name=expense_date]',
-            value: '2020-08-01'
-        },
-            {
-                css: '#expense_1 input[name=category]',
-                value: 'AAAAA'
-            },
-            {
-                css: '#expense_1 input[name=amount]',
-                value: '11.11'
-            },
-            {
-                css: '#expense_1 input[name=description]',
-                value: 'bbbbbb'
-            }
-        ];
-
-        for (let i = 0; i < elements.length; i++) {
-            // Find the element
-            let e = await driver.findElement(By.css(elements[i].css));
-            // Clear the input and fill in the values
-            await e.clear();
-            await e.sendKeys(elements[i].value);
-        }
-
-
-        // Take a screenshot
-        let encodedString = await driver.takeScreenshot();
-        // Save it as 'screenshots/{time}.png'
-        let filename = (new Date()).getTime() + '.png';
-        fs.writeFileSync(path.join(__dirname, 'screenshots', filename), encodedString, 'base64');
-
-        let e = await driver.findElement(By.css(elements[0].css));
-        let text = await e.getAttribute("value");
-
-        // Normally we would like to check every input that we have filled in.
-        // For demostration, we only check the date input here.
-        return expect(text).include(elements[0].value);
+        let errorText = await driver.findElement(By.css("div.errors")).getText();
+        return expect(errorText).include("Oops!");
     })
-    it('should return -1 when the value is not present', function () {
-        assert.equal([1, 2, 3].indexOf(4), -1);
-    });
+
+    it('Trying to add an item will have the basket do nothing', async() => {
+        await driver.findElement(By.css('.main-home .breakout form input[type="submit"]')).click();
+        await driver.findElement(By.css('.main-listing .restaurants a')).click();
+        await driver.findElement(By.css('.main-single .menu-section .menu a')).click();
+
+        let basketText = await driver.findElement(By.css("div.basket")).getText();
+        return expect(basketText).include("Log in");
+    })
+
+
+
 
 
 });
+
+describe('User UI tests', function() {
+    let driver;
+
+    before(() => {
+        driver = new webdriver.Builder()
+            .withCapabilities(caps)
+            .forBrowser('firefox')
+            .build();
+    });
+    beforeEach(() => {
+        driver.get(myURL);
+    })
+
+    after(() => {
+        driver.close();
+    });
+
+    it('Logging with correct user credentials should take you to the listing page', async() =>{
+
+        //Logging in
+        await driver.findElement(By.css('#container nav a')).click();
+        const validUser = 'adam';
+        const validPassword = 'adam';
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(validUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(validPassword);
+        await driver.findElement(By.css(".login-button")).click();
+
+        let pageTitle = await driver.findElement(By.id("suburb-title")).getText();
+        return expect(pageTitle).include("Restaurants");
+    })
+
+    it('While logged in, adding an item from a restaurant should populate the basket with that restaurant name', async() => {
+
+        //Logging in
+        await driver.findElement(By.css('#container nav a')).click();
+        const validUser = 'adam';
+        const validPassword = 'adam';
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(validUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(validPassword);
+        await driver.findElement(By.css(".login-button")).click();
+
+        let restaurantName = await driver.findElement(By.css(".main-listing .restaurants .content h4")).getText();
+
+        await driver.findElement(By.css('.main-listing .restaurants a')).click();
+        await driver.findElement(By.css('.main-single .menu-section .menu a')).click();
+
+        let e = await driver.wait(until.elementLocated(By.css('.basket .cart-contents h5'))).getText();
+        return expect(e).include(e,restaurantName);
+    })
+
+    it('Checking out with cash should instantly take user to status page with order Processing', async() => {
+
+        //Logging in
+        await driver.findElement(By.css('#container nav a')).click();
+        const validUser = 'adam';
+        const validPassword = 'adam';
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(validUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(validPassword);
+        await driver.findElement(By.css(".login-button")).click();
+
+        //adding to cart and clicking checkout
+        await driver.findElement(By.css('.main-listing .restaurants a')).click();
+        await driver.findElement(By.css('.main-single .menu-section .menu a')).click();
+        await driver.findElement(By.css("div.checkout-button")).click();
+
+        await driver.findElement(By.css('#payment-method>option[value="cash"]')).click();
+        await driver.findElement(By.css('input.dbe-button')).click();
+
+
+        let e = await driver.wait(until.elementLocated(By.css('.main-status h1'))).getText();
+        return expect(e).include(e,"Processing");
+    })
+
+})
+
+describe('Admin UI tests', function() {
+    let driver;
+
+    before(() => {
+        driver = new webdriver.Builder()
+            .withCapabilities(caps)
+            .forBrowser('firefox')
+            .build();
+    });
+    beforeEach(() => {
+        driver.get(myURL);
+    })
+
+    after(() => {
+        driver.close();
+    });
+
+    it('Logging as admin should lead to admin stats page', async() =>{
+
+        //Logging in
+        await driver.findElement(By.css('#container nav a')).click();
+        const validUser = 'admin';
+        const validPassword = 'admin';
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(validUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(validPassword);
+        await driver.findElement(By.css(".login-button")).click();
+
+        let pageTitle = await driver.findElement(By.css(".main-admin-stats .header h3")).getText();
+        return expect(pageTitle).include("Statistics");
+    })
+
+    it('Admin should be able to navigate into each order by their ID on the order page', async() =>{
+
+        //Logging in
+        await driver.findElement(By.css('#container nav a')).click();
+        const validUser = 'admin';
+        const validPassword = 'admin';
+        await driver.findElement(By.id("usernameInput")).click();
+        await driver.findElement(By.id("usernameInput")).sendKeys(validUser);
+        await driver.findElement(By.id("passwordInput")).click();
+        await driver.findElement(By.id("passwordInput")).sendKeys(validPassword);
+        await driver.findElement(By.css(".login-button")).click();
+        await driver.findElement(By.css('nav a')).click();
+
+        let orderID = await driver.findElement(By.css('table tr td a')).getText();
+        await driver.findElement(By.css('table tr td a ')).click();
+
+        let orderTitle = await driver.findElement(By.css(".single-order .order-details .header h3")).getText();
+        return expect(orderTitle).include(orderID);
+    })
+
+})

@@ -12,7 +12,10 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ListingComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ListingComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Login.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/basic.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/test/basic.test.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +51,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -81,7 +84,8 @@
       <workItem from="1597314583753" duration="5715000" />
       <workItem from="1597365984820" duration="17876000" />
       <workItem from="1597449208600" duration="7949000" />
-      <workItem from="1597479002728" duration="1078000" />
+      <workItem from="1597479002728" duration="3659000" />
+      <workItem from="1597488099649" duration="9269000" />
     </task>
     <task id="LOCAL-00001" summary=":hammer: Stores listing page Vue-ified">
       <created>1597047347055</created>
@@ -384,7 +388,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597479867687</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary=":hammer: Admin order view slight CSS change">
+      <created>1597480123747</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1597480123747</updated>
+    </task>
+    <task id="LOCAL-00045" summary=":hammer: Basic test Test works">
+      <created>1597490938034</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1597490938034</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,8 +422,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=":hammer: Admin/User header/nav" />
-    <MESSAGE value=":hammer: Log in and out with mock credentials" />
     <MESSAGE value=":hammer: Add readme with login details" />
     <MESSAGE value=":hammer: See previous orders" />
     <MESSAGE value=":hammer: Add feature to edit user details" />
@@ -429,7 +445,9 @@
     <MESSAGE value=":wrench: Rollback to when the 5 second change was working" />
     <MESSAGE value=":hammer: Admin can change status and remove items from order (issue where removed items persist even if edit is cancelled)" />
     <MESSAGE value=":hammer: Admin can edit order or cancel edit" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Admin can edit order or cancel edit" />
+    <MESSAGE value=":hammer: Admin order view slight CSS change" />
+    <MESSAGE value=":hammer: Basic test Test works" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Basic test Test works" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
@@ -449,6 +467,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="93" y="93" width="1350" height="638" key="DiffContextDialog/0.0.1536.824@0.0.1536.824" timestamp="1597222115111" />
+    <state x="693" y="165" key="FileChooserDialogImpl" timestamp="1597485616692">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="693" y="165" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1597485616692" />
     <state width="1515" height="210" key="GridCell.Tab.0.bottom" timestamp="1597041195134">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -465,16 +487,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1515" height="210" key="GridCell.Tab.0.right/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597041195133" />
-    <state x="422" y="70" width="981" height="707" key="SettingsEditor" timestamp="1597373367476">
+    <state x="422" y="70" width="981" height="707" key="SettingsEditor" timestamp="1597489597782">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="422" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597373367476" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1597479905403">
+    <state x="422" y="70" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597489597782" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1597490939742">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597460125903" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597471682421" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597479905403" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597490939742" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597382346770">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

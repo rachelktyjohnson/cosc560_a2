@@ -220,7 +220,7 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: 0
+          userID: null
         },
         users: [
             {
