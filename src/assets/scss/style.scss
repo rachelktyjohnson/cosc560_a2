@@ -507,8 +507,18 @@ main.main-admin {
 
         .order-item-listing {
           display: flex;
+          align-items:center;
           justify-content: space-between;
           padding-bottom: 10px;
+        }
+        .item-price{
+          display:flex;
+          align-items:center;
+          .delete{
+            margin-left:5px;
+            color:$color-warning;
+            cursor:pointer;
+          }
         }
       }
 
@@ -536,6 +546,28 @@ main.main-admin {
 
       .customer-details {
         margin-bottom: 20px;
+      }
+    }
+  }
+  .single-order-edit{
+    .edit-options{
+      display:flex;
+      flex-direction: column;
+      align-items:center;
+      .save,.cancel{
+        margin-bottom:5px;
+        padding:15px;
+        border-radius:$border-radius;
+        width:100%;
+        text-align: center;
+      }
+      .save{
+        border:1px solid $color-main;
+        color:$color-main;
+      }
+      .cancel{
+        border:1px solid $color-neutral-light;
+        color:$color-neutral-light;
       }
     }
   }

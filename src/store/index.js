@@ -215,10 +215,17 @@ export default new Vuex.Store({
                 ]
             },
         ],
-        cart: {
-
+        cart: {},
+        editSpace: {
+            orderId: 15063,
+            userId: 3,
+            status: "Delivered",
+            datetime: new Date(2020,7,11,18,4,44),
+            orderContents: {
+                2: [0,0,1],
+                3: [3,2]
+            }
         },
-
         loggedIn: {
           userID: 0
         },
@@ -453,8 +460,18 @@ export default new Vuex.Store({
                 contents: `Order #${newOrderID} update: Received`,
                 datetime: new Date()
             })
+        },
+        prepareForEditing(state,orderInfo){
+            state.editSpace = Object.assign({}, orderInfo);
+        },
+        saveEdits(state,orderInfo){
+            let orderIDX = this.getters.getOrderIndex(orderInfo.orderId);
+            console.log(orderIDX);
+            state.orders[orderIDX] = {};
+            state.orders[orderIDX] = orderInfo;
 
-
+            //finally clear the editing Space
+            state.editSpace = {};
         },
         changeOrderStatus(state,{orderID, newStatus}){
             localStorage.setItem('orderID', orderID);
@@ -467,6 +484,13 @@ export default new Vuex.Store({
             state.users[orderUser].notifications.unshift({
                 read: false,
                 contents: `Order #${orderID} update: ${newStatus}`,
+                datetime: new Date()
+            })
+        },
+        pushNotification(state,{userID,message}){
+            state.users[userID].notifications.unshift({
+                read: false,
+                contents: message,
                 datetime: new Date()
             })
         },

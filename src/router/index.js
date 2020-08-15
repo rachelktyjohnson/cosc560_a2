@@ -9,6 +9,7 @@ import Login from "../views/Login.vue";
 import Status from "../views/Status.vue";
 import AdminOrders from "../views/AdminOrders.vue";
 import AdminOrder from "../views/AdminOrder.vue";
+import AdminOrderEdit from "../views/AdminOrderEdit.vue";
 import AdminStatistics from "../views/AdminStatistics.vue";
 
 Vue.use(Router)
@@ -58,6 +59,11 @@ const routes = [
         path:'/adminorder',
         name: 'adminorder',
         component: AdminOrder
+    },
+    {
+        path:'/adminorderedit',
+        name: 'adminorderedit',
+        component: AdminOrderEdit
     },
     {
         path:'/adminstatistics',

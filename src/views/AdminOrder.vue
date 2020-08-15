@@ -4,14 +4,7 @@
       <div class="order-details">
         <div class="header">
           <h3>Order #{{ orderId }}</h3>
-          <select v-model="selectedStatus" v-on:change="changeStatus(orderId)">
-            <option value="none"hidden selected disabled>Change Status</option>
-            <option value="Processing">Processing</option>
-            <option value="Received">Received</option>
-            <option value="Delivered">Delivered</option>
-            <option value="Cancelled">Cancelled</option>
-          </select>
-          <div class="edit">Edit Order</div>
+          <div class="edit" v-on:click="goToEdit">Edit Order</div>
         </div>
         <h4>{{ formatDateTime(orderInfo.datetime) }}</h4>
 
@@ -92,9 +85,9 @@ export default {
     this.orderId = this.$route.query.id;
   },
   methods: {
-    changeStatus: function(orderID){
-      let newStatus = this.selectedStatus;
-      this.$store.commit('changeOrderStatus',{orderID,newStatus});
+    goToEdit:function(){
+      this.$store.commit('prepareForEditing',this.orderInfo);
+      this.$router.push('adminorderedit');
     }
   }
 }
