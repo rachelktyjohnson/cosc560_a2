@@ -11,11 +11,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/PieChartComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/LineChartComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LineChartComponent.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AdminStatistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminStatistics.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/PieChartComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PieChartComponent.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

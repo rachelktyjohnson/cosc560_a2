@@ -594,17 +594,15 @@ main.main-admin-stats {
   .statistics-container {
     margin-top: 30px;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 20px;
 
     .stat {
       padding: 10px;
 
       svg {
-        border: 1px solid $color-neutral-light;
         width: 100%;
         margin-top: 10px;
-        height: 250px;
       }
     }
   }
