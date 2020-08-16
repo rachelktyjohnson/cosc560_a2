@@ -30,7 +30,7 @@ export default {
   },
   mounted: function () {
     // set the dimensions and margins of the graph
-    let width = 500
+    let width = 600
     let height = 300
     let margin = {top: 20, right: 30, bottom: 50, left: 40};
 
@@ -94,8 +94,8 @@ export default {
       // draw the line with data
       the_line.datum(this.data)
           .attr("fill", "none")
-          .attr("stroke", "steelblue")
-          .attr("stroke-width", 1.5)
+          .attr("stroke", "#007a67")
+          .attr("stroke-width", 2)
           .attr("stroke-linejoin", "round")
           .attr("stroke-linecap", "round")
           .attr("d", line);

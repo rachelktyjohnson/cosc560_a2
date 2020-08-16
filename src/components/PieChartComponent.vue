@@ -66,8 +66,8 @@ export default{
           .enter()
           .append('path')
           .attr('d', arcGenerator)
-          .attr('fill', "black")
-          .attr("stroke", "black")
+          .attr('fill', "#007a67")
+          .attr("stroke", "#007a67")
           .style("stroke-width", "2px")
           .style("opacity", 0.4)
 
