@@ -43,7 +43,7 @@ There is 1 admin account, `admin`. The password is `admin`.
 - Customer gets updates regarding their order with Push notifications
 - Admin is able to log in
 - Admin is able to edit an order
-- **Admin is able to delete an order**
+- Admin is able to delete an order (The "Cancelled" status. I believe an order should still be in the system even if it's been "deleted")
 - Admin is able to view the stats (one line, one pie)
 
 **Quality**
