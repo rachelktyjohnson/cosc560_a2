@@ -12,11 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/LineChartComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/LineChartComponent.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/PieChartComponent.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/PieChartComponent.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/AdminStatistics.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminStatistics.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -410,7 +407,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597534522831</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary=":hammer: Pie chart working">
+      <created>1597556169749</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1597556169749</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -430,7 +434,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=":hammer: See previous orders" />
     <MESSAGE value=":hammer: Add feature to edit user details" />
     <MESSAGE value=":wrench: Change user data to make more sense" />
     <MESSAGE value=":hammer: Add login validation and errors" />
@@ -455,7 +458,8 @@
     <MESSAGE value=":hammer: Admin order view slight CSS change" />
     <MESSAGE value=":hammer: Basic test Test works" />
     <MESSAGE value=":hammer: Guest UI, User UI, Admin UI tests" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Guest UI, User UI, Admin UI tests" />
+    <MESSAGE value=":hammer: Pie chart working" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Pie chart working" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597043805689">
@@ -500,10 +504,10 @@
     </state>
     <state x="422" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597373367476" />
     <state x="422" y="70" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597489597782" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1597535116991">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2" timestamp="1597556171945">
+      <screen x="0" y="-1080" width="1920" height="1040" />
     </state>
-    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597460125903" />
+    <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597556171945" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597535116991" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597490939742" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597382346770">

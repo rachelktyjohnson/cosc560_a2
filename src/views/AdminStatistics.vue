@@ -14,12 +14,12 @@
     <div class="statistics-container">
 
       <div class="stat">
-        <h6>Sales($) per Day</h6>
+        <h4>Sales($) per Day</h4>
         <line-chart-component></line-chart-component>
       </div>
 
       <div class="stat">
-        <h6>Sales($) per Store</h6>
+        <h4>Sales($) per Store</h4>
         <pie-chart-component></pie-chart-component>
       </div>
 

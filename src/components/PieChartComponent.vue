@@ -1,25 +1,27 @@
 <template>
   <div>
+    <br>
+    <h6>{{formatDateTime(date,'date')}}</h6>
     <div id="pie_dataviz"></div>
-
-    <p>{{date}}</p>
   </div>
 
 </template>
 <script>
 import * as d3 from 'd3';
+import {dateMixin} from "../mixins/dateMixin";
+
 export default{
   name: "PieChartComponent",
+  mixins: [dateMixin],
   data() {
     return {
-      message: "Hello from the Pie Component!",
       data: {
-        "a": 364.34,
-        "b": 753.12,
-        "c": 424.74,
-        "d": 119.03,
-        "e": 296.23,
-        "f": 585.94
+        "BB": 964.34,
+        "RP": 753.12,
+        "GML": 824.74,
+        "KM": 519.03,
+        "GK": 796.23,
+        "WND": 585.94
       },
       date: new Date(2019,0,1)
     }
@@ -93,7 +95,7 @@ export default{
     },
     generateData: function(){
       let MAX = 1000;
-      let MIN = 100;
+      let MIN = 500;
 
       //set the next date
       let nextDay = new Date(this.date);
