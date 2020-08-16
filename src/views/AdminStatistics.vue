@@ -14,11 +14,13 @@
     <div class="statistics-container">
 
       <div class="stat">
-        <h6>Sales($) per Transaction</h6>
+        <h6>Sales($) per Day</h6>
+        <line-chart-component></line-chart-component>
       </div>
 
       <div class="stat">
         <h6>Sales($) per Store</h6>
+        <pie-chart-component></pie-chart-component>
       </div>
 
     </div>
@@ -26,19 +28,16 @@
   </main>
 </template>
 <script>
-import * as d3 from 'd3';
+import LineChartComponent from '../components/LineChartComponent.vue';
+import PieChartComponent from '../components/PieChartComponent.vue';
 export default {
   name: 'AdminStatistics',
   components: {
-
+    LineChartComponent,
+    PieChartComponent
   },
   data() {
-    return {
-
-    }
-  },
-  methods:{
-
+    return {}
   }
 }
 </script>
