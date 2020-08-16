@@ -35,22 +35,16 @@ export default{
       // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
       let radius = Math.min(width, height) / 2 - margin
 
-
-
-      this.chart(width,height,radius)
+      this.chartPie(width,height,radius)
 
       window.setInterval(()=>{
         this.generateData();
-        //clear the g transform
-        this.chart(width,height,radius);
-      },2000)
+        this.chartPie(width,height,radius);
+      },1000)
   },
   methods:{
-    chart:function(width,height,radius){
-      //clear g transform
+    chartPie:function(width,height,radius){
       d3.select("#pie_dataviz svg").remove();
-      console.log("cleared");
-      // append the svg object to the div called 'my_dataviz'
       let svg = d3.select("#pie_dataviz")
           .append("svg")
           .attr("width", width)
@@ -58,18 +52,14 @@ export default{
           .append("g")
           .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-      // Compute the position of each group on the pie:
       let pie = d3.pie()
           .value(function(d) {return d.value; })
       let data_ready = pie(d3.entries(this.data))
-      // Now I know that group A goes from 0 degrees to x degrees and so on.
 
-      // shape helper to build arcs:
       let arcGenerator = d3.arc()
           .innerRadius(0)
           .outerRadius(radius)
 
-      // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
       svg
           .selectAll('mySlices')
           .data(data_ready)
@@ -81,7 +71,6 @@ export default{
           .style("stroke-width", "2px")
           .style("opacity", 0.4)
 
-      // Now add the annotation. Use the centroid method to get the best coordinates
       svg
           .selectAll('mySlices')
           .data(data_ready)
