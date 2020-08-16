@@ -14,6 +14,7 @@ import AdminStatistics from "../views/AdminStatistics.vue";
 
 Vue.use(Router)
 
+//list of the routes
 const routes = [
     {
         path: '/',

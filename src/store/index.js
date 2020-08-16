@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-//import cart from './modules/cart' maybe if I refactor?
-//import stores from './modules/stores' maybe if I refactor?
 
 Vue.use(Vuex)
 
@@ -220,7 +218,7 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: 0
+          userID: null
         },
         users: [
             {
@@ -345,6 +343,7 @@ export default new Vuex.Store({
     },
     getters: {
         cartSubtotal: function(state){
+            //gets raw float of items in the cart before delivery
             let subtotal = 0;
             for (let [key, values] of Object.entries(state.cart)) {
                 values.forEach (item => {
@@ -354,24 +353,32 @@ export default new Vuex.Store({
             return subtotal;
         },
         getAllOrders: function(state){
+            //gets all existing orders in reverse
             return state.orders.reverse();
         },
         cartDelivery: function(state){
+            //gets raw float of delivery cost based on the cart
+            //$5 per restaurant
             let numberOfRestaurants = Object.keys(state.cart).length;
             return 5 * numberOfRestaurants;
         },
         cartTotal: function(state, getters){
+            //gets total $ of the cart, including delivery
             return getters.cartSubtotal + getters.cartDelivery;
         },
         getOrder: (state) => (orderID) => {
+            //gets orderObject by orderID
             return state.orders.find(o => o.orderId===orderID);
         },
         getOrderIndex: (state) => (orderID) => {
+            //gets order index by orderID
            return state.orders.map(function(e) {
                return e.orderId;
            }).indexOf(orderID);
         },
         getCurrentUser: function(state) {
+            //gets userObject based on who's logged in
+            //if no-one logged in, then return empty userObj
             let currentUserId = state.loggedIn.userID;
             if (currentUserId === null) {
                 return {
@@ -385,12 +392,15 @@ export default new Vuex.Store({
             }
         },
         getUser: (state) => (userID) => {
+            //gets user by userID
             return state.users.find(u => u.userId===userID);
         },
         getOrdersByUser: (state) => (userID) => {
+            //gets all orders by a user by userID
             return state.orders.filter(o => o.userId===userID).reverse();
         },
         getSuburb: function(state){
+            //gets string for suburb heading, or returns generic if no suburb assigned
             if (state.suburb===null){
                 return "Restaurants near you";
             } else {
@@ -400,6 +410,9 @@ export default new Vuex.Store({
     },
     mutations: {
         removeFromCart(state,{restaurantID,menuItemID}) {
+            //removes specific item from the cart
+            //finds the restaurant property first
+            //then removes the item from that property's array
 
             //splice it out
             state.cart[restaurantID].splice(menuItemID,1);
@@ -409,24 +422,28 @@ export default new Vuex.Store({
             }
         },
         addToCart(state,{restaurantID,menuItemID}){
-            //if it doesn't exist
+            //if restaurant doesn't exist
             if (!state.cart.hasOwnProperty(restaurantID)){
                 Vue.set(state.cart,restaurantID,[]);
             }
 
+            //adds menu item to the correct restaurant property in the cart
             state.cart[restaurantID].push(menuItemID);
         },
         changeSuburb(state,newSuburb){
+            //changes suburb?
             state.suburb = newSuburb;
         },
         changeUser(state,userId){
+            //changes the logged in user
             state.loggedIn.userID = userId;
             state.cart = {};
         },
         editUserInfo(state,newUserInfo){
+            //first grabs the user based on their ID
             let userID = newUserInfo.userId;
 
-            //change details in store
+            //changes all their details
             state.users[userID].firstName = newUserInfo.firstName;
             state.users[userID].lastName = newUserInfo.lastName;
             state.users[userID].phone = newUserInfo.phone;
@@ -438,6 +455,7 @@ export default new Vuex.Store({
             state.users[userID].postcode = newUserInfo.postcode;
         },
         pushOrder(state){
+            //adds a new order to the state order array with relevant information
             let newOrderID = state.orders[state.orders.length-1].orderId +1;
             state.orders.push({
                 orderId: newOrderID,
@@ -448,6 +466,7 @@ export default new Vuex.Store({
             });
             state.cart = {};
 
+            //also pushes a notiication saying that the order has been received
             state.users[state.loggedIn.userID].notifications.unshift({
                 read: false,
                 contents: `Order #${newOrderID} update: Received`,
@@ -455,6 +474,8 @@ export default new Vuex.Store({
             })
         },
         prepareForEditing(state,orderInfo){
+            //when admin edits an order, place a CLONE in temp area
+            //this is so an admin can cancel an edit and not have data persist
             let objForEdit = JSON.parse(JSON.stringify(orderInfo))
             console.log(objForEdit);
             objForEdit.datetime = new Date(objForEdit.datetime);
@@ -462,6 +483,7 @@ export default new Vuex.Store({
             console.log(objForEdit);
         },
         saveEdits(state,orderInfo){
+            //admin edits and order and saves. The temp gets pushed to the orders array at the right position
             let orderIDX = this.getters.getOrderIndex(orderInfo.orderId);
             console.log(orderIDX);
             state.orders[orderIDX] = {};
@@ -471,6 +493,7 @@ export default new Vuex.Store({
             state.editSpace = {};
         },
         changeOrderStatus(state,{orderID, newStatus}){
+            //changes the status of the order in the orders Array
             localStorage.setItem('orderID', orderID);
             localStorage.setItem('newStatus', newStatus);
             let orderIDX = this.getters.getOrderIndex(orderID);
@@ -478,6 +501,7 @@ export default new Vuex.Store({
             state.orders[orderIDX].status = newStatus;
             let orderUser = state.orders[orderIDX].userId;
 
+            //also sends a notification
             state.users[orderUser].notifications.unshift({
                 read: false,
                 contents: `Order #${orderID} update: ${newStatus}`,
@@ -485,6 +509,8 @@ export default new Vuex.Store({
             })
         },
         pushNotification(state,{userID,message}){
+            //adds a notification to userID's message bank
+            //unread, timestamped
             state.users[userID].notifications.unshift({
                 read: false,
                 contents: message,
@@ -492,6 +518,7 @@ export default new Vuex.Store({
             })
         },
         readAllNotifications(state){
+            //when user opens their notification feed, all items are read
             state.users[state.loggedIn.userID].notifications.some(function(item){
                 if(!item.read){
                     item.read = true;

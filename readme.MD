@@ -2,6 +2,11 @@
 
 DropBearEats is a food delivery platform created for Karen
 
+## Usage
+While in the directory:
+- `npm run test` to test with Mocha
+- `npm run dev` to run dev web server
+
 ## User Accounts
 There are 3 user accounts, `adam`, `ben` and `charlie`. Usernames are passwords. Eg, `adam`'s password is `adam`
 
@@ -48,7 +53,7 @@ There is 1 admin account, `admin`. The password is `admin`.
 
 **Quality**
 - Code quality (I believe some more refactoring can be done)
-- **Documentation/commmenting (little to none, change this!)**
+- Documentation/commmenting (little to none, change this!)
 - Formatting / code layout (unsure, I think it's alright)
 - Readability (I hope so?)
 - Version Control (extensive)

@@ -64,6 +64,7 @@ export default {
     }
   },
   computed: {
+    //over-riding these from the mixin since we're after a user that isn't logged in
     userInfo(){
       return this.$store.state.users[this.orderInfo.userId];
     },
