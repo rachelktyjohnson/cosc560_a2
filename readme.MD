@@ -4,6 +4,7 @@ DropBearEats is a food delivery platform created for Karen
 
 ## Usage
 While in the directory:
+- `npm install --dev` or `npm install --only=dev` to install all Dependencies
 - `npm run test` to test with Mocha
 - `npm run dev` to run dev web server
 

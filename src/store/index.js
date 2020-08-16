@@ -354,7 +354,7 @@ export default new Vuex.Store({
         },
         getAllOrders: function(state){
             //gets all existing orders in reverse
-            return state.orders.reverse();
+            return state.orders;
         },
         cartDelivery: function(state){
             //gets raw float of delivery cost based on the cart

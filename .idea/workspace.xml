@@ -12,12 +12,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dda75a76-793a-488c-868a-4e4a1e7680f6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/readme.MD" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/mixins/dateMixin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/mixins/dateMixin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/store/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/store/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/AdminOrderEdit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/AdminOrderEdit.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,13 +94,6 @@
       <workItem from="1597449208600" duration="7949000" />
       <workItem from="1597479002728" duration="3659000" />
       <workItem from="1597488099649" duration="17092000" />
-    </task>
-    <task id="LOCAL-00003" summary=":hammer: Delete from Basket feature">
-      <created>1597134562756</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1597134562756</updated>
     </task>
     <task id="LOCAL-00004" summary=":hammer: Add to and remove from basket feature">
       <created>1597139619608</created>
@@ -442,7 +431,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597562780955</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary=":hammer: Added some comments and reset logged in user">
+      <created>1597563979404</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1597563979405</updated>
+    </task>
+    <option name="localTasksCounter" value="53" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,7 +458,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=":hammer: Change and refactor order Date and Time to one Datetime field" />
     <MESSAGE value=":wrench: Fix issue where the cart wouldn't reset properly" />
     <MESSAGE value=":hammer: Notification feature" />
     <MESSAGE value=":hammer: Notification feature. Fixed errors" />
@@ -487,7 +482,8 @@
     <MESSAGE value=":hammer: Rubric Check" />
     <MESSAGE value=":hammer: Rubric Check Update" />
     <MESSAGE value=":hammer: Added some comments" />
-    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Added some comments" />
+    <MESSAGE value=":hammer: Added some comments and reset logged in user" />
+    <option name="LAST_COMMIT_MESSAGE" value=":hammer: Added some comments and reset logged in user" />
   </component>
   <component name="WindowStateProjectService">
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1597563037337">
@@ -580,11 +576,11 @@
     </state>
     <state x="422" y="70" width="981" height="707" key="SettingsEditor/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597373367476" />
     <state x="422" y="70" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1597489597782" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1597562783590">
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2" timestamp="1597563980590">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="451" y="-913" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.-1080.1920.1040" timestamp="1597556480466" />
-    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597562783590" />
+    <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824/0.-1080.1920.1040@0.0.1536.824" timestamp="1597563980590" />
     <state x="361" y="132" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1597490939742" />
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597382346770">
       <screen x="0" y="0" width="1536" height="824" />
