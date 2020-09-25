@@ -5,7 +5,7 @@
 
     <form v-on:submit.stop.prevent="checkLogin()" class="login-form">
       <div class="form-group">
-        <label>Username</label>
+        <label>Username (Email)</label>
         <input id="usernameInput" type="text" v-model:value="username"/>
       </div>
       <div class="form-group">
