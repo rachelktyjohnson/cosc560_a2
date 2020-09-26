@@ -45,7 +45,7 @@ export default {
       this.restaurants = response.data
     })
     .catch (err =>{
-      this.errors.push(e)
+      this.errors.push(err)
     })
   },
   methods: {

@@ -1,23 +1,23 @@
 <template>
 <main class="main-single">
   <h6 class="breadcrumbs"><router-link to="listing">< Back to Restaurants</router-link></h6>
-<h2>{{ $store.state.restaurants[restaurantId].restaurantName}}</h2>
-<p>{{ $store.state.restaurants[restaurantId].restaurantTagline}}</p>
+<h2>{{restaurant.name}}</h2>
+<p>{{ restaurant.description }}</p>
 <div class="restaurant-content pure-g">
   <div class="pure-u-3-4">
     <div class="menu-section">
       <h4>Popular</h4>
       <div class="menu">
-        <a v-for="(menuItem,index) in $store.state.restaurants[restaurantId].menu"
+        <a v-for="(menuItem,index) in restaurant.menu"
            v-on:click="triggerAddToCart(restaurantId,index)"
            href="#">
           <div class="menu-item">
             <div class="item-content">
-              <h5>{{ menuItem.menuItemName }}</h5>
-              <p>{{ menuItem.menuItemTagline }}</p>
-              <p><strong>${{ menuItem.menuItemPrice.toFixed(2) }}</strong></p>
+              <h5>{{ menuItem.name }}</h5>
+              <p>{{ menuItem.description }}</p>
+              <p><strong>${{ menuItem.price.toFixed(2) }}</strong></p>
             </div>
-            <img :src="menuItem.menuItemSrc" :alt="menuItem.menuItemName"/>
+            <img :src="menuItem.imgSrc" :alt="menuItem.name"/>
           </div>
         </a>
       </div>
@@ -34,20 +34,32 @@
 <script>
 import { dataMixin } from '../mixins/dataMixin';
 import BasketComponent from "./BasketComponent.vue";
+import axios from 'axios';
+
 export default {
   name: 'RestaurantComponent',
   mixins: [dataMixin],
   components: {
     BasketComponent
   },
-  props: {
-    restaurantId: {
-      required:true,
-      default:0
+  data() {
+    return {
+      restaurant: [],
+      errors: [],
+      restaurantId: 0
     }
   },
-  data() {
-    return {}
+  beforeCreate() {
+    this.restaurantId = this.$route.query.r;
+    console.log(this.restaurantId);
+    const api = `http://localhost:9000/restaurants/${this.$route.query.r}`;
+    axios.get(api)
+    .then(response => {
+      this.restaurant = response.data.data
+    })
+    .catch(err=>{
+      this.errors.push(err)
+    })
   },
   methods: {
     triggerAddToCart: function(restaurantID,menuItemID){
