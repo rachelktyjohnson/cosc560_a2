@@ -84,7 +84,7 @@ export default {
           this.errors.push(err)
         })
   },
-  updated() {
+  mounted() {
     this.orderId = this.$route.query.id;
     const api = `http://localhost:9000/orders/${this.$route.query.id}`;
     axios.get(api)
