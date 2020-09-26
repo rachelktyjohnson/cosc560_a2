@@ -5,6 +5,7 @@ export const dateMixin = {
             //can pass parameter for date or time
             //if no paramter passed then datetime!
             let dateSep = '/';
+            datetime = new Date(datetime);
             if (option === 'date') {
                 return datetime.getDate() + dateSep + (datetime.getMonth() + 1) + dateSep + datetime.getFullYear()
             } else if (option === 'time') {

@@ -5,9 +5,9 @@
       <div class="past-orders">
         <h4>Past Orders</h4>
         <div class="past-orders-group">
-          <a v-for="order in getUserOrders" v-on:click="goToOrderStatus(order.orderId)">
+          <a v-for="order in orders" v-on:click="goToOrderStatus(order._id)">
             <div class="past-order">
-              <p>Order #{{ order.orderId }} ({{order.status}})</p>
+              <p>Order #{{ order._id }} ({{order.status}})</p>
               <p>{{ formatDateTime(order.datetime,'date') }}</p>
             </div>
           </a>
@@ -93,13 +93,21 @@ export default {
   data() {
     return {
       inEditMode: false,
-      user: []
+      user: [],
+      orders: []
     }
   },
-  created () {
-    axios.get('http://localhost:9000/users/'+this.userInfo.userId)
+  beforeCreate () {
+    axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
         .then (response => {
           this.user = response.data.data
+        })
+        .catch (err =>{
+          this.errors.push(err)
+        })
+    axios.get('http://localhost:9000/orders/'+this.$store.state.loggedIn.userID)
+        .then (response => {
+          this.orders = response.data.data
         })
         .catch (err =>{
           this.errors.push(err)
