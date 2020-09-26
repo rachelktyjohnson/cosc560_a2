@@ -17,17 +17,17 @@
         <div class="details" v-if="!inEditMode">
           <h4>My Details</h4>
           <div class="customer-details">
-            <p>{{userInfo.firstName}} {{userInfo.lastName}}</p>
-            <p>{{userInfo.phone}}</p>
-            <p>{{userInfo.email}}</p>
+            <p>{{user.firstName}} {{user.lastName}}</p>
+            <p>{{user.phoneNumber}}</p>
+            <p>{{user.email}}</p>
           </div>
 
           <h4>My Delivery Details</h4>
           <div class="delivery-details">
-            <p>{{userInfo.address1}}</p>
-            <p>{{userInfo.address2}}</p>
-            <p>{{userInfo.suburb}}</p>
-            <p>{{userInfo.state}} {{userInfo.postcode}}</p>
+            <p>{{user.address.add1}}</p>
+            <p>{{user.address.add2}}</p>
+            <p>{{user.address.suburb}}</p>
+            <p>{{user.address.state}} {{user.address.postcode}}</p>
           </div>
         </div>
         <form v-else>
@@ -35,19 +35,19 @@
           <div class="customer-details">
             <div class="form-group">
               <label>First Name</label>
-              <input type="text" v-model:value="userInfo.firstName"/>
+              <input type="text" v-model:value="user.firstName"/>
             </div>
             <div class="form-group">
               <label>Last Name</label>
-              <input type="text" v-model:value="userInfo.lastName"/>
+              <input type="text" v-model:value="user.lastName"/>
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" v-model:value="userInfo.phone"/>
+              <input type="tel" v-model:value="user.phoneNumber"/>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" v-model:value="userInfo.email"/>
+              <input type="email" v-model:value="user.email"/>
             </div>
           </div>
           <br>
@@ -55,23 +55,23 @@
           <div class="delivery-details-edit">
             <div class="form-group">
               <label>Address Line 1</label>
-              <input type="text" v-model:value="userInfo.address1"/>
+              <input type="text" v-model:value="user.address.add1"/>
             </div>
             <div class="form-group">
               <label>Address Line 2</label>
-              <input type="text" v-model:value="userInfo.address2"/>
+              <input type="text" v-model:value="user.address.add2"/>
             </div>
             <div class="form-group">
               <label>Suburb</label>
-              <input type="text" v-model:value="userInfo.suburb"/>
+              <input type="text" v-model:value="user.address.suburb"/>
             </div>
             <div class="form-group">
               <label>State</label>
-              <input type="text" v-model:value="userInfo.state"/>
+              <input type="text" v-model:value="user.address.state"/>
             </div>
             <div class="form-group">
               <label>Postcode</label>
-              <input type="number" v-model:value="userInfo.postcode"/>
+              <input type="number" v-model:value="user.address.postcode"/>
             </div>
           </div>
           <input v-on:click.stop.prevent="editUser" type="submit" class="submit" value="Save">
@@ -85,13 +85,25 @@
 <script>
 import { dateMixin } from '../mixins/dateMixin.js';
 import { dataMixin } from '../mixins/dataMixin.js';
+import axios from 'axios';
+
 export default {
   name: 'AccountComponent',
   mixins:[dateMixin,dataMixin],
   data() {
     return {
-      inEditMode: false
+      inEditMode: false,
+      user: []
     }
+  },
+  created () {
+    axios.get('http://localhost:9000/users/'+this.userInfo.userId)
+        .then (response => {
+          this.user = response.data.data
+        })
+        .catch (err =>{
+          this.errors.push(err)
+        })
   },
   methods:{
     goToOrderStatus: function(orderID){

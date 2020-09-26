@@ -11,7 +11,7 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: 1
+          userID: '5f6d8dd4db487a0f886e8206'
         },
         users: [
             {
@@ -29,7 +29,7 @@ export default new Vuex.Store({
                 notifications: []
             },
             {
-                userId:1,
+                userId:'5f6d8dd4db487a0f886e8206',
                 userType: 'user',
                 firstName: "Adam",
                 lastName: "Driver",
@@ -105,7 +105,7 @@ export default new Vuex.Store({
             },
             {
                 orderId: 15061,
-                userId: 1,
+                userId: "5f6d8dd4db487a0f886e8206",
                 status: "Delivered",
                 datetime: new Date(2020,7,10,19,34,56),
                 orderContents: {
