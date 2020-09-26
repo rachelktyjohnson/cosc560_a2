@@ -35,7 +35,7 @@
     <footer>
       Developed for COSC560 by Rachel Johnson
     </footer>
-    <notifications-component v-show="showNotifications"></notifications-component>
+    <notifications-component v-show="showNotifications" :key="componentKey"></notifications-component>
     </div>
   </div>
 </template>
@@ -54,7 +54,8 @@ export default {
       showNotifications:false,
       notifications: [],
       errors: [],
-      user: []
+      user: [],
+      componentKey: 0
     }
   },
   beforeCreate() {
@@ -92,6 +93,9 @@ export default {
     }
   },
   methods: {
+    forceRender(){
+      this.componentKey += 1;
+    },
     logOut: function () {
       const userID = null;
       const token = null;
@@ -117,6 +121,7 @@ export default {
       //set all user notifications to false
       if (this.$store.state.loggedIn.userID !== null){
         axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.userID);
+        this.forceRender();
       }
 
 

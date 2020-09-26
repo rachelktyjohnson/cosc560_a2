@@ -20,7 +20,10 @@ export default {
       notifications: []
     }
   },
-  updated() {
+  methods: {
+
+  },
+  created() {
     if (this.$store.state.loggedIn.userID!==null){
       axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
           .then (response => {
