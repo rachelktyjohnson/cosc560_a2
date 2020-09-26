@@ -8,8 +8,8 @@
     <div class="menu-section">
       <h4>Popular</h4>
       <div class="menu">
-        <a v-for="(menuItem,index) in restaurant.menu"
-           v-on:click="triggerAddToCart(restaurantId,index)"
+        <a v-for="menuItem in restaurant.menu"
+           v-on:click="triggerAddToCart(restaurant._id,menuItem._id)"
            href="#">
           <div class="menu-item">
             <div class="item-content">
@@ -51,7 +51,6 @@ export default {
   },
   beforeCreate() {
     this.restaurantId = this.$route.query.r;
-    console.log(this.restaurantId);
     const api = `http://localhost:9000/restaurants/${this.$route.query.r}`;
     axios.get(api)
     .then(response => {
@@ -62,9 +61,11 @@ export default {
     })
   },
   methods: {
-    triggerAddToCart: function(restaurantID,menuItemID){
+    triggerAddToCart: function(restaurantID,itemID){
       if (this.isLoggedIn){
-        this.$store.commit('addToCart',{restaurantID,menuItemID});
+        console.log(restaurantID);
+        console.log(itemID);
+        this.$store.commit('addToCart',{restaurantID,itemID});
       }
     }
   }
