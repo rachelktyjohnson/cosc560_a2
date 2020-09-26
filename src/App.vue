@@ -81,7 +81,7 @@ export default {
   },
   computed: {
     isLoggedIn: function () {
-      return this.$store.state.loggedIn.userID !== null;
+      return this.$store.state.loggedIn.user !== null;
     },
     logoUrl: function(){
       if (this.user.admin){
@@ -119,8 +119,8 @@ export default {
     toggleNotifications(){
       this.showNotifications = !this.showNotifications;
       //set all user notifications to false
-      if (this.$store.state.loggedIn.userID !== null){
-        axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.userID);
+      if (this.$store.state.loggedIn.user !== null){
+        axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.user);
         this.forceRender();
       }
 

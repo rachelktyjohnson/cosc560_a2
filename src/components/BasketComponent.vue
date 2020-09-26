@@ -60,6 +60,9 @@ export default {
     }
   },
   computed: {
+    isLoggedIn: function () {
+      return this.$store.state.loggedIn.userID !== null;
+    },
     ifCheckoutPage() {
       return this.$route.name === 'checkout';
     },
