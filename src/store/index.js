@@ -235,24 +235,8 @@ export default new Vuex.Store({
             state.users[userID].state = newUserInfo.state;
             state.users[userID].postcode = newUserInfo.postcode;
         },
-        pushOrder(state){
-            //adds a new order to the state order array with relevant information
-            let newOrderID = state.orders[state.orders.length-1].orderId +1;
-            state.orders.push({
-                orderId: newOrderID,
-                userId: state.loggedIn.userID,
-                status: "Received",
-                datetime: new Date(),
-                orderContents: state.cart
-            });
+        resetCart(state){
             state.cart = {};
-
-            //also pushes a notiication saying that the order has been received
-            state.users[state.loggedIn.userID].notifications.unshift({
-                read: false,
-                contents: `Order #${newOrderID} update: Received`,
-                datetime: new Date()
-            })
         },
         prepareForEditing(state,orderInfo){
             //when admin edits an order, place a CLONE in temp area

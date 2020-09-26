@@ -173,22 +173,48 @@ export default {
 
         return valid;
       }
-    },changeOrderStatus: function(){
+    },fiveSecondChange: function(){
       let orderID = this.$store.state.orders[this.$store.state.orders.length-1].orderId;
       let newStatus = "Processing";
       this.$store.commit('changeOrderStatus',{orderID,newStatus});
     },
     placeOrder: function(){
       if (this.isPaymentValid()===true){
-        //stuff to do if the payment is valid
-        this.$store.commit('pushOrder');
+        //push the order
+        //get userID
+        //get cart straight from the store
+        const userID = this.$store.state.loggedIn.user._id;
+        const cart = this.$store.state.cart;
+        console.log(cart);
+        axios.post('http://localhost:9000/orders/',{
+          user: userID,
+          cart: cart
+        })
+        .then(response => {
+          //go to that order
+          const newOrderID = response.data.data._id;
+          this.$router.push({ path: 'status', query: { id:newOrderID } });
+          this.$store.commit('resetCart');
+          axios.post('http://localhost:9000/notifications',{
+            userID: this.$store.state.loggedIn.user._id,
+            content: "Order #" + newOrderID + " is now processing!"
+          })
+          //start 5 second timer
+          setTimeout(()=>{
+            axios.patch('http://localhost:9000/orders/'+newOrderID,{
+              status: "received"
+            })
+            axios.post('http://localhost:9000/notifications',{
+              userID: this.$store.state.loggedIn.user._id,
+              content: "Order #" + newOrderID + " has been received!"
+            })
 
-        //last Order Placed
-        let goTo = this.$store.state.orders[this.$store.state.orders.length - 1].orderId;
-        this.$router.push({ path: 'status', query: { id:goTo } });
+          },5000);
+        }).catch (err =>{
+          this.errors.push(err)
+        })
 
-        //start 5 second timer
-        setTimeout(this.changeOrderStatus,5000);
+
       }
     }
   }

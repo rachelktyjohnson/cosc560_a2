@@ -1,6 +1,6 @@
 <template>
 <div class="notifications">
-  <div v-for="(notification) in notifications.slice(0,5)" class="notification">
+  <div v-for="(notification) in notifications.reverse().slice(0,5)" class="notification">
     <h6>{{ notification.content }}</h6>
     <p>{{ formatDateTime(notification.datetime) }}</p>
   </div>
