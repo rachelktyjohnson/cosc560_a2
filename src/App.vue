@@ -6,16 +6,16 @@
         <a>
           <router-link :to="logoUrl"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
           </router-link>
-          <router-link :to="logoUrl"><img v-if="userInfo.userType==='user'" class="logo logo-text" src="img/logo-text.svg"
-                                   alt="DropBearEats Text Logo">
-            <img v-else class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
+          <router-link :to="logoUrl" >
+            <img v-if="!user.admin"  class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
+            <img v-if="user.admin"  class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
           </router-link>
         </a>
       </div>
       <div class="header-right">
         <nav>
-          <router-link v-if="userInfo.userType==='user' && !isLoggedIn " to="/login">Log in</router-link>
-          <svg v-if="userInfo.userType==='user' && isLoggedIn" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <router-link v-if="!isLoggedIn" to="/login">Log in</router-link>
+          <svg v-if="isLoggedIn" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <g id="Layer_2">
               <circle class="cls-1" cx="49.75" cy="50" r="48"/>
               <path class="cls-2"
@@ -23,9 +23,9 @@
               <path class="cls-2" d="M43.36,76.45H56.11a6,6,0,0,1-5.55,6.32C46.54,83.09,43.78,80.76,43.36,76.45Z"/>
             </g>
           </svg>
-          <router-link v-if="userInfo.userType==='user' && isLoggedIn" to="/account">My Account</router-link>
-          <router-link v-if="userInfo.userType==='admin'" to="/adminorders">Orders</router-link>
-          <router-link v-if="userInfo.userType==='admin'" to="/adminstatistics">Stats</router-link>
+          <router-link v-if="!user.admin && isLoggedIn" to="/account">My Account</router-link>
+          <router-link v-if="user.admin" to="/adminorders">Orders</router-link>
+          <router-link v-if="user.admin" to="/adminstatistics">Stats</router-link>
           <a v-if="isLoggedIn" v-on:click="logOut()">Log out</a>
         </nav>
 
@@ -52,36 +52,50 @@ export default {
   data() {
     return {
       showNotifications:false,
-      notifications: []
+      notifications: [],
+      errors: [],
+      user: []
     }
   },
   beforeCreate() {
-    axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
-        .then (response => {
-          this.notifications = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
+    if (this.$store.state.loggedIn.userID!==null){
+      console.log(this.$store.state.loggedIn.userID);
+      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
+          .then (response => {
+            this.notifications = response.data.data
+          })
+          .catch (err =>{
+            this.errors.push(err)
+          })
+
+      axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
+          .then (response => {
+            this.user = response.data.data
+          })
+          .catch (err =>{
+            this.errors.push(err)
+          })
+    }
+
   },
   computed: {
-    userInfo: function () {
-      return this.$store.getters.getCurrentUser;
-    },
     isLoggedIn: function () {
-      return this.userInfo.userId !== null;
+      return this.$store.state.loggedIn.userID !== null;
     },
     logoUrl: function(){
-      if (this.userInfo.userType==='admin'){
-        return 'adminstatistics';
+      if (this.user.admin){
+        return 'adminorders'
       } else {
-        return '/';
+        return '/'
       }
+
     }
   },
   methods: {
     logOut: function () {
-      this.$store.commit('changeUser', null);
+      const userID = null;
+      const token = null;
+      this.$store.commit('changeUser', {userID,token});
       this.$router.push('login');
     },
     hasNewNotifications: function(){
@@ -101,7 +115,10 @@ export default {
     toggleNotifications(){
       this.showNotifications = !this.showNotifications;
       //set all user notifications to false
-      axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.userID)
+      if (this.$store.state.loggedIn.userID !== null){
+        axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.userID);
+      }
+
 
     }
   }

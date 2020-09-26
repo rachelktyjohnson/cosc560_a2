@@ -118,7 +118,24 @@ export default {
       this.$router.push({ path: 'status', query: { id:orderID } });
     },
     editUser: function(){
-      this.$store.commit('editUserInfo',this.userInfo);
+      //patch the user with new fields
+      axios.patch('http://localhost:9000/users/'+ this.user._id,
+          {
+            email: this.user.email,
+            password: this.user.password,
+            firstName: this.user.firstName,
+            lastName: this.user.lastName,
+            phoneNumber: this.user.phoneNumber,
+            address: {
+              add1: this.user.address.add1,
+              add2: this.user.address.add2,
+              suburb: this.user.address.suburb,
+              state: this.user.address.state,
+              postcode: this.user.address.postcode
+            },
+            admin: false
+          })
+
       this.triggerEdit();
     },
     triggerEdit: function(){

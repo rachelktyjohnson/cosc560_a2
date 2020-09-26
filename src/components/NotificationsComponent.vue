@@ -20,14 +20,17 @@ export default {
       notifications: []
     }
   },
-  created() {
-    axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
-        .then (response => {
-          this.notifications = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
+  updated() {
+    if (this.$store.state.loggedIn.userID!==null){
+      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
+          .then (response => {
+            this.notifications = response.data.data
+          })
+          .catch (err =>{
+            this.errors.push(err)
+          })
+    }
+
   }
 }
 </script>

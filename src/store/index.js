@@ -11,7 +11,8 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: '5f6d8dd4db487a0f886e8206'
+          userID: null,
+          token: null
         },
         users: [
             {
@@ -169,21 +170,7 @@ export default new Vuex.Store({
                return e.orderId;
            }).indexOf(orderID);
         },
-        getCurrentUser: function(state) {
-            //gets userObject based on who's logged in
-            //if no-one logged in, then return empty userObj
-            let currentUserId = state.loggedIn.userID;
-            if (currentUserId === null) {
-                return {
-                    userId: null,
-                    userType: 'user',
-                    notifications: []
-                }
-            }
-             else {
-                return state.users.find(u => u.userId===currentUserId);
-            }
-        },
+
         getUser: (state) => (userID) => {
             //gets user by userID
             return state.users.find(u => u.userId===userID);
@@ -228,9 +215,9 @@ export default new Vuex.Store({
             //changes suburb?
             state.suburb = newSuburb;
         },
-        changeUser(state,userId){
-            //changes the logged in user
-            state.loggedIn.userID = userId;
+        changeUser(state,{userID, token}){
+            state.loggedIn.userID = userID;
+            state.loggedIn.token = token;
             state.cart = {};
         },
         editUserInfo(state,newUserInfo){
@@ -309,16 +296,6 @@ export default new Vuex.Store({
                 read: false,
                 contents: message,
                 datetime: new Date()
-            })
-        },
-        readAllNotifications(state){
-            //when user opens their notification feed, all items are read
-            state.users[state.loggedIn.userID].notifications.some(function(item){
-                if(!item.read){
-                    item.read = true;
-                } else {
-                    return true;
-                }
             })
         }
     }

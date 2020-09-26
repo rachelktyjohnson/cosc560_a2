@@ -10,48 +10,42 @@
           <div class="form-customer">
             <div class="form-field">
               <label>First Name</label>
-              <input disabled type="text" :value="userInfo.firstName"/>
+              <input disabled type="text" :value="user.firstName"/>
             </div>
             <div class="form-field">
               <label>Last Name</label>
-              <input disabled type="text" :value="userInfo.lastName"/>
+              <input disabled type="text" :value="user.lastName"/>
             </div>
             <div class="form-field">
               <label>Mobile Number</label>
-              <input type="tel" disabled :value="userInfo.phone"/>
+              <input type="tel" disabled :value="user.phoneNumber"/>
             </div>
             <div class="form-field">
               <label>Email</label>
-              <input type="email"disabled :value="userInfo.email"/>
+              <input type="email"disabled :value="user.email"/>
             </div>
           </div>
           <div class="form-address">
             <div class="form-field">
               <label>Address Line 1</label>
-              <input type="text"disabled :value="userInfo.address1"/>
+              <input type="text"disabled :value="user.address.add1"/>
             </div>
             <div class="form-field">
               <label>Address Line 2</label>
-              <input type="text"disabled :value="userInfo.address2"/>
+              <input type="text"disabled :value="user.address.add2"/>
             </div>
             <div class="form-field">
               <label>Suburb</label>
-              <input type="text"disabled :value="userInfo.suburb"/>
+              <input type="text"disabled :value="user.address.suburb"/>
             </div>
             <div class="form-field">
               <label>Postcode</label>
-              <input type="number"disabled :value="userInfo.postcode"/>
+              <input type="number"disabled :value="user.address.postcode"/>
             </div>
             <div class="form-field">
               <label>State</label>
               <select disabled>
-                <option>{{ userInfo.state }}</option>
-                <!--<option>Queensland</option>
-                <option>Victoria</option>
-                <option>South Australia</option>
-                <option>Australian Capital Territory</option>
-                <option>Western Australia</option>
-                <option>Northern Territory</option>-->
+                <option>{{ user.address.state }}</option>
               </select>
             </div>
           </div>
@@ -111,6 +105,7 @@
 
 import BasketComponent from "./BasketComponent.vue";
 import { dataMixin } from '../mixins/dataMixin';
+import axios from "axios";
 export default {
   name: 'CheckoutComponent',
   mixins:[dataMixin],
@@ -127,7 +122,17 @@ export default {
         expiryDate: null,
         cvc: ''
       }
+      ,user:[]
     }
+  },
+  created() {
+    axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
+        .then (response => {
+          this.user = response.data.data
+        })
+        .catch (err =>{
+          this.errors.push(err)
+        })
   },
   methods: {
     isPaymentValid: function(){

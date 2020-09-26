@@ -5,8 +5,8 @@
 
     <form v-on:submit.stop.prevent="checkLogin()" class="login-form">
       <div class="form-group">
-        <label>Username (Email)</label>
-        <input id="usernameInput" type="text" v-model:value="username"/>
+        <label>Email</label>
+        <input id="usernameInput" type="email" v-model:value="email"/>
       </div>
       <div class="form-group">
         <label>Password</label>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      username: "",
+      email: "",
       password: "",
       errors: []
     }
@@ -42,33 +42,34 @@ export default {
   methods:{
     checkLogin: function(){
       this.errors = [];
-      if (!this.username || !this.password){
-        if (!this.username){
-          this.errors.push("Please enter a username");
+      if (!this.email || !this.password){
+        if (!this.email){
+          this.errors.push("Please enter an email");
         }
         if (!this.password){
           this.errors.push("Please enter a password");
         }
       } else {
-        if (this.username==='admin' && this.password==='admin'){
-          //change logged in userID and go to dashboard
-          this.$store.commit('changeUser',0);
-          this.$router.push('adminstatistics');
-        } else if (this.username==='adam' && this.password==='adam'){
-          //change logged in userID and go to landing
-          this.$store.commit('changeUser',1);
-          this.$router.push('listing');
-        } else if (this.username==='ben' && this.password==='ben'){
-          //change logged in userID and go to landing
-          this.$store.commit('changeUser',2);
-          this.$router.push('listing');
-        }  else if (this.username==='charlie' && this.password==='charlie'){
-          //change logged in userID and go to landing
-          this.$store.commit('changeUser',3);
-          this.$router.push('listing');
-        } else {
-          this.errors.push("Oops! Looks like you don't have an account with us.")
-        }
+        axios({
+          method: 'post',
+          url: 'http://localhost:9000/users/login',
+          headers: {},
+          data: {
+            email: this.email,
+            password: this.password
+          }
+        })
+            .then (response => {
+              //this.$store.state.loggedIn.userID = response.data.userID;
+              //this.$store.state.loggedIn.token = response.data.token;
+              const userID = response.data.userID;
+              const token = response.data.token;
+              this.$store.commit('changeUser',{userID, token})
+              this.$router.push('listing');
+            })
+            .catch (err =>{
+              this.errors.push("Oops, doesn't seem like you're in our systems!")
+            })
       }
 
     }
