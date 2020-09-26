@@ -43,7 +43,7 @@
 <script>
 
 import NotificationsComponent from "./components/NotificationsComponent.vue";
-
+import axios from 'axios';
 
 export default {
   components: {
@@ -51,8 +51,18 @@ export default {
   },
   data() {
     return {
-      showNotifications:false
+      showNotifications:false,
+      notifications: []
     }
+  },
+  beforeCreate() {
+    axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
+        .then (response => {
+          this.notifications = response.data.data
+        })
+        .catch (err =>{
+          this.errors.push(err)
+        })
   },
   computed: {
     userInfo: function () {
@@ -60,9 +70,6 @@ export default {
     },
     isLoggedIn: function () {
       return this.userInfo.userId !== null;
-    },
-    notifications: function(){
-      return this.userInfo.notifications;
     },
     logoUrl: function(){
       if (this.userInfo.userType==='admin'){
@@ -93,7 +100,9 @@ export default {
     },
     toggleNotifications(){
       this.showNotifications = !this.showNotifications;
-      this.$store.commit('readAllNotifications');
+      //set all user notifications to false
+      axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.userID)
+
     }
   }
 }
