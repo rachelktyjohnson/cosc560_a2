@@ -63,8 +63,6 @@ export default {
   methods: {
     triggerAddToCart: function(restaurantID,itemID){
       if (this.isLoggedIn){
-        console.log(restaurantID);
-        console.log(itemID);
         this.$store.commit('addToCart',{restaurantID,itemID});
       }
     }

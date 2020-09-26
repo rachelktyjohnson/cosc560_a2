@@ -2,16 +2,18 @@
   <div class="basket">
     <div v-if="isLoggedIn">
       <h4>Basket</h4>
-      <div v-for="(restaurant,restaurantKey) in $store.state.cart">
+      <div v-for="(itemIDs,restaurantID) in $store.state.cart">
+        {{restaurantID}}
+        {{itemIDs}}
         <div class="cart-contents">
-          <h5>{{ $store.state.restaurants[restaurantKey].restaurantName }}</h5>
-          <div v-for="(item, itemKey) in restaurant" class="cart-item-listing">
+          <h5>{{restaurantID}}</h5>
+          <div v-for="itemID in itemIDs" class="cart-item-listing">
             <div class="item-contents">
-              <h6>{{$store.state.restaurants[restaurantKey].menu[item].menuItemName}}</h6>
-              <p><a v-if="!ifCheckoutPage" v-on:click="triggerRemoveCart(restaurantKey,itemKey)">Remove</a></p>
+              <h6>{{ itemID }}</h6>
+              <p><a v-if="!ifCheckoutPage" v-on:click="triggerRemoveCart(restaurantID,itemID)">Remove</a></p>
             </div>
             <div class="item-price">
-              <p>${{$store.state.restaurants[restaurantKey].menu[item].menuItemPrice.toFixed(2)}}</p>
+              <p>$</p>
             </div>
           </div>
         </div>
@@ -19,15 +21,15 @@
       <div v-if="!cartIsEmpty()" class="totals">
         <div class="subtotal">
           <h6>Subtotal</h6>
-          <h6>${{$store.getters.cartSubtotal.toFixed(2)}}</h6>
+          <h6>$</h6>
         </div>
         <div class="delivery">
           <h6>Delivery</h6>
-          <h6>${{$store.getters.cartDelivery.toFixed(2)}}</h6>
+          <h6>$</h6>
         </div>
         <div class="total">
           <h5>Total</h5>
-          <h5>${{$store.getters.cartTotal.toFixed(2)}}</h5>
+          <h5>$</h5>
         </div>
       </div>
 
@@ -59,8 +61,8 @@ export default {
     }
   },
   methods: {
-    triggerRemoveCart: function(restaurantID, menuItemID){
-      this.$store.commit('removeFromCart',{restaurantID,menuItemID});
+    triggerRemoveCart: function(restaurantID, itemID){
+      this.$store.commit('removeFromCart',{restaurantID,itemID});
     },
     cartIsEmpty: function () {
       for(let key in this.$store.state.cart) {

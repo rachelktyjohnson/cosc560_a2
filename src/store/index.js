@@ -202,13 +202,15 @@ export default new Vuex.Store({
         }
     },
     mutations: {
-        removeFromCart(state,{restaurantID,menuItemID}) {
+        removeFromCart(state,{restaurantID,itemID}) {
             //removes specific item from the cart
             //finds the restaurant property first
             //then removes the item from that property's array
 
             //splice it out
-            state.cart[restaurantID].splice(menuItemID,1);
+            const index = state.cart[restaurantID].indexOf(itemID);
+
+            state.cart[restaurantID].splice(index,1);
 
             if(state.cart[restaurantID].length===0){
                 Vue.delete(state.cart,restaurantID)
@@ -220,7 +222,6 @@ export default new Vuex.Store({
                 Vue.set(state.cart,restaurantID,[]);
             }
             //adds menu item to the correct restaurant property in the cart
-            console.log(state.cart);
             state.cart[restaurantID].push(itemID);
         },
         changeSuburb(state,newSuburb){
