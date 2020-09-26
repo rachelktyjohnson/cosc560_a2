@@ -11,7 +11,7 @@ export default new Vuex.Store({
 
         },
         loggedIn: {
-          userID: null,
+          user: null,
           token: null
         },
         users: [
@@ -215,8 +215,8 @@ export default new Vuex.Store({
             //changes suburb?
             state.suburb = newSuburb;
         },
-        changeUser(state,{userID, token}){
-            state.loggedIn.userID = userID;
+        changeUser(state,{user, token}){
+            state.loggedIn.user = user;
             state.loggedIn.token = token;
             state.cart = {};
         },

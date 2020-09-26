@@ -62,10 +62,15 @@ export default {
             .then (response => {
               //this.$store.state.loggedIn.userID = response.data.userID;
               //this.$store.state.loggedIn.token = response.data.token;
-              const userID = response.data.userID;
+              const user = response.data.user;
               const token = response.data.token;
-              this.$store.commit('changeUser',{userID, token})
-              this.$router.push('listing');
+              this.$store.commit('changeUser',{user, token})
+              if (user.admin){
+                this.$router.push('adminorders');
+              } else {
+                this.$router.push('listing');
+              }
+
             })
             .catch (err =>{
               this.errors.push("Oops, doesn't seem like you're in our systems!")

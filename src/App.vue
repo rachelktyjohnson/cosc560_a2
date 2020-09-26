@@ -7,15 +7,15 @@
           <router-link :to="logoUrl"><img class="logo logo-bug" src="img/logo-bug.svg" alt="DropBearEats Bug Logo">
           </router-link>
           <router-link :to="logoUrl" >
-            <img v-if="!user.admin"  class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
-            <img v-if="user.admin"  class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
+            <img v-if="!isAdmin"  class="logo logo-text" src="img/logo-text.svg" alt="DropBearEats Text Logo">
+            <img v-if="isAdmin"  class="logo logo-text" src="img/logo-admin-text.svg" alt="DropBearEats Admin Logo">
           </router-link>
         </a>
       </div>
       <div class="header-right">
         <nav>
           <router-link v-if="!isLoggedIn" to="/login">Log in</router-link>
-          <svg v-if="isLoggedIn" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+          <svg v-if="isLoggedIn && !isAdmin" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <g id="Layer_2">
               <circle class="cls-1" cx="49.75" cy="50" r="48"/>
               <path class="cls-2"
@@ -23,9 +23,9 @@
               <path class="cls-2" d="M43.36,76.45H56.11a6,6,0,0,1-5.55,6.32C46.54,83.09,43.78,80.76,43.36,76.45Z"/>
             </g>
           </svg>
-          <router-link v-if="!user.admin && isLoggedIn" to="/account">My Account</router-link>
-          <router-link v-if="user.admin" to="/adminorders">Orders</router-link>
-          <router-link v-if="user.admin" to="/adminstatistics">Stats</router-link>
+          <router-link v-if="!isAdmin && isLoggedIn" to="/account">My Account</router-link>
+          <router-link v-if="isAdmin" to="/adminorders">Orders</router-link>
+          <router-link v-if="isAdmin" to="/adminstatistics">Stats</router-link>
           <a v-if="isLoggedIn" v-on:click="logOut()">Log out</a>
         </nav>
 
@@ -59,9 +59,9 @@ export default {
     }
   },
   beforeCreate() {
-    if (this.$store.state.loggedIn.userID!==null){
+    if (this.$store.state.loggedIn.user!==null){
       console.log(this.$store.state.loggedIn.userID);
-      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
+      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.user_.id)
           .then (response => {
             this.notifications = response.data.data
           })
@@ -69,7 +69,7 @@ export default {
             this.errors.push(err)
           })
 
-      axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
+      axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.user._id)
           .then (response => {
             this.user = response.data.data
           })
@@ -83,9 +83,16 @@ export default {
     isLoggedIn: function () {
       return this.$store.state.loggedIn.user !== null;
     },
+    isAdmin: function(){
+      if (this.$store.state.loggedIn.user !== null && this.$store.state.loggedIn.user.admin){
+        return true;
+      } else {
+        return false;
+      }
+    },
     logoUrl: function(){
-      if (this.user.admin){
-        return 'adminorders'
+      if (this.isAdmin){
+        return '/adminorders'
       } else {
         return '/'
       }
@@ -97,9 +104,9 @@ export default {
       this.componentKey += 1;
     },
     logOut: function () {
-      const userID = null;
+      const user = null;
       const token = null;
-      this.$store.commit('changeUser', {userID,token});
+      this.$store.commit('changeUser', {user,token});
       this.$router.push('login');
     },
     hasNewNotifications: function(){
@@ -120,7 +127,7 @@ export default {
       this.showNotifications = !this.showNotifications;
       //set all user notifications to false
       if (this.$store.state.loggedIn.user !== null){
-        axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.user);
+        axios.patch('http://localhost:9000/notifications/read/'+this.$store.state.loggedIn.user._id);
         this.forceRender();
       }
 

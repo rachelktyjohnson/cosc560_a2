@@ -1,7 +1,7 @@
 export const dataMixin = {
     computed: {
     isLoggedIn() {
-        return this.$store.state.loggedIn.userId !== null;
+        return this.$store.state.loggedIn.user !== null;
     }
 }
 }

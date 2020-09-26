@@ -4,7 +4,7 @@
     <h1>{{order.status}}</h1>
     <div class="order">
       <h4>Your Order</h4>
-      <p>{{order.datetime}}</p>
+      <p>{{formatDateTime(order.datetime)}}</p>
       <div v-for="(itemIDs,restaurantID) in order.cart" class="order-contents">
         <h6>{{getRestaurant(restaurantID).name}}</h6>
         <div v-for="itemID in itemIDs" class="row">
@@ -29,15 +29,15 @@
       <h4>Your Details</h4>
       <div class="order-details">
         <div class="customer-details">
-          <p>{{user.firstName}} {{user.lastName}}</p>
-          <p>{{user.email}}</p>
-          <p>{{user.phoneNumber}}</p>
+          <p>{{this.$store.state.loggedIn.user.firstName}} {{this.$store.state.loggedIn.user.lastName}}</p>
+          <p>{{this.$store.state.loggedIn.user.email}}</p>
+          <p>{{this.$store.state.loggedIn.user.phoneNumber}}</p>
         </div>
         <div class="delivery-details">
-          <p>{{user.address.add1}}</p>
-          <p>{{user.address.add2}}</p>
-          <p>{{user.address.suburb}}</p>
-          <p>{{user.address.state}} {{user.address.postcode}}</p>
+          <p>{{this.$store.state.loggedIn.user.address.add1}}</p>
+          <p>{{this.$store.state.loggedIn.user.address.add2}}</p>
+          <p>{{this.$store.state.loggedIn.user.address.suburb}}</p>
+          <p>{{this.$store.state.loggedIn.user.address.state}} {{this.$store.state.loggedIn.user.address.postcode}}</p>
         </div>
       </div>
     </div>
@@ -79,13 +79,6 @@ export default {
     axios.get('http://localhost:9000/items')
         .then (response => {
           this.items = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
-    axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
-        .then (response => {
-          this.user = response.data.data
         })
         .catch (err =>{
           this.errors.push(err)

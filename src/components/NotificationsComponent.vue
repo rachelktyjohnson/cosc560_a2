@@ -24,8 +24,8 @@ export default {
 
   },
   created() {
-    if (this.$store.state.loggedIn.userID!==null){
-      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.userID)
+    if (this.$store.state.loggedIn.user!==null){
+      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.user._id)
           .then (response => {
             this.notifications = response.data.data
           })

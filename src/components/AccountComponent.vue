@@ -17,17 +17,17 @@
         <div class="details" v-if="!inEditMode">
           <h4>My Details</h4>
           <div class="customer-details">
-            <p>{{user.firstName}} {{user.lastName}}</p>
-            <p>{{user.phoneNumber}}</p>
-            <p>{{user.email}}</p>
+            <p>{{$store.state.loggedIn.user.firstName}} {{$store.state.loggedIn.user.lastName}}</p>
+            <p>{{$store.state.loggedIn.user.phoneNumber}}</p>
+            <p>{{$store.state.loggedIn.user.email}}</p>
           </div>
 
           <h4>My Delivery Details</h4>
           <div class="delivery-details">
-            <p>{{user.address.add1}}</p>
-            <p>{{user.address.add2}}</p>
-            <p>{{user.address.suburb}}</p>
-            <p>{{user.address.state}} {{user.address.postcode}}</p>
+            <p>{{$store.state.loggedIn.user.address.add1}}</p>
+            <p>{{$store.state.loggedIn.user.address.add2}}</p>
+            <p>{{$store.state.loggedIn.user.address.suburb}}</p>
+            <p>{{$store.state.loggedIn.user.address.state}} {{$store.state.loggedIn.user.address.postcode}}</p>
           </div>
         </div>
         <form v-else>
@@ -35,19 +35,19 @@
           <div class="customer-details">
             <div class="form-group">
               <label>First Name</label>
-              <input type="text" v-model:value="user.firstName"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.firstName"/>
             </div>
             <div class="form-group">
               <label>Last Name</label>
-              <input type="text" v-model:value="user.lastName"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.lastName"/>
             </div>
             <div class="form-group">
               <label>Phone Number</label>
-              <input type="tel" v-model:value="user.phoneNumber"/>
+              <input type="tel" v-model:value="$store.state.loggedIn.user.phoneNumber"/>
             </div>
             <div class="form-group">
               <label>Email</label>
-              <input type="email" v-model:value="user.email"/>
+              <input type="email" v-model:value="$store.state.loggedIn.user.email"/>
             </div>
           </div>
           <br>
@@ -55,23 +55,23 @@
           <div class="delivery-details-edit">
             <div class="form-group">
               <label>Address Line 1</label>
-              <input type="text" v-model:value="user.address.add1"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.address.add1"/>
             </div>
             <div class="form-group">
               <label>Address Line 2</label>
-              <input type="text" v-model:value="user.address.add2"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.address.add2"/>
             </div>
             <div class="form-group">
               <label>Suburb</label>
-              <input type="text" v-model:value="user.address.suburb"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.address.suburb"/>
             </div>
             <div class="form-group">
               <label>State</label>
-              <input type="text" v-model:value="user.address.state"/>
+              <input type="text" v-model:value="$store.state.loggedIn.user.address.state"/>
             </div>
             <div class="form-group">
               <label>Postcode</label>
-              <input type="number" v-model:value="user.address.postcode"/>
+              <input type="number" v-model:value="$store.state.loggedIn.user.address.postcode"/>
             </div>
           </div>
           <input v-on:click.stop.prevent="editUser" type="submit" class="submit" value="Save">
@@ -93,19 +93,11 @@ export default {
   data() {
     return {
       inEditMode: false,
-      user: [],
       orders: []
     }
   },
   beforeCreate () {
-    axios.get('http://localhost:9000/users/'+this.$store.state.loggedIn.userID)
-        .then (response => {
-          this.user = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
-    axios.get('http://localhost:9000/orders/byuser/'+this.$store.state.loggedIn.userID)
+    axios.get('http://localhost:9000/orders/byuser/'+this.$store.state.loggedIn.user._id)
         .then (response => {
           this.orders = response.data.data
         })
@@ -119,19 +111,19 @@ export default {
     },
     editUser: function(){
       //patch the user with new fields
-      axios.patch('http://localhost:9000/users/'+ this.user._id,
+      axios.patch('http://localhost:9000/users/'+ this.$store.state.loggedIn.user._id,
           {
-            email: this.user.email,
-            password: this.user.password,
-            firstName: this.user.firstName,
-            lastName: this.user.lastName,
-            phoneNumber: this.user.phoneNumber,
+            email: this.$store.state.loggedIn.user.email,
+            password: this.$store.state.loggedIn.user.password,
+            firstName: this.$store.state.loggedIn.user.firstName,
+            lastName: this.$store.state.loggedIn.user.lastName,
+            phoneNumber: this.$store.state.loggedIn.user.phoneNumber,
             address: {
-              add1: this.user.address.add1,
-              add2: this.user.address.add2,
-              suburb: this.user.address.suburb,
-              state: this.user.address.state,
-              postcode: this.user.address.postcode
+              add1: this.$store.state.loggedIn.user.address.add1,
+              add2: this.$store.state.loggedIn.user.address.add2,
+              suburb: this.$store.state.loggedIn.user.address.suburb,
+              state: this.$store.state.loggedIn.user.address.state,
+              postcode: this.$store.state.loggedIn.user.address.postcode
             },
             admin: false
           })
