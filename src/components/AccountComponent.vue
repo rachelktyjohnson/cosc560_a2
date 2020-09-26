@@ -105,7 +105,7 @@ export default {
         .catch (err =>{
           this.errors.push(err)
         })
-    axios.get('http://localhost:9000/orders/'+this.$store.state.loggedIn.userID)
+    axios.get('http://localhost:9000/orders/byuser/'+this.$store.state.loggedIn.userID)
         .then (response => {
           this.orders = response.data.data
         })
