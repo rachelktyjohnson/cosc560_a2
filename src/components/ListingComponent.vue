@@ -5,13 +5,13 @@
     <div class="pure-g">
       <div class="pure-u-3-4">
         <div class="restaurants">
-          <a v-for="restaurant in $store.state.restaurants">
-            <section v-on:click="goToRestaurant(restaurant.restaurantId)" class="restaurant">
-              <img :src="restaurant.imgSrc" :alt="restaurant.restaurantName"/>
+          <a v-for="restaurant in restaurants.data">
+            <section v-on:click="goToRestaurant(restaurant._id)" class="restaurant">
+              <img :src="restaurant.imgSrc" :alt="restaurant.name"/>
               <div class="content">
-                <h4>{{ restaurant.restaurantName }}</h4>
-                <p>{{ restaurant.restaurantTagline }}</p>
-                <p>{{ restaurant.restaurantRating }} &#9733; ({{ restaurant.numberOfRatings }})</p>
+                <h4>{{ restaurant.name }}</h4>
+                <p>{{ restaurant.description }}</p>
+                <p>{{ restaurant.stars }} &#9733; ({{ restaurant.ratings }})</p>
               </div>
             </section>
           </a>
@@ -25,15 +25,28 @@
 </template>
 
 <script>
-
+import axios from 'axios';
 import BasketComponent from "./BasketComponent.vue";
+
 export default {
   name: 'StoresListingComponent',
   components: {
     BasketComponent
   },
   data() {
-    return {}
+    return {
+      restaurants: [],
+      errors: []
+    }
+  },
+  created () {
+    axios.get('http://localhost:9000/restaurants')
+    .then (response => {
+      this.restaurants = response.data
+    })
+    .catch (err =>{
+      this.errors.push(e)
+    })
   },
   methods: {
     goToRestaurant: function(restaurantId){
