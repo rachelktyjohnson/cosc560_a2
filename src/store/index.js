@@ -7,133 +7,11 @@ export default new Vuex.Store({
     state: {
         suburb: null,
         cart: {},
-        editSpace: {
-
-        },
+        editSpace: {},
         loggedIn: {
           user: null,
           token: null
         },
-        users: [
-            {
-                userId: 0,
-                userType: 'admin',
-                firstName: "Rachel",
-                lastName: "McJohnson",
-                email: "rachel@,mcjohnson.com",
-                phone: "0411 111 111",
-                address1: "27",
-                address2: "Turtledove Lane",
-                suburb: "Marlen Park",
-                postcode: "2765",
-                state: "NSW",
-                notifications: []
-            },
-            {
-                userId:'5f6d8dd4db487a0f886e8206',
-                userType: 'user',
-                firstName: "Adam",
-                lastName: "Driver",
-                email: "adam@driver.com",
-                phone: "0422 222 222",
-                address1: "Suite 208",
-                address2: "31 Campbell Street",
-                suburb: "Riverwood",
-                postcode: "2147",
-                state: "NSW",
-                notifications: [
-                    {
-                        read: true,
-                        contents: "Your Order #15061 has been Delivered!",
-                        datetime: new Date(2020,7,10,20,27,21)
-                    },
-                    {
-                        read: true,
-                        contents: "Your Order #15061 has been Received!",
-                        datetime: new Date(2020,7,10,20,5,23)
-                    },
-                    {
-                        read: true,
-                        contents: "Your Order #15061 has been Processed!",
-                        datetime: new Date(2020,7,10,20,0,1)
-                    },
-                    {
-                        read: true,
-                        contents: "Welcome to DropBearEats!",
-                        datetime: new Date(2020,6,15,16,53,33)
-                    }
-
-                ],
-            },
-            {
-                userId:2,
-                userType: 'user',
-                firstName: "Ben",
-                lastName: "Jamming",
-                email: "ben@jamming.com",
-                phone: "0422 222 222",
-                address1: "Suite 208",
-                address2: "31 Campbell Street",
-                suburb: "Riverwood",
-                postcode: "2147",
-                state: "NSW",
-                notifications: []
-            },
-            {
-                userId:3,
-                userType:'user',
-                firstName: 'Charlie',
-                lastName: 'Bucket',
-                email: 'charlie@bucket.com',
-                phone: '0433 333 333',
-                address1: 'Suite 209',
-                address2: '32 Campbell Street',
-                suburb: 'Riverwood',
-                postcode: '2148',
-                state: 'NSW',
-                notifications: []
-            }
-        ],
-        orders: [
-            {
-                orderId: 15060,
-                userId: 2,
-                status: "Delivered",
-                datetime: new Date(2020,7,10,19,32,11),
-                orderContents: {
-                    0: [0]
-                }
-            },
-            {
-                orderId: "5f6dd81edabd61436001d316",
-                userId: "5f6d8dd4db487a0f886e8206",
-                status: "Delivered",
-                datetime: new Date(2020,7,10,19,34,56),
-                orderContents: {
-                    4: [0,3]
-                }
-            },
-            {
-                orderId: 15062,
-                userId: 2,
-                status: "Cancelled",
-                datetime: new Date(2020,7,11,17,56,23),
-                orderContents: {
-                    0: [0,0,0,0,0,0,0,0,1]
-                }
-            }
-            ,
-            {
-                orderId: 15063,
-                userId: 3,
-                status: "Delivered",
-                datetime: new Date(2020,7,11,18,4,44),
-                orderContents: {
-                    2: [0,0,1],
-                    3: [3,2]
-                }
-            }
-        ]
     },
     getters: {
         cartSubtotal: function(state){
@@ -238,13 +116,12 @@ export default new Vuex.Store({
         resetCart(state){
             state.cart = {};
         },
-        prepareForEditing(state,orderInfo){
+        prepareForEditing(state,order){
             //when admin edits an order, place a CLONE in temp area
             //this is so an admin can cancel an edit and not have data persist
-            let objForEdit = JSON.parse(JSON.stringify(orderInfo))
-            console.log(objForEdit);
-            objForEdit.datetime = new Date(objForEdit.datetime);
-            state.editSpace = objForEdit;
+            let objForEdit = JSON.parse(JSON.stringify(order))
+            order.datetime = new Date(order.datetime);
+            state.editSpace = order;
             console.log(objForEdit);
         },
         saveEdits(state,orderInfo){

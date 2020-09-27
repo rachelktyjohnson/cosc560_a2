@@ -89,7 +89,6 @@ export default {
     axios.get('http://localhost:9000/orders/'+this.$route.query.id)
     .then( response => {
       this.order = response.data.data;
-      console.log(response.data.data);
       axios.get('http://localhost:9000/restaurants')
           .then (response => {
             this.restaurants = response.data.data
@@ -99,7 +98,6 @@ export default {
                   axios.get('http://localhost:9000/items')
                   .then (response => {
                     this.items = response.data.data;
-                    console.log(this.items)
                     this.loading = false;
                   })
 
@@ -113,7 +111,7 @@ export default {
   },
   methods: {
     goToEdit:function(){
-      this.$store.commit('prepareForEditing',this.orderInfo);
+      this.$store.commit('prepareForEditing',this.order);
       this.$router.push('adminorderedit');
     },
     getRestaurant(restaurantID){

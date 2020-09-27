@@ -92,6 +92,8 @@ export default {
     goToOrder: function(orderID){
       this.$router.push({ path: 'adminorder', query: { id:orderID } });
     },
-  }
+
+  },
+
 }
 </script>

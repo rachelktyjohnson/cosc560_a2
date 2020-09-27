@@ -202,7 +202,8 @@ export default {
           //start 5 second timer
           setTimeout(()=>{
             axios.patch('http://localhost:9000/orders/'+newOrderID,{
-              status: "received"
+              status: "received",
+              cart:cart
             })
             axios.post('http://localhost:9000/notifications',{
               userID: this.$store.state.loggedIn.user._id,
