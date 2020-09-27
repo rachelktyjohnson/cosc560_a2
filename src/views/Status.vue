@@ -84,14 +84,6 @@ export default {
           this.errors.push(err)
         })
   },
-  mounted() {
-    this.orderId = this.$route.query.id;
-    const api = `http://localhost:9000/orders/${this.$route.query.id}`;
-    axios.get(api)
-        .then(response => {
-          this.order = response.data.data;
-        })
-  },
   computed: {
     subtotal(){
       let subtotal = 0;
