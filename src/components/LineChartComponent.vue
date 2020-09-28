@@ -65,7 +65,6 @@ export default {
               .attr("text-anchor", "start")
               .attr("font-weight", "bold")
               .text(this.data.y));
-      console.log(y_axis);
 
 
       // ex3.3 Step 7
@@ -75,7 +74,6 @@ export default {
       let x_axis = svg_group.append("g")
           .attr('class', 'x axis');
 
-      console.log(x_axis);
 
       // ex3.3 Step 8: line generator
       let line = d3.line()

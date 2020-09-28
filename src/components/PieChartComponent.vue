@@ -22,9 +22,9 @@ export default{
         "KM": 519.03,
         "GK": 796.23,
         "WND": 585.94,
-        interval: null
       },
-      date: new Date(2019,0,1)
+      date: new Date(2019,0,1),
+      interval: null
     }
   },
   mounted: function(){
