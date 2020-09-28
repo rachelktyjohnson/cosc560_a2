@@ -1,47 +1,50 @@
 <template>
   <div class="basket">
-    <div v-if="isLoggedIn">
-      <h4>Basket</h4>
-      <div v-for="(itemIDs,restaurantID) in $store.state.cart">
-        <div class="cart-contents">
-          <h5>{{getRestaurant(restaurantID).name}}</h5>
-          <div v-for="itemID in itemIDs" class="cart-item-listing">
-            <div class="item-contents">
-              <h6>{{ getItem(itemID).name }}</h6>
-              <p><a v-if="!ifCheckoutPage" v-on:click="triggerRemoveCart(restaurantID,itemID)">Remove</a></p>
-            </div>
-            <div class="item-price">
-              <p>${{getItem(itemID).price.toFixed(2)}}</p>
+    <h3 v-if="loading">Loading...</h3>
+    <div v-if="!loading">
+      <div v-if="isLoggedIn">
+        <h4>Basket</h4>
+        <div v-for="(itemIDs,restaurantID) in $store.state.cart">
+          <div class="cart-contents">
+            <h5>{{getRestaurant(restaurantID).name}}</h5>
+            <div v-for="itemID in itemIDs" class="cart-item-listing">
+              <div class="item-contents">
+                <h6>{{ getItem(itemID).name }}</h6>
+                <p><a v-if="!ifCheckoutPage" v-on:click="triggerRemoveCart(restaurantID,itemID)">Remove</a></p>
+              </div>
+              <div class="item-price">
+                <p>${{getItem(itemID).price.toFixed(2)}}</p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <div v-if="!cartIsEmpty()" class="totals">
-        <div class="subtotal">
-          <h6>Subtotal</h6>
-          <h6>${{subtotal.toFixed(2)}}</h6>
+        <div v-if="!cartIsEmpty()" class="totals">
+          <div class="subtotal">
+            <h6>Subtotal</h6>
+            <h6>${{subtotal.toFixed(2)}}</h6>
+          </div>
+          <div class="delivery">
+            <h6>Delivery</h6>
+            <h6>${{delivery.toFixed(2)}}</h6>
+          </div>
+          <div class="total">
+            <h5>Total</h5>
+            <h5>${{total.toFixed(2)}}</h5>
+          </div>
         </div>
-        <div class="delivery">
-          <h6>Delivery</h6>
-          <h6>${{delivery.toFixed(2)}}</h6>
-        </div>
-        <div class="total">
-          <h5>Total</h5>
-          <h5>${{total.toFixed(2)}}</h5>
-        </div>
-      </div>
 
-      <p class="basketIsEmpty" v-if="cartIsEmpty()">
-        I hear your stomach rumbling... get adding!
-      </p>
-      <a>
-        <router-link to="/checkout">
-          <div v-if="!cartIsEmpty() && !ifCheckoutPage" class="checkout-button">Checkout</div>
-        </router-link>
-      </a>
-    </div>
-    <div v-else>
-      <router-link to="/login"><h5>Hungry? Log in to start dropping that feeling!</h5></router-link>
+        <p class="basketIsEmpty" v-if="cartIsEmpty()">
+          I hear your stomach rumbling... get adding!
+        </p>
+        <a>
+          <router-link to="/checkout">
+            <div v-if="!cartIsEmpty() && !ifCheckoutPage" class="checkout-button">Checkout</div>
+          </router-link>
+        </a>
+      </div>
+      <div v-else>
+        <router-link to="/login"><h5>Hungry? Log in to start dropping that feeling!</h5></router-link>
+      </div>
     </div>
   </div>
 </template>
@@ -56,7 +59,8 @@ export default {
     return {
       restaurants:[],
       items:[],
-      errors:[]
+      errors:[],
+      loading: true
     }
   },
   computed: {
@@ -86,17 +90,19 @@ export default {
     axios.get('http://localhost:9000/restaurants')
         .then (response => {
           this.restaurants = response.data.data
+          axios.get('http://localhost:9000/items')
+              .then (response => {
+                this.items = response.data.data
+                this.loading= false
+              })
+              .catch (err =>{
+                this.errors.push(err)
+              })
         })
         .catch (err =>{
           this.errors.push(err)
         })
-    axios.get('http://localhost:9000/items')
-        .then (response => {
-          this.items = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
+
   },
   methods: {
     triggerRemoveCart: function(restaurantID, itemID){

@@ -1,43 +1,46 @@
 <template>
   <main class="main-status">
-    <h2>Order #{{order._id}}</h2>
-    <h1>{{order.status}}</h1>
-    <div class="order">
-      <h4>Your Order</h4>
-      <p>{{formatDateTime(order.datetime)}}</p>
-      <div v-for="(itemIDs,restaurantID) in order.cart" class="order-contents">
-        <h6>{{getRestaurant(restaurantID).name}}</h6>
-        <div v-for="itemID in itemIDs" class="row">
-          <p>{{getItem(itemID).name}}</p>
-          <p>${{ getItem(itemID).price.toFixed(2) }}</p>
+    <h3 v-if="loading">Loading...</h3>
+    <div v-if="!loading">
+      <h2>Order #{{order._id}}</h2>
+      <h1>{{order.status}}</h1>
+      <div class="order">
+        <h4>Your Order</h4>
+        <p>{{formatDateTime(order.datetime)}}</p>
+        <div v-for="(itemIDs,restaurantID) in order.cart" class="order-contents">
+          <h6>{{getRestaurant(restaurantID).name}}</h6>
+          <div v-for="itemID in itemIDs" class="row">
+            <p>{{getItem(itemID).name}}</p>
+            <p>${{ getItem(itemID).price.toFixed(2) }}</p>
+          </div>
         </div>
-      </div>
-      <div class="totals">
-        <div class="row">
-          <p>Subtotal</p>
-          <p>${{subtotal.toFixed(2)}}</p>
+        <div class="totals">
+          <div class="row">
+            <p>Subtotal</p>
+            <p>${{subtotal.toFixed(2)}}</p>
+          </div>
+          <div class="row">
+            <p>Delivery</p>
+            <p>${{delivery.toFixed(2)}}</p>
+          </div>
+          <div class="row">
+            <p>Total</p>
+            <p>${{total.toFixed(2)}}</p>
+          </div>
         </div>
-        <div class="row">
-          <p>Delivery</p>
-          <p>${{delivery.toFixed(2)}}</p>
-        </div>
-        <div class="row">
-          <p>Total</p>
-          <p>${{total.toFixed(2)}}</p>
-        </div>
-      </div>
-      <h4>Your Details</h4>
-      <div class="order-details">
-        <div class="customer-details">
-          <p>{{this.$store.state.loggedIn.user.firstName}} {{this.$store.state.loggedIn.user.lastName}}</p>
-          <p>{{this.$store.state.loggedIn.user.email}}</p>
-          <p>{{this.$store.state.loggedIn.user.phoneNumber}}</p>
-        </div>
-        <div class="delivery-details">
-          <p>{{this.$store.state.loggedIn.user.address.add1}}</p>
-          <p>{{this.$store.state.loggedIn.user.address.add2}}</p>
-          <p>{{this.$store.state.loggedIn.user.address.suburb}}</p>
-          <p>{{this.$store.state.loggedIn.user.address.state}} {{this.$store.state.loggedIn.user.address.postcode}}</p>
+        <h4>Your Details</h4>
+        <div class="order-details">
+          <div class="customer-details">
+            <p>{{this.$store.state.loggedIn.user.firstName}} {{this.$store.state.loggedIn.user.lastName}}</p>
+            <p>{{this.$store.state.loggedIn.user.email}}</p>
+            <p>{{this.$store.state.loggedIn.user.phoneNumber}}</p>
+          </div>
+          <div class="delivery-details">
+            <p>{{this.$store.state.loggedIn.user.address.add1}}</p>
+            <p>{{this.$store.state.loggedIn.user.address.add2}}</p>
+            <p>{{this.$store.state.loggedIn.user.address.suburb}}</p>
+            <p>{{this.$store.state.loggedIn.user.address.state}} {{this.$store.state.loggedIn.user.address.postcode}}</p>
+          </div>
         </div>
       </div>
     </div>
@@ -59,7 +62,8 @@ export default {
       order: [],
       restaurants: [],
       items: [],
-      user: []
+      user: [],
+      loading: true
     }
   },
   beforeCreate() {
@@ -68,21 +72,24 @@ export default {
     axios.get(api)
         .then(response => {
           this.order = response.data.data;
+          axios.get('http://localhost:9000/restaurants')
+              .then (response => {
+                this.restaurants = response.data.data
+                axios.get('http://localhost:9000/items')
+                    .then (response => {
+                      this.items = response.data.data
+                      this.loading = false
+                    })
+                    .catch (err =>{
+                      this.errors.push(err)
+                    })
+              })
+              .catch (err =>{
+                this.errors.push(err)
+              })
         })
-    axios.get('http://localhost:9000/restaurants')
-        .then (response => {
-          this.restaurants = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
-    axios.get('http://localhost:9000/items')
-        .then (response => {
-          this.items = response.data.data
-        })
-        .catch (err =>{
-          this.errors.push(err)
-        })
+
+
   },
   computed: {
     subtotal(){

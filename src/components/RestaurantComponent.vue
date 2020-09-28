@@ -1,33 +1,36 @@
 <template>
 <main class="main-single">
-  <h6 class="breadcrumbs"><router-link to="listing">< Back to Restaurants</router-link></h6>
-<h2>{{restaurant.name}}</h2>
-<p>{{ restaurant.description }}</p>
-<div class="restaurant-content pure-g">
-  <div class="pure-u-3-4">
-    <div class="menu-section">
-      <h4>Popular</h4>
-      <div class="menu">
-        <a v-for="menuItem in restaurant.menu"
-           v-on:click="triggerAddToCart(restaurant._id,menuItem._id)"
-           href="#">
-          <div class="menu-item">
-            <div class="item-content">
-              <h5>{{ menuItem.name }}</h5>
-              <p>{{ menuItem.description }}</p>
-              <p><strong>${{ menuItem.price.toFixed(2) }}</strong></p>
-            </div>
-            <img :src="menuItem.imgSrc" :alt="menuItem.name"/>
+  <h3 v-if="loading">Loading...</h3>
+  <div v-if="!loading">
+    <h6 class="breadcrumbs"><router-link to="listing">< Back to Restaurants</router-link></h6>
+    <h2>{{restaurant.name}}</h2>
+    <p>{{ restaurant.description }}</p>
+    <div class="restaurant-content pure-g">
+      <div class="pure-u-3-4">
+        <div class="menu-section">
+          <h4>Popular</h4>
+          <div class="menu">
+            <a v-for="menuItem in restaurant.menu"
+               v-on:click="triggerAddToCart(restaurant._id,menuItem._id)"
+               href="#">
+              <div class="menu-item">
+                <div class="item-content">
+                  <h5>{{ menuItem.name }}</h5>
+                  <p>{{ menuItem.description }}</p>
+                  <p><strong>${{ menuItem.price.toFixed(2) }}</strong></p>
+                </div>
+                <img :src="menuItem.imgSrc" :alt="menuItem.name"/>
+              </div>
+            </a>
           </div>
-        </a>
+        </div>
+
+      </div>
+      <div class="pure-u-1-4">
+        <basket-component></basket-component>
       </div>
     </div>
-
   </div>
-  <div class="pure-u-1-4">
-    <basket-component></basket-component>
-  </div>
-</div>
 </main>
 </template>
 
@@ -46,7 +49,8 @@ export default {
     return {
       restaurant: [],
       errors: [],
-      restaurantId: 0
+      restaurantId: 0,
+      loading: true
     }
   },
   beforeCreate() {
@@ -55,6 +59,7 @@ export default {
     axios.get(api)
     .then(response => {
       this.restaurant = response.data.data
+      this.loading = false
     })
     .catch(err=>{
       this.errors.push(err)

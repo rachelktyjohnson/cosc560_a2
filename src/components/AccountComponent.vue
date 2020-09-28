@@ -5,7 +5,7 @@
       <div class="past-orders">
         <h4>Past Orders</h4>
         <div class="past-orders-group">
-          <a v-for="order in orders" v-on:click="goToOrderStatus(order._id)">
+          <a v-for="order in ordersReversed" v-on:click="goToOrderStatus(order._id)">
             <div class="past-order">
               <p>Order #{{ order._id }} ({{order.status}})</p>
               <p>{{ formatDateTime(order.datetime,'date') }}</p>
@@ -104,6 +104,11 @@ export default {
         .catch (err =>{
           this.errors.push(err)
         })
+  },
+  computed: {
+    ordersReversed() {
+      return this.orders.reverse()
+    },
   },
   methods:{
     goToOrderStatus: function(orderID){

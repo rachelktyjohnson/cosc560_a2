@@ -1,6 +1,5 @@
 <template>
   <main class="main-admin">
-    {{order}}
     <h1 v-if="loading">Loading...</h1>
     <div v-if="!loading">
     <div class="single-order single-order-edit">
@@ -130,7 +129,7 @@ export default {
         //send notification
         axios.post('http://localhost:9000/notifications',{
           userID: userID,
-          content: "Order #" + userID + " has been changed!"
+          content: "Order #" + orderID + " has been changed!"
         })
             .then(()=> {
               //route back to order page
