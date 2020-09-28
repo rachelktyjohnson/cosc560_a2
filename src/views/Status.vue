@@ -63,13 +63,13 @@ export default {
       restaurants: [],
       items: [],
       user: [],
-      loading: true
+      loading: true,
+      fiveSecondReload: null
     }
   },
   beforeCreate() {
     this.orderId = this.$route.query.id;
-    const api = `http://localhost:9000/orders/${this.$route.query.id}`;
-    axios.get(api)
+    axios.get("http://localhost:9000/orders/" + this.$route.query.id)
         .then(response => {
           this.order = response.data.data;
           axios.get('http://localhost:9000/restaurants')
@@ -88,8 +88,6 @@ export default {
                 this.errors.push(err)
               })
         })
-
-
   },
   computed: {
     subtotal(){
@@ -123,10 +121,21 @@ export default {
         return obj._id === itemID
       })
       return item[0];
-    }
+    },
   },
   mounted: function() {
     this.orderId = this.$route.query.id;
+    console.log("Ping");
+    this.fiveSecondReload = setInterval(()=>{
+      axios.get("http://localhost:9000/orders/" + this.$route.query.id)
+          .then(response => {
+            console.log("Pong");
+            this.order = response.data.data;
+          })
+    },5100);
   },
+  beforeDestroy: function() {
+    clearInterval(this.fiveSecondReload);
+  }
 }
 </script>

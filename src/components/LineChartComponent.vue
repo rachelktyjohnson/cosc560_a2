@@ -18,7 +18,8 @@ export default {
     return {
       dataPoints: 28,
       data: [],
-      date: new Date("2019-01-01")
+      date: new Date("2019-01-01"),
+      interval: null
     }
   },
   created: function () {
@@ -37,11 +38,14 @@ export default {
 
     this.chartLine(margin, width, height,)
 
-    window.setInterval(() => {
+    this.interval = setInterval(() => {
       this.generateData();
       this.data.shift();
       this.chartLine(margin, width, height,)
     }, 1000)
+  },
+  beforeDestroy: function() {
+    clearInterval(this.interval);
   },
   methods: {
     chartLine: function (margin, width, height,) {

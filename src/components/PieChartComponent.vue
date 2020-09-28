@@ -21,7 +21,8 @@ export default{
         "GML": 824.74,
         "KM": 519.03,
         "GK": 796.23,
-        "WND": 585.94
+        "WND": 585.94,
+        interval: null
       },
       date: new Date(2019,0,1)
     }
@@ -37,10 +38,13 @@ export default{
 
       this.chartPie(width,height,radius)
 
-      window.setInterval(()=>{
+      this.interval = setInterval(()=>{
         this.generateData();
         this.chartPie(width,height,radius);
       },1000)
+  },
+  beforeDestroy: function() {
+    clearInterval(this.interval);
   },
   methods:{
     chartPie:function(width,height,radius){
@@ -94,7 +98,6 @@ export default{
       for (let key in this.data){
         this.data[key] = parseFloat((Math.random() * (MAX - MIN) + MIN).toFixed(2));
       }
-      console.log(this.data);
       return this.data;
     }
   }
