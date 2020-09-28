@@ -15,6 +15,7 @@
       <div class="header-right">
         <nav>
           <router-link v-if="!isLoggedIn" to="/login">Log in</router-link>
+          <a v-if="isLoggedIn && !isAdmin">{{$store.state.newAlert}}</a>
           <svg v-if="isLoggedIn && !isAdmin" class="notification-icon" :class="{shaking: hasNewNotifications()}" v-on:click="toggleNotifications()" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
             <g id="Layer_2">
               <circle class="cls-1" cx="49.75" cy="50" r="48"/>

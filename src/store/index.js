@@ -12,6 +12,7 @@ export default new Vuex.Store({
           user: null,
           token: null
         },
+        newAlert: ""
     },
     getters: {
         cartSubtotal: function(state){
