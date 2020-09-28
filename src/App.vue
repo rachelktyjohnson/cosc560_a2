@@ -55,13 +55,14 @@ export default {
       notifications: [],
       errors: [],
       user: [],
-      componentKey: 0
+      componentKey: 0,
+      interval: null
     }
   },
   beforeCreate() {
     if (this.$store.state.loggedIn.user!==null){
       console.log(this.$store.state.loggedIn.userID);
-      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.user_.id)
+      axios.get('http://localhost:9000/notifications/byuser/'+this.$store.state.loggedIn.user._id)
           .then (response => {
             this.notifications = response.data.data
           })
@@ -77,7 +78,24 @@ export default {
             this.errors.push(err)
           })
     }
+  },
+  mounted () {
 
+    this.interval = setInterval(()=>{
+      if (this.$store.state.loggedIn.user!==null) {
+        axios.get('http://localhost:9000/notifications/byuser/' + this.$store.state.loggedIn.user._id)
+            .then(response => {
+              this.notifications = response.data.data
+            })
+            .catch(err => {
+              this.errors.push(err)
+            })
+        }
+      },1000)
+
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
   computed: {
     isLoggedIn: function () {
@@ -114,7 +132,6 @@ export default {
         let found = false;
         //some used so it can break out of the loop at the first FALSE
         this.notifications.some(function (item) {
-          console.log(item.read);
           if (item.read === false) {
             found = true;
             return true;

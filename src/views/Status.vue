@@ -125,14 +125,12 @@ export default {
   },
   mounted: function() {
     this.orderId = this.$route.query.id;
-    console.log("Ping");
     this.fiveSecondReload = setInterval(()=>{
       axios.get("http://localhost:9000/orders/" + this.$route.query.id)
           .then(response => {
-            console.log("Pong");
             this.order = response.data.data;
           })
-    },5100);
+    },1000);
   },
   beforeDestroy: function() {
     clearInterval(this.fiveSecondReload);
