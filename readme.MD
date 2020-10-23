@@ -1,3 +1,5 @@
+**IMPORTANT. This is the client-side code of DropBearEats. Please find the server-side here: https://github.com/rachelktyjohnson/cosc560_a3**
+
 # DropBearEats
 
 DropBearEats is a food delivery platform created for Karen
